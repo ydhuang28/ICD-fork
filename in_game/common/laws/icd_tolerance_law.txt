@@ -284,7 +284,7 @@
 				has_or_had_tag = YEM
 				has_or_had_tag = MDA
 				has_or_had_tag = MEC
-				religious_school = religious_school:alevism_school
+				religious_school ?= religious_school:alevism_school
 				AND = {
 					culture = { has_culture_group = culture_group:turkic_group }
 					situation:rise_of_the_ottomans = {
