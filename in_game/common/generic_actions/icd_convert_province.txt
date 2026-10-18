@@ -38,7 +38,7 @@
 			}
 			custom_tooltip = {
 				text = icd_convert_province_actions_tt
-				icd_num_provinces_for_conversion > 0
+				icd_num_provinces_for_conversion >= 1
 			}
 		}
 	}
