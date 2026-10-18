@@ -152,7 +152,8 @@
  
  AUTO_MODIFIER_NAME_icd_acceptance: "Base Cultural Acceptance"
  AUTO_MODIFIER_NAME_icd_assimilation: "Base ICD Cultural Assimilation"
- AUTO_MODIFIER_NAME_icd_conversion_less: "Vanilla Conversion Disabled\nRate of [forced_conversion|e] is [LocationView.GetLocation.MakeScope.ScriptValue('icd_conversion_rate_province_forced_value')] [pops|e] every year.\nRate of [communal_conversion|e] for [primary_culture|e] is [LocationView.GetLocation.MakeScope.ScriptValue('icd_conversion_rate_province_communal_value')] [pops|e] every year."
+ AUTO_MODIFIER_NAME_icd_conversion_less: "Vanilla Conversion Disabled"
+ AUTO_MODIFIER_DESC_icd_conversion_less: "Pops convert through [forced_conversion|e] and [communal_conversion|e] instead. The $mapmode_icd_conversion_map_name$ map mode shows each location's yearly rate. See Game Rules to turn vanilla conversion back on."
  AUTO_MODIFIER_NAME_icd_conversion_less_desc: "See Game Rules to enable it"
  
  STATIC_MODIFIER_NAME_icd_protestant_in_wrong_country: "Heretical Reformer"
