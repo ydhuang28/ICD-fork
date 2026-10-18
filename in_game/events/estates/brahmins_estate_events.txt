@@ -268,7 +268,7 @@ brahmins_estate_events.10 = {
 				dominant_religion = religion:hindu
 				dominant_religion = religion:nusantaran_hindu
 			}
-			modifier:fort_level >= 1
+			has_fort = yes
 			is_capital = no
 		}
 	}
@@ -287,7 +287,7 @@ brahmins_estate_events.10 = {
 						dominant_religion = religion:hindu
 						dominant_religion = religion:nusantaran_hindu
 					}
-					modifier:fort_level >= 1
+					has_fort = yes
 					is_capital = no
 				}
 			}
@@ -297,7 +297,7 @@ brahmins_estate_events.10 = {
 						dominant_religion = religion:hindu
 						dominant_religion = religion:nusantaran_hindu
 					}
-					modifier:fort_level >= 1
+					has_fort = yes
 					is_capital = no
 				}
 				save_scope_as = brahmin_fort_province

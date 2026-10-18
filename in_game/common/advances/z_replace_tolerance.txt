@@ -63,6 +63,7 @@ REPLACE:bos_land_of_many_churches = {
 
 REPLACE:religious_toleration = {
 	age = age_4_reformation
+	icon = religious_toleration
 	potential = {
 		has_or_had_tag = BRA
 	}
@@ -111,6 +112,7 @@ REPLACE:home_of_the_whirling_dervishes = {
 REPLACE:land_of_many_religions = {
 	content_priority = 600
 	age = age_1_traditions
+	icon = land_of_many_religions
 	potential = {
 		has_or_had_tag = LIT
 	}
@@ -123,6 +125,7 @@ REPLACE:land_of_many_religions = {
 
 REPLACE:a_tolerant_society = {
 	age = age_3_discovery
+	icon = a_tolerant_society
 	potential = {
 		OR = {
 			has_or_had_tag = MEI
@@ -134,6 +137,7 @@ REPLACE:a_tolerant_society = {
 
 REPLACE:pal_heaven_of_tolerance = {
 	age = age_4_reformation
+	icon = pal_heaven_of_tolerance
 	potential = {
 		has_or_had_tag = PAL
 	}
@@ -170,6 +174,7 @@ REPLACE:tra_the_edict_of_torda = {
 
 REPLACE:international_influences = {
 	age = age_2_renaissance
+	icon = international_influences
 	potential = {
 		OR = {
 			culture = culture:ruthenian
@@ -199,6 +204,7 @@ REPLACE:sic_constitions_of_melfi = {
 
 REPLACE:religious_melting_pot = {
 	age = age_1_traditions
+	icon = religious_melting_pot
 	potential = {
 		OR = {
 			culture = culture:thai_culture
@@ -260,6 +266,7 @@ REPLACE:shinbutsu_shuugou = {
 REPLACE:statute_of_kalisz = {
 	content_priority = 300
 	age = age_1_traditions
+	icon = statute_of_kalisz
 	potential = { has_or_had_tag = POL }
 
 	tolerance_heathen = 0.5
@@ -268,12 +275,14 @@ REPLACE:statute_of_kalisz = {
 }
 REPLACE:bng_religious_pluralism = {
 	age = age_4_reformation
+	icon = bng_religious_pluralism
 	potential = { culture.language = language:bengali_language }
 	tolerance_heathen = 0.5
 	requires = gov_reform_reformation_a
 }
 REPLACE:millets = {
 	age = age_2_renaissance
+	icon = millets
 	potential = {
 		has_or_had_tag = TUR
 	}
@@ -283,6 +292,7 @@ REPLACE:millets = {
 }
 REPLACE:guj_jain_routes = {
 	age = age_2_renaissance
+	icon = guj_jain_routes
 	potential = {
         religion.group = religion_group:muslim
         culture.language = language:gujarati_language
@@ -293,6 +303,7 @@ REPLACE:guj_jain_routes = {
 }
 REPLACE:bah_nobility_hindu_expansion = {
 	age = age_2_renaissance
+	icon = bah_nobility_hindu_expansion
 	potential = {
         religion.group = religion_group:muslim
         culture.language = language:kannada_language

@@ -1224,7 +1224,12 @@
 			}
 			custom_tooltip = REFORMATION_HAS_JESUITS_ACTIVE
 		}
-		custom_tooltip = REFORMATION_LOCATION_RELIGION
+		if = {
+			limit = {
+				exists = dominant_religion
+			}
+			custom_tooltip = REFORMATION_LOCATION_RELIGION
+		}
 	}
 
 	map_color = {

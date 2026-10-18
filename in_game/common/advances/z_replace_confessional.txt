@@ -28,7 +28,7 @@ REPLACE:missionary_schools = {
 
 REPLACE:utr_city_churches = {
 	age = age_1_traditions
-	icon = pop_promotion_speed_age_4
+	icon = utr_city_churches
 	potential = {
 		has_or_had_tag = UTR
 	}

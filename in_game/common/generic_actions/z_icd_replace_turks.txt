@@ -112,6 +112,18 @@
 
 	ai_will_do = {
 		add = 15
+
+		add = {
+			value = scope:actor.gold
+			desc = "saved gold"
+		}
+
+		subtract = {
+			value = scope:actor.country_tax_base
+			multiply = 2
+			desc = "expected saved money"
+		}
+
 		if = {
 			limit = { exists = scope:target_province_destination }
 			subtract = 35

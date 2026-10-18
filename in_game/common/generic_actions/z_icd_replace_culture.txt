@@ -197,6 +197,9 @@ REPLACE:add_tolerated_culture = {
 	}
 
 	allow = {
+		scope:actor = {
+			in_civil_war = no
+		}
 		trigger_if = {
 			limit = {
 				exists = scope:target

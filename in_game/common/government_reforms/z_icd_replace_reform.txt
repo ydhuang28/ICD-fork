@@ -55,6 +55,7 @@ REPLACE:anti_heresy_act = {
 REPLACE:persian_feudal_theocracy = {
 	unique = yes
 	government = monarchy
+	age = age_4_reformation
 	potential = {
 		has_advance = ira_religious_state
 	}

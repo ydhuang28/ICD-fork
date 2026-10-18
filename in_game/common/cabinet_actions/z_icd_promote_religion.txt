@@ -83,6 +83,7 @@
 					local_religious_unity < 0.95
 				}
 			}
+			"religion_percentage(scope:target_religion)" < 0.95
 			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = promote_religion interaction_target = target_province } }
 		}
 		map_color = {

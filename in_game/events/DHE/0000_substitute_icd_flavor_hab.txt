@@ -27,24 +27,14 @@ flavor_hab.35 = { #Peasant Uprising in Salzburg
 			name = hab_salzburger_peasant_revolt
 			category = estate
 			estate = peasants_estate
+			rebel_demand = rebel_demand_flavor_hab_35
 			save_scope_as = salzburger_rebel
 		}
 	}
 
 	option = {
 		name = flavor_hab.35.a
-		change_gold_effect = { scale = -6 }
-		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
-		location:salzburg = {
-			change_control = control_mild_penalty
-			every_pop = {
-				limit = {
-					owner = root
-					pop_type = pop_type:peasants
-				}
-				add_pop_satisfaction = pop_satisfaction_mild_bonus
-			}
-		}
+		apply_rebel_demands = scope:salzburger_rebel
 		destroy_rebel = scope:salzburger_rebel
 	}
 

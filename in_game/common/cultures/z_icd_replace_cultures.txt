@@ -44,7 +44,7 @@ REPLACE:romani_culture = { #
 	
 	color = map_romani
 	
-	tags = { romanian_gfx east_mediterranean_gfx indian_gfx }
+	tags = { romanian_gfx east_mediterranean_gfx indian_gfx afrasian_gfx }
 
 	country_modifier = {
 	}
