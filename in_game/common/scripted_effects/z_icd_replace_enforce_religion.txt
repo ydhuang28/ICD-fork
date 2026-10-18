@@ -24,11 +24,38 @@ REPLACE:enforce_religion_effect = {
 	}
 }
 
-INJECT:force_convert_religion = {
-	scope:loser = { 
+# INJECT does not work for scripted effects (it acts as REPLACE), so this is the full 1.4 vanilla effect plus ICD's variable
+REPLACE:force_convert_religion = {
+	scope:loser = {
+		change_religion = scope:winner.religion
+		change_religion_for_ruler_and_family = { country = scope:loser religion = scope:winner.religion }
+		add_cooldown = {
+			type = convert_religion
+			years = 10
+		}
+		ruler_or_regent ?= {
+			if = {
+				limit = {
+					or = {
+						is_religious_figure = no
+						religious_figure != religious_figure:cardinal
+					}
+					NOT = { owner = religion:catholic.religious_head }
+				}
+				change_character_religion = scope:winner.religion
+			}
+		}
+		add_prestige = prestige_extreme_penalty
+		if = {
+			limit = { government_type = government_type:theocracy }
+			add_devotion = devotion_radical_penalty
+		}
 		set_variable = {
 			name = icd_enforced_religion
 			value = scope:winner.religion
 		}
+	}
+	scope:winner = {
+		add_prestige = prestige_mild_bonus
 	}
 }
