@@ -47,7 +47,7 @@ icd_jewish_migration_save_region = {
 							owner != root
 						}
 						any_location_in_province_definition = {
-							NOT = { this = scope:escape_target1_sephardim }
+							trigger_if = { limit = { exists = scope:escape_target1_sephardim } NOT = { this = scope:escape_target1_sephardim } }
 						}
 						NOT = {
 							any_location_in_province_definition = {
@@ -160,7 +160,7 @@ icd_jewish_migration_save_region = {
 							owner != root
 						}
 						any_location_in_province_definition = {
-							NOT = { this = scope:escape_target4_sephardim }
+							trigger_if = { limit = { exists = scope:escape_target4_sephardim } NOT = { this = scope:escape_target4_sephardim } }
 						}
 						NOT = {
 							any_location_in_province_definition = {
@@ -200,8 +200,8 @@ icd_jewish_migration_save_region = {
 							owner != root
 						}
 						any_location_in_province_definition = {
-							NOT = { this = scope:escape_target4_sephardim }
-							NOT = { this = scope:escape_target5_sephardim }
+							trigger_if = { limit = { exists = scope:escape_target4_sephardim } NOT = { this = scope:escape_target4_sephardim } }
+							trigger_if = { limit = { exists = scope:escape_target5_sephardim } NOT = { this = scope:escape_target5_sephardim } }
 						}
 						NOT = {
 							any_location_in_province_definition = {
@@ -315,7 +315,7 @@ icd_jewish_migration_save_region = {
 							owner != root
 						}
 						any_location_in_province_definition = {
-							NOT = { this = scope:escape_target1_ashkenazi }
+							trigger_if = { limit = { exists = scope:escape_target1_ashkenazi } NOT = { this = scope:escape_target1_ashkenazi } }
 						}
 						NOT = {
 							any_location_in_province_definition = {
@@ -426,7 +426,7 @@ icd_jewish_migration_save_region = {
 							owner != root
 						}
 						any_location_in_province_definition = {
-							NOT = { this = scope:escape_target4_ashkenazi }
+							trigger_if = { limit = { exists = scope:escape_target4_ashkenazi } NOT = { this = scope:escape_target4_ashkenazi } }
 						}
 						NOT = {
 							any_location_in_province_definition = {
@@ -465,8 +465,8 @@ icd_jewish_migration_save_region = {
 							owner != root
 						}
 						any_location_in_province_definition = {
-							NOT = { this = scope:escape_target4_ashkenazi }
-							NOT = { this = scope:escape_target5_ashkenazi }
+							trigger_if = { limit = { exists = scope:escape_target4_ashkenazi } NOT = { this = scope:escape_target4_ashkenazi } }
+							trigger_if = { limit = { exists = scope:escape_target5_ashkenazi } NOT = { this = scope:escape_target5_ashkenazi } }
 						}
 						NOT = {
 							any_location_in_province_definition = {
