@@ -1,8 +1,6 @@
 ﻿REPLACE:kbo_sharia_courts = {
 	ability = adm
-
-	allow_multiple = yes	# each copy adds its modifier
-
+	
 	potential = {
 		has_variable = enable_sharia_courts_cabinet_action_variable
 	}

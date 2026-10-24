@@ -1,9 +1,7 @@
 ﻿REPLACE:kbo_pop_promote_action = {
 	icon = pop_promote_action
 	ability = adm
-
-	allow_multiple = yes	# each copy adds its modifier
-
+	
 	potential = {
 		has_variable = serf_social_integration_variable
 		num_locations > 0 

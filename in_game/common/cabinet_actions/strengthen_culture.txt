@@ -1,8 +1,6 @@
 ﻿strengthen_culture = {
 	ability = dip
-
-	allow_multiple = yes	# each copy adds its modifier
-
+	
 	country_modifier = {
 		global_pop_assimilation_speed_modifier = 0.1
 		cultural_influence_modifier = 0.5

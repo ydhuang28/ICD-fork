@@ -71,7 +71,9 @@
 				culture = scope:target
 				value > 0.500
 			}
-			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = root } }
+			# Several copies can run, each from its own origin to its own destination.
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = introduce_cultural_settlements interaction_target = target_origin } }
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = target_origin } }
 		}
 		map_color = define:NMapColors|MAP_COLOR_HIGH
 	}
@@ -143,7 +145,8 @@
 		}
 		default_sort = province_culture_percentage
 		visible = {
-			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = root } }
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = introduce_cultural_settlements interaction_target = target_destination } }
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = target_destination } }
 			NOT = { this = scope:target_origin }
 		}
 		map_color = define:NMapColors|MAP_COLOR_LOW
