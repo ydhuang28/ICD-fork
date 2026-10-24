@@ -137,6 +137,8 @@
 				has_policy = federal_tribe_policy
 				societal_value:centralization_vs_decentralization > 80
 				tag = ARA
+				tag = BYZ
+				tag = ROM
 				has_reform = government_reform:mandala_system
 			}
 		}
