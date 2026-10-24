@@ -1,6 +1,6 @@
 ﻿REPLACE:merge_culture_group = {
 	ability = adm
-	allow_multiple = no
+	allow_multiple = yes	# one copy per culture group
 	years = 10
 	potential = {
 		culture = { 
@@ -39,7 +39,7 @@
 			}
 		}
 		visible = {
-
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = merge_culture_group interaction_target = target } }
 		}
 		enabled = {
 			is_already_merged = no
@@ -50,29 +50,33 @@
 	}
 	on_fully_activated = {
 		scope:actor = {
-			# Grant the bonus advances of the primary culture, if it belongs to the merged group.
+			# Another copy may have merged this group in the meantime.
 			if = {
-				limit = {
-					culture = {
+				limit = { scope:target = { is_already_merged = no } }
+				# Grant the bonus advances of the primary culture, if it belongs to the merged group.
+				if = {
+					limit = {
+						culture = {
+							any_culture_group = {
+								this = scope:target
+							}
+						}
+					}
+					grant_culture_bonus_advances = culture
+				}
+				# Grant the bonus advances of every accepted culture that belongs to the merged group.
+				every_accepted_culture = {
+					limit = {
 						any_culture_group = {
 							this = scope:target
 						}
 					}
-				}
-				grant_culture_bonus_advances = culture
-			}
-			# Grant the bonus advances of every accepted culture that belongs to the merged group.
-			every_accepted_culture = {
-				limit = {
-					any_culture_group = {
-						this = scope:target
+					scope:actor = {
+						grant_culture_bonus_advances = prev
 					}
 				}
-				scope:actor = {
-					grant_culture_bonus_advances = prev
-				}
+				merge_culture_group = scope:target
 			}
-			merge_culture_group = scope:target
 		}
-	}				
+	}
 	}

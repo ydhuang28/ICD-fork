@@ -1,8 +1,10 @@
 ﻿relocate_people = {
 	ability = adm
-	
-	allow_multiple = no
-	
+
+	# Several copies can run, each from its own origin to its own destination, each with its own cost
+	# (icd_cabinet_multi_effects.txt).
+	allow_multiple = yes
+
 	potential = {
 		num_locations > 0 
 		OR = {
@@ -32,7 +34,7 @@
 		}
 		default_sort = population
 		visible = {
-			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = root } }
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = target_origin } }
 		}
 		map_color = define:NMapColors|MAP_COLOR_HIGH
 	}
@@ -75,7 +77,7 @@
 		}
 		default_sort = province_culture_percentage
 		visible = {
-			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = root } }
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = relocate_people interaction_target = target_destination } }
 			NOT = { this = scope:target_origin }
 		}
 		map_color = define:NMapColors|MAP_COLOR_LOW
@@ -107,17 +109,24 @@
 				}
 			}
 			
-			scope:actor = {
-				add_country_modifier = {
-					modifier = icd_relocation_effort_cost
-					size = {
+			scope:target_origin = {
+				set_variable = {
+					name = icd_relocate_cost
+					value = {
 						value = 1
 						multiply = {
 							value = "scope:target_origin.province_capital.distance_to(scope:target_destination.province_capital)"
 						}
-						
 					}
 				}
+			}
+			scope:actor = {
+				if = {
+					limit = { NOT = { has_variable = icd_relocate_cost_total } }
+					set_variable = { name = icd_relocate_cost_total value = 0 }
+				}
+				change_variable = { name = icd_relocate_cost_total add = scope:target_origin.var:icd_relocate_cost }
+				icd_refresh_relocation_cost = yes
 			}
 		}
 	}
@@ -137,8 +146,18 @@
 			scope:target_origin = {
 				remove_province_modifier = icd_population_removal_relocate
 			}
-			scope:actor = { 
-				remove_country_modifier = icd_relocation_effort_cost
+			scope:actor = {
+				if = {
+					limit = {
+						has_variable = icd_relocate_cost_total
+						scope:target_origin = { has_variable = icd_relocate_cost }
+					}
+					change_variable = { name = icd_relocate_cost_total subtract = scope:target_origin.var:icd_relocate_cost }
+				}
+				icd_refresh_relocation_cost = yes
+			}
+			scope:target_origin = {
+				remove_variable = icd_relocate_cost
 			}
 		}
 	}

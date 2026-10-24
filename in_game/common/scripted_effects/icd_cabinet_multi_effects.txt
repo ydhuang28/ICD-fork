@@ -1,0 +1,94 @@
+﻿# Cabinet actions that can run more than once at a time: each running copy carries its own effort cost.
+
+# Country scope. icd_cultural_opinion_cost once for every running Improve Cultural Opinion: icd_opinion_n counts the
+# copies (their target cultures are in the list icd_opinion_targets), plus one for a copy started before the action
+# allowed several (icd_opinion_legacy).
+icd_refresh_cultural_opinion_cost = {
+	set_variable = { name = icd_opinion_cost value = 0 }
+	if = {
+		limit = { has_variable = icd_opinion_n }
+		change_variable = { name = icd_opinion_cost add = var:icd_opinion_n }
+	}
+	if = {
+		limit = { has_variable = icd_opinion_legacy }
+		change_variable = { name = icd_opinion_cost add = 1 }
+	}
+	if = {
+		limit = { var:icd_opinion_cost > 0 }
+		add_country_modifier = {
+			modifier = icd_cultural_opinion_cost
+			size = var:icd_opinion_cost
+			mode = replace
+		}
+	}
+	else = {
+		remove_country_modifier = icd_cultural_opinion_cost
+		remove_variable = icd_opinion_n
+	}
+	remove_variable = icd_opinion_cost
+}
+
+# Country scope, scope:target = the culture. A copy of Improve Cultural Opinion starts.
+icd_start_cultural_opinion = {
+	if = {
+		limit = {
+			has_country_modifier = icd_cultural_opinion_cost
+			NOT = { has_variable = icd_opinion_n }
+			NOT = { has_variable = icd_opinion_legacy }
+		}
+		set_variable = icd_opinion_legacy
+	}
+	if = {
+		limit = {
+			exists = scope:target
+			NOT = { is_target_in_variable_list = { name = icd_opinion_targets target = scope:target } }
+		}
+		add_to_variable_list = { name = icd_opinion_targets target = scope:target }
+		if = {
+			limit = { has_variable = icd_opinion_n }
+			change_variable = { name = icd_opinion_n add = 1 }
+		}
+		else = {
+			set_variable = { name = icd_opinion_n value = 1 }
+		}
+	}
+	icd_refresh_cultural_opinion_cost = yes
+}
+
+# Country scope, scope:target = the culture. A copy of Improve Cultural Opinion ends (finished or stopped); a copy
+# that isn't in the list is the one started before the action allowed several.
+icd_end_cultural_opinion = {
+	if = {
+		limit = {
+			exists = scope:target
+			is_target_in_variable_list = { name = icd_opinion_targets target = scope:target }
+		}
+		remove_list_variable = { name = icd_opinion_targets target = scope:target }
+		change_variable = { name = icd_opinion_n subtract = 1 }
+	}
+	else_if = {
+		limit = { has_variable = icd_opinion_legacy }
+		remove_variable = icd_opinion_legacy
+	}
+	icd_refresh_cultural_opinion_cost = yes
+}
+
+# Country scope. icd_relocation_effort_cost sized by the distances of every running Relocate People: each origin
+# province keeps its own distance in icd_relocate_cost, and the country sums them in icd_relocate_cost_total.
+icd_refresh_relocation_cost = {
+	if = {
+		limit = {
+			has_variable = icd_relocate_cost_total
+			var:icd_relocate_cost_total > 0
+		}
+		add_country_modifier = {
+			modifier = icd_relocation_effort_cost
+			size = var:icd_relocate_cost_total
+			mode = replace
+		}
+	}
+	else = {
+		remove_country_modifier = icd_relocation_effort_cost
+		remove_variable = icd_relocate_cost_total
+	}
+}

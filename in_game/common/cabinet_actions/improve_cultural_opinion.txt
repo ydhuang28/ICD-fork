@@ -1,12 +1,12 @@
 ﻿improve_cultural_opinion = {
 	ability = dip
 	
-	allow_multiple = no
-	
+	allow_multiple = yes
+
 	potential = {
-		num_locations > 0 
+		num_locations > 0
 	}
-	
+
 	years = 10
 	
 	allow = {
@@ -45,22 +45,21 @@
 					value > 0.05
 				}
 			}
+			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = improve_cultural_opinion interaction_target = target } }
 		}
 	}
-	
-	on_activate = { 
+
+	# Several copies can run, one per culture; each carries its own cost (icd_cabinet_multi_effects.txt).
+	on_activate = {
 		custom_tooltip = improve_cultural_opinion_tt
 		scope:actor = {
-			add_country_modifier = {
-				modifier = icd_cultural_opinion_cost
-				mode = add
-			}
+			icd_start_cultural_opinion = yes
 		}
 	}
-	
+
 	on_deactivate = {
 		scope:actor = {
-			remove_country_modifier = icd_cultural_opinion_cost
+			icd_end_cultural_opinion = yes
 		}
 	}
 	
@@ -106,7 +105,7 @@
 				}
 			}
 			scope:actor = {
-				remove_country_modifier = icd_cultural_opinion_cost
+				icd_end_cultural_opinion = yes
 			}
 		}
 	}

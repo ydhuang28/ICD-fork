@@ -1,6 +1,8 @@
 ﻿icd_promote_the_counter_reformation = {
 	ability = mil
-	
+
+	allow_multiple = yes	# each copy adds its modifier
+
 	potential = {
 		religion = religion:catholic
 		situation:reformation = {
