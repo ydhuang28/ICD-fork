@@ -108,9 +108,17 @@ icd_conversion_events.999 = { # Coercive Conversions##
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
-		
-		
-		
+
+		# Fork: a promotion whose religion is gone leaves only the penalty. The AI's 48-month variable can lapse before a
+		# modifier that add_and_extend has extended, and the conversion below read the missing variable for every pop.
+		every_province = {
+			limit = {
+				has_province_modifier = icd_promote_religion_province_modifier
+				NOT = { has_variable = promoting_religion }
+			}
+			remove_province_modifier = icd_promote_religion_province_modifier
+		}
+
 		every_province = {
 			limit = {
 				has_province_modifier = icd_promote_religion_province_modifier
