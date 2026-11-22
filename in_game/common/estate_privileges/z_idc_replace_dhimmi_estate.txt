@@ -65,7 +65,7 @@ REPLACE:dhimmi_land_rights = {
 	country_modifier = {
 		dhimmi_estate_target_satisfaction = medium_privilege_target_satisfaction
 		global_peasant_enfranchisment = 0.05
-		global_dhimmi_estate_power = 0.25
+		global_dhimmi_estate_power = 0.1	# as game 1.4.9 (was 0.25)
 	}
 
 	location_modifier = {
@@ -84,7 +84,7 @@ REPLACE:dhimmi_promote_tolerance = {
 		dhimmi_estate_target_satisfaction = small_privilege_target_satisfaction
 		tolerance_heathen = 0.5
 		monthly_towards_humanist = societal_value_minor_monthly_move
-		global_dhimmi_estate_power = 0.5
+		global_dhimmi_estate_power = 0.2	# as game 1.4.9 (was 0.5)
 	}
 
 	allow = {
@@ -134,7 +134,7 @@ REPLACE:dhimmi_administrative_posts = {
 	country_modifier = {
 		dhimmi_estate_target_satisfaction = medium_privilege_target_satisfaction
 		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
-		global_dhimmi_estate_power = 0.25
+		global_dhimmi_estate_power = 0.1	# as game 1.4.9 (was 0.25)
 		cultures_capacity = 0.1
 	}
 	country_modifier = {
@@ -175,7 +175,7 @@ REPLACE:dhimmi_legal_autonomy = {
 		dhimmi_estate_target_satisfaction = small_privilege_target_satisfaction
 		clergy_estate_target_satisfaction = small_privilege_target_satisfaction_penalty
 		legislative_efficiency = 0.05
-		global_dhimmi_estate_power = 0.2
+		global_dhimmi_estate_power = 0.1	# as game 1.4.9 (was 0.2)
 	}
 
 	location_modifier = {
@@ -206,7 +206,7 @@ REPLACE:dhimmi_mazalim_court = {
 
 	country_modifier = {
 		dhimmi_estate_target_satisfaction = medium_privilege_target_satisfaction
-		global_dhimmi_estate_power = 0.33
+		global_dhimmi_estate_power = 0.15	# as game 1.4.9 (was 0.33)
 		monthly_towards_jurisprudence = societal_value_minor_monthly_move
 		pure_tooltip_entry = reduces_mazalim_court_bureaucracy_negative_tt
 	}
@@ -239,7 +239,7 @@ REPLACE:dhimmi_in_administration = {
 	
 	country_modifier = {
 		dhimmi_estate_target_satisfaction = medium_privilege_target_satisfaction
-		global_dhimmi_estate_power = 0.5
+		global_dhimmi_estate_power = 0.2	# as game 1.4.9 (was 0.5)
 		dhimmi_estate_allowed_in_cabinet = yes
 		monthly_towards_humanist = societal_value_monthly_move
 	}
@@ -259,7 +259,7 @@ REPLACE:dhimmi_promote_dhimmi_hierarchy = {
 		dhimmi_estate_target_satisfaction = small_privilege_target_satisfaction
 		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
 		dhimmi_estate_max_tax = -0.1
-		global_dhimmi_estate_power = 0.2
+		global_dhimmi_estate_power = 0.1	# as game 1.4.9 (was 0.2)
 	}
 	
 	location_modifier = {
@@ -277,7 +277,7 @@ REPLACE:dhimmi_traditions = {
 	country_modifier = {
 		dhimmi_estate_target_satisfaction = small_privilege_target_satisfaction
 		cultural_influence_modifier = -0.10
-		global_dhimmi_estate_power = 0.33
+		global_dhimmi_estate_power = 0.15	# as game 1.4.9 (was 0.33)
 	}
 	
 }

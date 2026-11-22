@@ -83,22 +83,28 @@
 	}
 
 	effect = {
-		scope:recipient = {
+		if = {	# as game 1.4.9: the effect is shown before the subject (and culture) are picked
+			limit = {
+				exists = scope:recipient
+				exists = scope:target_culture
+			}
+			scope:recipient = {
 				change_culture = scope:target_culture
 				every_cabinet = {
-				limit = {
-					has_cabinet_action = yes
-					or = {
-						cabinet_action = cabinet_action:assimilate_area
-						cabinet_action = cabinet_action:promote_culture
-						cabinet_action = cabinet_action:promote_culture_edited
+					limit = {
+						has_cabinet_action = yes
+						or = {
+							cabinet_action = cabinet_action:assimilate_area
+							cabinet_action = cabinet_action:promote_culture
+							cabinet_action = cabinet_action:promote_culture_edited
+						}
 					}
+					stop_cabinet_action = {}
 				}
-				stop_cabinet_action = {}
 			}
-		}
-		scope:recipient = {
-			add_liberty_desire = liberty_desire_ultimate_plus
+			scope:recipient = {
+				add_liberty_desire = liberty_desire_ultimate_plus
+			}
 		}
 	}
 }

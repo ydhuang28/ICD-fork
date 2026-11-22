@@ -1058,8 +1058,8 @@
 							religion = religion:catholic
 						}
 						any_owned_location = {
-							dominant_religion = { group = religion_group:christian }
-							dominant_religion != prev.religion
+							dominant_religion ?= { group = religion_group:christian }	# as game 1.4.9: locations may have none
+							NOT = { dominant_religion ?= prev.religion }
 						}
 						any_neighbor_country = {
 							exists = yes
