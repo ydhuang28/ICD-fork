@@ -18,6 +18,7 @@ flavor_cas.1 = { # Christopher Columbus
 				has_advance = quest_for_the_new_world
 				dominant_religion = religion:catholic
 				capital.sub_continent = sub_continent:western_europe
+				has_ports = yes
 				nor = {
 					this = root
 					has_variable = turned_down_columbus 
@@ -929,22 +930,8 @@ flavor_cas.14 = { #Prince of Asturias
 		name = flavor_cas.14.a
 		historical_option = yes
 
-		province_definition:east_asturias_province = {
-			every_location_in_province_definition = {
-				limit = {
-					owner = root
-				}
-				change_control = control_mild_bonus
-			}
-		}
-		province_definition:west_asturias_province = {
-			every_location_in_province_definition = {
-				limit = {
-					owner = root
-				}
-				change_control = control_mild_bonus
-			}
-		}
+		unlock_estate_privilege_effect = { type = lon_principado_de_asturias }
+		grant_estate_privilege = estate_privilege:lon_principado_de_asturias
 		scope:target_heir = {
 			add_adm = 15
 			add_mil = 10
@@ -2162,9 +2149,33 @@ flavor_cas.35 = { #Francisco Pizarro
 			has_presence_in = region:andes_region
 		}
 		OR = {
-			has_discovered_area = area:chala_area
-			has_discovered_area = area:suni_area
-			has_discovered_area = area:acamama_area
+			AND = {
+				has_discovered_area = area:chala_area
+				area:chala_area = {
+					any_location_in_area = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+			}
+			AND = {
+				has_discovered_area = area:suni_area
+				area:suni_area = {
+					any_location_in_area = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+			}
+			AND = {
+				has_discovered_area = area:acamama_area
+				area:acamama_area = {
+					any_location_in_area = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+			}
 		}
 	}
 
@@ -2189,8 +2200,27 @@ flavor_cas.35 = { #Francisco Pizarro
 			limit = {
 				has_discovered_area = area:chala_area
 			}
-			location:tumbes = {
-				save_scope_as = target_location
+			if = {
+				limit = {
+					location:tumbes = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+				location:tumbes = {
+					save_scope_as = target_location
+				}
+			}
+			else = {
+				area:chala_area = {
+					random_location_in_area = {
+						limit = {
+							has_owner = yes
+							NOT = { is_owned_or_owned_by_subjects_of = root }
+						}
+						save_scope_as = target_location
+					}
+				}
 			}
 		}
 		if = {
@@ -2199,6 +2229,10 @@ flavor_cas.35 = { #Francisco Pizarro
 			}
 			area:suni_area = {
 				random_location_in_area = {
+					limit = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
 					save_scope_as = target_location
 				}
 			}
@@ -2209,6 +2243,10 @@ flavor_cas.35 = { #Francisco Pizarro
 			}
 			area:acamama_area = {
 				random_location_in_area = {
+					limit = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
 					save_scope_as = target_location
 				}
 			}
@@ -2223,6 +2261,8 @@ flavor_cas.35 = { #Francisco Pizarro
 		}
 		add_gold = -250
 		add_manpower = -4
+		save_scope_as = actor
+		capital = { save_scope_as = location }
 		trigger_event_non_silently = conquistador.1
 	}
 
@@ -2258,9 +2298,34 @@ flavor_cas.36 = { #Hernán Cortés
 			has_presence_in = region:mesoamerica_region
 		}
 		OR = {
-			has_discovered_area = area:tochtepec_area
-			has_discovered_area = area:tlaxcala_area
-			has_discovered_area = area:xilotepec_area
+			AND = {
+				has_discovered_area = area:tochtepec_area
+				area:tochtepec_area = {
+					any_location_in_area = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+			}
+			AND = {
+				has_discovered_area = area:tlaxcala_area
+				area:tlaxcala_area = {
+					any_location_in_area = {
+						is_port = yes
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+			}
+			AND = {
+				has_discovered_area = area:xilotepec_area
+				area:xilotepec_area = {
+					any_location_in_area = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+			}
 		}
 	}
 
@@ -2285,8 +2350,27 @@ flavor_cas.36 = { #Hernán Cortés
 			limit = {
 				has_discovered_area = area:tochtepec_area
 			}
-			location:xamapan = {
-				save_scope_as = target_location
+			if = {
+				limit = {
+					location:xamapan = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
+				}
+				location:xamapan = {
+					save_scope_as = target_location
+				}
+			}
+			else = {
+				area:tochtepec_area = {
+					random_location_in_area = {
+						limit = {
+							has_owner = yes
+							NOT = { is_owned_or_owned_by_subjects_of = root }
+						}
+						save_scope_as = target_location
+					}
+				}
 			}
 		}
 		if = {
@@ -2297,6 +2381,8 @@ flavor_cas.36 = { #Hernán Cortés
 				random_location_in_area = {
 					limit = {
 						is_port = yes
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
 					}
 					save_scope_as = target_location
 				}
@@ -2308,6 +2394,10 @@ flavor_cas.36 = { #Hernán Cortés
 			}
 			area:xilotepec_area = {
 				random_location_in_area = {
+					limit = {
+						has_owner = yes
+						NOT = { is_owned_or_owned_by_subjects_of = root }
+					}
 					save_scope_as = target_location
 				}
 			}
@@ -2322,6 +2412,8 @@ flavor_cas.36 = { #Hernán Cortés
 		}
 		add_gold = -250
 		add_manpower = -4
+		save_scope_as = actor
+		capital = { save_scope_as = location }
 		trigger_event_non_silently = conquistador.1
 	}
 
@@ -9056,21 +9148,21 @@ flavor_cas.147 = { # Wreck of San José Discovered
 		name = flavor_cas.147.a_positive
 		trigger = { has_variable = cas_san_jose_success }
 		add_prestige = prestige_weak_bonus
-		change_gold_effect = { scale = 4 }
+		change_gold_effect = { scale = 2 }
 	}
 	
 	option = {
 		name = flavor_cas.147.b_positive
 		trigger = { has_variable = cas_san_jose_success }
 		add_prestige = prestige_mild_bonus
-		change_gold_effect = { scale = 8 }
+		change_gold_effect = { scale = 4 }
 	}
 	
 	option = {
 		name = flavor_cas.147.c_positive
 		trigger = { has_variable = cas_san_jose_success }
-		add_legitimacy = legitimacy_mild_bonus
-		add_prestige = prestige_extreme_bonus
+		add_legitimacy = legitimacy_ultimate_bonus
+		add_prestige = prestige_ultimate_bonus
 	}
 	
 	after = {
@@ -9320,6 +9412,7 @@ flavor_cas.153 = { #Royal Mint of Segovia
 				building_type = building_type:cas_royal_mint_of_segovia
 			}
 		}
+		custom_tooltip = flavor_cas.153.a.tt
 		change_societal_value = {
 			type = traditionalist_vs_innovative
 			value = societal_value_move_to_right
@@ -9485,6 +9578,12 @@ flavor_cas.1000 = { #Tomás de Torquemada and the Spanish Inquisition
 
 		set_variable = spa_holy_inquisition
 		scope:inquisitor_torquemada = { move_country = root }
+		if = {
+			limit = {
+				has_dlc = "d009_across_the_pillars"
+			}
+			unlock_law_effect = { type = limpieza_de_sangre_law }
+		}
 		unlock_policy_effect = { type = spa_inquisition_policy }
 		add_policy = policy:spa_inquisition_policy
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
@@ -9843,6 +9942,7 @@ flavor_cas.1002 = { #Conversion of the Moriscos
 				every_pop = {
 					limit = {
 						owner = root
+						culture = culture:andalusi
 						religion = religion:sunni
 					}
 					split_pop = {
@@ -9854,7 +9954,14 @@ flavor_cas.1002 = { #Conversion of the Moriscos
 				if = {
 					limit = {
 						has_dlc = "d009_across_the_pillars"
-						"religion_population(religion:sunni)" > 0
+						culture_population = {
+							culture = culture:andalusi
+							value > 0
+						}
+						religion_population = {
+							religion = religion:sunni
+							value > 0
+						}
 					}
 					add_location_modifier = {
 						modifier = crypto_muslim_community
@@ -9882,6 +9989,7 @@ flavor_cas.1002 = { #Conversion of the Moriscos
 					owner = prev
 					from = this.province_definition
 					to = scope:escape_target1.province_definition
+					culture = culture:andalusi
 					religion = religion:sunni
 					amount = 0.200
 					months = 60
@@ -9890,6 +9998,7 @@ flavor_cas.1002 = { #Conversion of the Moriscos
 					owner = prev
 					from = this.province_definition
 					to = scope:escape_target2.province_definition
+					culture = culture:andalusi
 					religion = religion:sunni
 					amount = 0.200
 					months = 60
@@ -9898,6 +10007,7 @@ flavor_cas.1002 = { #Conversion of the Moriscos
 					owner = prev
 					from = this.province_definition
 					to = scope:escape_target3.province_definition
+					culture = culture:andalusi
 					religion = religion:sunni
 					amount = 0.200
 					months = 60
@@ -9906,6 +10016,7 @@ flavor_cas.1002 = { #Conversion of the Moriscos
 					owner = prev
 					from = this.province_definition
 					to = scope:escape_target4.province_definition
+					culture = culture:andalusi
 					religion = religion:sunni
 					amount = 0.200
 					months = 60
@@ -10213,6 +10324,12 @@ flavor_cas.1005 = { #Expulsion of the Moriscos
 
 		remove_variable = spa_holy_inquisition
 		lock_policy_effect = { type = spa_inquisition_policy }
+		if = {
+			limit = {
+				has_dlc = "d009_across_the_pillars"
+			}
+			lock_law_effect = { type = limpieza_de_sangre_law }
+		}
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_extreme_penalty }
 		add_stability = stability_ultimate_penalty
 	}
@@ -10451,7 +10568,7 @@ flavor_cas.1200 = { #Confirmation of the Mesta Privileges
 	dynamic_historical_event = {
 		tag = CAS
 		from = 1337.1.1
-		to = 1365.1.1
+		to = 1400.1.1
 		monthly_chance = 1
 	}
 
@@ -11243,6 +11360,7 @@ flavor_cas.1503 = { #Archives of the Indies Building
 		name = flavor_cas.1503.a
 		historical_option = yes
 
+		unlock_building_effect = { type = archive_of_the_indies }
 		scope:trade_center_location = {
 			construct_building = {
 				building_type = building_type:archive_of_the_indies
