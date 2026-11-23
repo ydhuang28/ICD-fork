@@ -18,7 +18,7 @@
  game_concept_forcefully_converted: "Forcefully Converted"
  game_concept_waqf_distribution: "Waqf Distribution"
  game_concept_waqf: "Waqf"
- game_concept_waqf_distribution_desc: "Our Waqf Distribution represents the amount of awqaf/waqfs in our territory - a type of Islamic irrevocable and untaxeable endowment, usually consisting of land and property. The larger our distribution, the less maximum tax we can demand from the [ShowEstateTypeName('clergy_estate')] and from the [ShowEstateTypeName('nobles_estate')] and our [crown_power|e] also decreases. However, our [development|e] gain increases with a higher waqf, as does our [conversion|e] speed.\n\nThere is only one way to reliably reduce waqf outside of unique events: by forcefully and systematically dismantling it under the 'Manage Waqf Distribution' action in the religion tab. This comes with a heavy price, however."
+ game_concept_waqf_distribution_desc: "Our Waqf Distribution represents the amount of awqaf/waqfs in our territory - a type of Islamic irrevocable and untaxeable endowment, usually consisting of land and property. The larger our distribution, the less maximum tax we can demand from the [ShowEstateTypeName('clergy_estate')] and from the [ShowEstateTypeName('nobles_estate')] and our [crown_power|e] also decreases. However, our [development|e] gain increases with a higher waqf, as does our [conversion|e] speed.\n\nThere is only one way to reliably reduce waqf outside of unique events: by forcefully and systematically dismantling it under the 'Manage Waqf Distribution' action in the religion tab. This comes with a heavy price, however. Conquering non-Muslim territories will also decrease our Waqf proportional to our country size."
  
  
  

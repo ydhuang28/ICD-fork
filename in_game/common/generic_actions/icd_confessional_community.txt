@@ -20,7 +20,6 @@
 			}
 		}
 		NOT = { has_game_rule = icd_religious_conversion_vanilla }
-		current_year > 1338
 	}
 	
 	allow = {
@@ -46,6 +45,7 @@
 				is_colonial_subject = yes
 			}
 		}
+		current_year > 1338
 	}
 	
 	ai_tick = monthly

@@ -632,7 +632,10 @@
 			custom_tooltip = icd_province_assimilate_always_tt
 			custom_tooltip = icd_location_assimilate_primary_tt
 			every_province = {
-				remove_variable = promoting_culture
+				set_variable = {
+					name = promoting_culture
+					value = root.culture
+				}
 			}
 		}
 		months = 1
