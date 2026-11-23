@@ -44,7 +44,7 @@ icd_waqf_location_recalculate = {
 			religion.group = religion_group:muslim 
 			num_locations > 0
 			is_real_country = yes
-			has_variable = icd_waqf_base_var
+			has_variable = 2
 			var:icd_waqf_base_var > 0
 		}
 	}
@@ -59,7 +59,8 @@ icd_waqf_location_recalculate = {
 				change_variable = {
 					name = icd_waqf_base_var
 					subtract = {
-						value = 100
+						value = var:icd_waqf_base_var
+						divide = 2
 						divide = scope:winner.num_locations
 					}
 				}

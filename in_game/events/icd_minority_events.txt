@@ -909,7 +909,10 @@ icd_minority_events.4 = { ##jewish pogroms###
 				religion = religion:judaism
 			}
 		}
-		has_policy = icd_jewish_charter
+		OR = {
+			has_policy = icd_jewish_charter
+			has_policy = icd_aljama_communities
+		}
 		OR = {
 			is_situation_active = situation:black_death
 			is_situation_active = situation:reformation
@@ -986,6 +989,14 @@ icd_minority_events.4 = { ##jewish pogroms###
 						tag = REG
 						tag = MLO
 						tag = TEU
+						AND = {
+							tag = CAS
+							current_year > 1490
+						}
+						AND = {
+							tag = POR
+							current_year > 1490
+						}
 						is_subject_or_below_of = c:FRA
 						is_subject_or_below_of = c:TEU
 					}
@@ -1012,19 +1023,21 @@ icd_minority_events.4 = { ##jewish pogroms###
 		
 		remove_policy = policy:icd_jewish_charter
 		
-		random_owned_location = {
-			every_pop = {
-				limit = {
-					religion = religion:judaism
-				}
-				add_pop_size = {
-					value = pop_size
-					multiply = -0.1
+		custom_tooltip = icd_expel_jewish_people_tt
+		hidden_effect = {
+			random_owned_location = {
+				every_pop = {
+					limit = {
+						religion = religion:judaism
+					}
+					add_pop_size = {
+						value = pop_size
+						multiply = -0.1
+					}
 				}
 			}
-		}
-		
-		every_province = {
+			
+			every_province = {
 				limit = {
 					religion_percentage = {
 						religion = religion:judaism
@@ -1230,6 +1243,7 @@ icd_minority_events.4 = { ##jewish pogroms###
 					months = 12
 				}
 			}
+		}
 		
 		set_variable = {
 			name = icd_jewish_banned
@@ -1298,6 +1312,7 @@ icd_minority_events.6 = { ###jewish exodus###
 	title = icd_minority_events.1.title
 	desc = icd_minority_events.1.desc
 	outcome = neutral
+	hidden = yes
 
 	trigger = {
 		"religion_percentage_in_country(religion:judaism)" > 0
@@ -1321,7 +1336,6 @@ icd_minority_events.6 = { ###jewish exodus###
 		religion.group = religion_group:christian
 		has_variable = icd_jewish_banned
 	}
-	hidden = yes
 	illustration_tags = {
         10 = angry
         10 = interior

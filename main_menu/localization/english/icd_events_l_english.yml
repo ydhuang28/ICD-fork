@@ -97,6 +97,7 @@
  
  icd_remove_dhimmi_tt: "If our [heathenry_tolerance|e] is below 0, every [pop|e] belonging to the impacted [religion|e] will lose #color_red 50.00%#! [pop_satisfaction|e]"
  
+ icd_expel_jewish_people_tt: "Expel our Jewish population"
  
  icd_minority_events.31.title: "Leadership in the Levant"
  icd_minority_events.31.desc: "Nestled in the mountains of Lebanon and Jabal al-Druze, our [ShowReligionGroupAdjective('druze_group')] and [ShowReligionAdjective('shia')] subjects have their own societal and political structure. If we seek to procure the aid of these locals and effectively levy support from them, we should recognise the political reality of their homes and grant hereditary dynastic iqta appointments to them."

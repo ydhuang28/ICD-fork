@@ -185,6 +185,23 @@ icd_reapply_promoting.1 = {
 				remove_variable = promoting_culture
 			}
 		}
+		if = {
+			limit = {
+				has_policy = colonial_culture
+			}
+			every_province = {
+				limit = { 
+					NOT = {
+						has_variable = no_reapplying_promotion
+					}
+				}
+				remove_variable = promoting_culture
+				set_variable = {
+					name = promoting_culture
+					value = root.culture
+				}
+			}
+		}
 		
 		if = {
 			limit = {

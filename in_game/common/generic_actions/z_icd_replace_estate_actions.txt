@@ -326,7 +326,6 @@ TRY_REPLACE:call_emergency_parliament = {
 						name = icd_waqf_base_var
 						value = {
 							value = scope:actor.icd_waqf_change
-							subtract = parliament_issue_support
 							min = 0
 						}
 					}

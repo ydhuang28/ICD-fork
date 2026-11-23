@@ -11,7 +11,7 @@
 	}
 
 	allow = {
-		#current_year > 1345#
+		current_year > 1345
 	}
 
 	ai_will_do = {
@@ -75,7 +75,7 @@
 								culture = culture:ashkenazi
 							}
 							owner ?= {
-								is_ai = no
+								is_ai = yes
 							}
 						}
 						random_pop = {
