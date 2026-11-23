@@ -1,4 +1,4 @@
-﻿INJECT:city = {
+﻿TRY_INJECT:city = {
 	
 	rank_modifier = {
 		local_pop_assimilation_speed_modifier = 0.20
@@ -6,7 +6,7 @@
 	}
 }
 
-INJECT:town = {
+TRY_INJECT:town = {
 	
 	rank_modifier = {
 		local_pop_assimilation_speed_modifier = 0.05
@@ -14,12 +14,12 @@ INJECT:town = {
 	}
 }
 
-INJECT:rural_settlement = {
+TRY_INJECT:rural_settlement = {
 	rank_modifier = {
 		local_pop_assimilation_speed_modifier = -0.1
 	}
 }
-INJECT:megalopolis = {
+TRY_INJECT:megalopolis = {
 	rank_modifier = {
 		local_pop_assimilation_speed_modifier = 0.20
 		local_pop_conversion_speed_modifier = 0.2

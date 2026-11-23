@@ -1,4 +1,4 @@
-﻿REPLACE:hindu_branch = {
+﻿TRY_REPLACE:hindu_branch = {
 	has_target = no
 	has_enemies = no
 	unique = no

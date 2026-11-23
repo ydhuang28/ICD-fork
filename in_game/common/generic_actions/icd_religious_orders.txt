@@ -1,0 +1,694 @@
+﻿icd_supervise_heir_education = {
+	type = religious
+	show_message = no
+
+	required_calling = icd_internalized_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = icd_internalized_calling }
+	}
+
+	allow = {
+	}
+
+	price = price:icd_religious_order_price
+
+	cooldown = {
+		type = icd_supervise_heir_education_cooldown
+		years = 20
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_feed_the_poor"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_feed_the_poor"
+		none_available_msg_key = "feed_the_poor_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:icd_internalized_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+	
+	select_trigger = {
+		looking_for_a = character
+		source = actor
+		target_flag = target_character
+		name = "select_character"
+		none_available_msg_key = "no_valid_characters"
+		column = {
+			data = character_info
+		}
+		visible = {
+			is_alive = yes
+			is_adult = no
+			religion.group = religion_group:muslim
+			has_dynasty = yes
+			dynasty = scope:actor.ruler.dynasty
+		}
+	}
+
+	effect = {
+		custom_tooltip = icd_choose_heir_education
+		scope:target_character ?= {
+			add_character_modifier = {
+				modifier = icd_tutored_by_sufi
+				mode = add_and_extend
+				years = 10
+			}
+		}
+		scope:actor = {
+			add_country_modifier = {
+				modifier = icd_sufi_advisors
+				mode = add_and_extend
+				years = 10
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = -20
+			desc = "BASE_VALUE"
+		}
+		if = {
+			limit = {
+				scope:target = {
+					religious_order_zeal < 50
+				}
+			}
+			add = {
+				value = 50
+				subtract = 15
+				subtract = "scope:target.religious_order_zeal"
+			}
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					political_influence > 60
+				}
+			}
+			add = {
+				value = 50
+			}
+		}
+	}
+}
+
+icd_sponsor_sufi_musician = {
+	type = religious
+	show_message = no
+
+	required_calling = icd_expressive_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = icd_expressive_calling }
+	}
+
+	allow = {
+	}
+
+	price = price:icd_nothing_price
+
+	cooldown = {
+		type = icd_sponsor_sufi_musician_cooldown
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_feed_the_poor"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_feed_the_poor"
+		none_available_msg_key = "feed_the_poor_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:icd_expressive_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+	
+	effect = {
+		scope:actor = {
+			create_character = {
+				artist_skill = { 0.55 0.85 }
+				age = { 18 30 }
+				female = no
+				create_in_limbo = yes
+				artist = composer
+				estate = estate_type:clergy_estate
+				save_scope_as = target_artist
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = -20
+			desc = "BASE_VALUE"
+		}
+		if = {
+			limit = {
+				scope:target = {
+					religious_order_zeal < 50
+				}
+			}
+			add = {
+				value = 50
+				subtract = 15
+				subtract = "scope:target.religious_order_zeal"
+			}
+		}
+	}
+}
+
+icd_study_sufi_trade_routes = {
+	type = religious
+	show_message = no
+
+	required_calling = icd_civic_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = never
+
+	automation_tick = never
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = icd_civic_calling }
+	}
+
+	allow = {
+	}
+
+	price = price:icd_religious_order_price
+
+	cooldown = {
+		type = icd_study_sufi_trade_routes_cooldown
+		years = 10
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_feed_the_poor"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_feed_the_poor"
+		none_available_msg_key = "feed_the_poor_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:icd_civic_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+	
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			religion:sunni = {
+				every_country_in_religion = {
+					limit = { any_religious_order_in_country = { count > 0 } }
+
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		column = {
+			data = name
+		}
+		visible = {
+			scope:target = {
+				any_location_in_religious_order = { owner ?= root }
+			}
+		}
+		map_color = {
+			value = define:NMapColors|MAP_COLOR_MAX
+		}
+	}
+	
+	select_trigger = {
+		looking_for_a = area
+		target_flag = target_area
+		name = "steal_maps_select_title"
+		none_available_msg_key = "steal_maps_no_areas"
+		column = {
+			data = name
+		}
+		visible = {
+			scope:target_country = { has_discovered_area = prev }
+			NOT = { scope:actor = { has_discovered_area = prev } }
+			any_neighbor_area = {
+				scope:actor = { has_discovered_area = prev }
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				NOT = { exists = scope:target_area }
+			}
+			custom_tooltip = icd_discover_area
+		}
+		else_if = {
+			limit = { exists = scope:target_area }
+			scope:actor = {
+				discover_area = scope:target_area
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = -20
+			desc = "BASE_VALUE"
+		}
+		if = {
+			limit = {
+				scope:target = {
+					religious_order_zeal < 50
+				}
+			}
+			add = {
+				value = 50
+				subtract = 15
+				subtract = "scope:target.religious_order_zeal"
+			}
+		}
+	}
+}
+
+icd_organize_public_rituals = {
+	type = religious
+	show_message = no
+
+	required_calling = icd_mortifying_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = icd_mortifying_calling }
+	}
+
+	allow = {
+	}
+
+	price = price:icd_religious_order_price
+
+	cooldown = {
+		type = icd_organize_public_rituals_cooldown
+		years = 10
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_feed_the_poor"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_feed_the_poor"
+		none_available_msg_key = "feed_the_poor_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:icd_mortifying_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+	
+	select_trigger = {
+		looking_for_a = unit
+		source = actor
+		target_flag = target_unit
+		name = "choose_religious_order_unit"
+		none_available_msg_key = "make_unit_available_for_hire_no_units"
+		column = {
+			data = name
+		}
+		visible = {
+			is_army = yes
+			owner = scope:actor
+		}
+	}
+	
+	effect = {
+		scope:target_unit = {
+			add_unit_modifier = {
+				modifier = icd_army_sufi_rituals
+				years = 6
+				mode = replace
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = -50
+			desc = "BASE_VALUE"
+		}
+		if = {
+			limit = {
+				scope:target = {
+					religious_order_zeal < 80
+				}
+			}
+			add = {
+				value = 80
+			}
+		}
+	}
+}
+
+icd_bolster_local_sufi_saint = {
+	type = religious
+	show_message = no
+
+	required_calling = icd_syncretic_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = never
+
+	automation_tick = never
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = icd_syncretic_calling }
+	}
+
+	allow = {
+	}
+
+	price = price:icd_religious_order_price
+
+	cooldown = {
+		type = icd_honor_local_sufi_saint_cooldown
+		years = 20
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_feed_the_poor"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_feed_the_poor"
+		none_available_msg_key = "feed_the_poor_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:icd_syncretic_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+	
+	select_trigger = {
+		looking_for_a = province
+		source = actor
+		target_flag = target_province
+		name = "promote_religion_select_province"
+		none_available_msg_key = "promote_religion_no_provinces"
+		column = {
+			data = name
+		}
+		column = {
+			data = province_religion_percentage
+		}
+		column = {
+			data = population
+		}
+		default_sort = province_religion_percentage
+		enabled = {
+			any_location_in_province = {
+				OR = {
+					NOT = { dominant_religion = owner.religion }
+					local_religious_unity < 1.0
+				}
+				any_pop = {
+					OR = {
+						pop_type = pop_type:nobles
+						pop_type = pop_type:clergy
+					}
+					religion != religion:sunni
+				}
+			}
+			any_location_in_province = {
+				NOT = {
+					owner ?= {
+						has_estate_privilege = estate_privilege:icd_druze_emirs
+					}
+					OR = {
+						province_definition = province_definition:lebanon_province
+						province_definition = province_definition:hims_province
+						province_definition = province_definition:hawran_province
+						province_definition = province_definition:shaam_province
+						province_definition = province_definition:latakia_province
+					}
+				}
+				NOT = {
+					has_location_modifier = icd_religious_zeal
+				}
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target_province
+			}
+			scope:target_province ?= {
+				every_pop = {
+					limit = { 
+						OR = {
+							pop_type = pop_type:clergy
+							pop_type = pop_type:nobles
+						}
+					}
+					split_pop = {
+						religion = religion:sunni
+						fraction = 0.5
+					}
+				}
+			}
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+		else = {
+			custom_tooltip = icd_bolster_local_sufi_saint_tt
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = -20
+			desc = "BASE_VALUE"
+		}
+	}
+}

@@ -1,0 +1,66 @@
+﻿
+icd_centralized_endowment_institution = {
+	icon = public_welfare_act
+	potential = {
+		religion.group = religion_group:muslim
+	}
+	allow = {
+		OR = {
+			societal_value:centralization_vs_decentralization < -90
+			societal_value:traditionalist_vs_innovative > 90
+			societal_value:individualism_vs_communalism < -90
+		}
+	}
+
+	country_modifier = {
+		global_crown_estate_power = 0.05
+		government_size = 1
+		pure_tooltip_entry = icd_reduce_waqf_gain
+	}
+
+	years = 4
+}
+icd_qasimid_waqf_reforms = {
+	icon = timurid_diwan_reform
+	age = age_3_discovery
+	potential = {
+		has_or_had_tag = YEM
+	}
+	allow = {
+		
+	}
+
+	country_modifier = {
+		tax_income_efficiency = small_tax_income_efficiency_bonus
+		government_size = 1
+		pure_tooltip_entry = icd_reduce_waqf_gain_massive
+	}
+
+	years = 4
+}
+icd_nizari_imamate = {
+	major = yes
+
+	potential = {
+		country_type = building
+		religion = religion:nizari_religion
+		government_type = government_type:monarchy
+		tag = NIZAR
+	}
+	allow = {
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		global_pop_conversion_speed_modifier = 0.2
+		global_merchant_capacity_modifier = 0.1
+		diplomatic_reputation = diplomatic_reputation_mild_bonus
+		blocked_from_conversion = yes
+		blocked_from_forming_countries = yes
+		cannot_be_subjugated = yes
+		government_reform_slots = 1
+		change_government_type_price_cost_modifier = 1000
+	}
+	years = 2
+}

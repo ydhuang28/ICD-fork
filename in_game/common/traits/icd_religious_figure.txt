@@ -1,0 +1,14 @@
+﻿icd_reformer = {
+	category = religious_figure
+	
+	allow = {
+		is_religious_figure = yes
+		religious_figure = religious_figure:muslim_scholar
+	}
+	
+	modifier = {
+		embrace_institution_cost_modifier = -0.1
+	}
+	
+
+}

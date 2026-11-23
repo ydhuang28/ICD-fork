@@ -1,4 +1,4 @@
-﻿REPLACE:sect = {
+﻿TRY_REPLACE:sect = {
 	has_target = no
 	has_enemies = yes
 	expel_members_who_are_targets_of_other_members = no

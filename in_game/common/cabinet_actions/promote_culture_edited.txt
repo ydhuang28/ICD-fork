@@ -28,37 +28,37 @@
 		}
 		default_sort = culture_percentage_in_country
 		visible = {
-			scope:actor = { 
-				OR = {
-					
-					is_ai = no
-	  
-					OR = {					
-					 
-						culture_percentage_in_country = {
-							culture = root
-							value >= 0.01
-		
-	   
-	  
-					   
-								   
-					   
-						}
-						root = {
-							is_primary_in = scope:actor
-					   
-						}
-	  
-											 
-	  
-	 
-
-					
-					
-				 
+			OR = {
+				AND = { # for humans
+					scope:actor = {
+						is_ai = no
 					}
-								 
+					OR = {
+						scope:actor = {
+							culture_percentage_in_country = {
+								culture = root
+								value >= 0.01
+							}
+						}
+						
+						cultural_view = {
+							target = scope:actor.culture
+							value > neutral 
+						}
+						reverse_cultural_view = {
+							target = scope:actor.culture
+							value > neutral 
+						}
+						
+						is_primary_or_accepted_in = scope:actor
+					}
+				}
+
+				AND = { # for AI
+					scope:actor = {
+						is_ai = yes
+					}
+					is_primary_in = scope:actor 
 				}
 			}
 		}

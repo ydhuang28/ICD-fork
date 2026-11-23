@@ -1,4 +1,4 @@
-﻿REPLACE:religious_turmoil = {
+﻿TRY_REPLACE:religious_turmoil = {
 
 	image = "gfx/interface/illustrations/disaster/religious_turmoil.dds"
 	

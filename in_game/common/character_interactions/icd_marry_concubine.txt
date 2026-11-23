@@ -1,0 +1,115 @@
+﻿icd_marry_concubine = { 
+	message = yes
+	is_consort_action = no
+	on_own_nation = yes
+
+	potential = {
+		scope:actor = {
+			religion.group = religion_group:muslim
+			has_policy = muslim_marriage
+			has_ruler = yes
+			modifier:country_marriage_banned = no
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 4
+
+	allow = {
+		scope:actor = {
+			any_pop = {
+				pop_type = pop_type:slaves
+			}
+		}
+	}
+	
+	select_trigger = {
+		looking_for_a = character
+		source = actor
+		target_flag = recipient
+		name = "choose_character"
+		column = {
+			data = name
+		}
+		visible = {
+			is_alive = yes
+			is_adult = yes
+			OR = {
+				scope:actor = {
+					ruler ?= root
+				}
+				any_parent = {
+					this = scope:actor.ruler
+				}
+			}
+			has_available_marriage_slot = yes 
+			modifier:blocked_from_marriage = no
+		}
+		enabled = {
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			random_pop = {
+				limit = { 
+					pop_type = pop_type:slaves
+					culture != scope:actor.culture
+				}
+				scope:actor = {
+					set_variable = {
+						name = icd_concubine_culture
+						value = prev.culture
+					}
+				}
+			}
+		}
+		scope:actor = {
+			custom_tooltip = icd_marry_a_concubine_tt
+			hidden_effect = {
+				create_character = {
+					religion = scope:recipient.religion
+					culture = var:icd_concubine_culture
+					age = { 16 26 }
+					female = yes
+					estate = estate_type:peasants_estate
+					
+					marry_character = scope:recipient 
+				}
+			}
+		}
+		
+		scope:actor = {
+			remove_variable = icd_concubine_culture
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				exists = scope:recipient
+			}
+			add = {
+				if= {
+					limit = {
+						scope:recipient ?= {
+							has_available_marriage_slot = no
+						}
+					}
+					value = -1000
+				}
+				else_if = {
+					limit = {
+						scope:recipient = {
+							num_of_spouses < 3
+						}
+					}
+					value = 3000
+				}
+				else = {
+					value = -5000
+				}
+			}
+		}
+	}
+}	

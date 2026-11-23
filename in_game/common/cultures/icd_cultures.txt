@@ -13,5 +13,19 @@
 		indo_aryan_group
 		iranian_group
 	}
+}
+icd_nizari_culture = {
+	language = persian_language
+	color = rgb { 237 232 88 }
 	
+	tags = { persian_gfx persianate_gfx middle_east_gfx afrasian_gfx }
+
+	opinions = {
+	}
+
+	culture_groups = {
+		indian_group
+		iranian_group
+		arabic_group
+	}
 }

@@ -1,7 +1,25 @@
 ﻿
 icd_sects_setup = {
 
-	
+	every_country = {
+		limit = {
+			religion = religion:sunni
+			is_rebel_country = no
+		}
+		international_organization:icd_sunni_caliphate = {			
+			add_country_to_international_organization = prev
+		}
+	}
+	set_global_variable = {
+		name = icd_current_caliph
+		value = character:mam_al_mustafki
+	}
+	c:MAM = {
+		set_variable = {
+			name = icd_abbasid_caliph
+			value = character:mam_al_mustafki
+		}
+	}
 
 	create_international_organization = {
 		type = international_organization_type:sect

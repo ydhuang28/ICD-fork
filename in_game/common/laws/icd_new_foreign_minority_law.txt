@@ -35,7 +35,7 @@
 		
 		years = 2
 		ai_will_do = {
-			value = 400
+			value = 600
 		}
 	}
 	
@@ -114,7 +114,6 @@
 			add_accepted_culture_cost_modifier = -0.1
 			global_monthly_development = 0.0001
 			global_pop_assimilation_speed_modifier = -0.8
-			global_pop_conversion_speed_modifier = -0.2
 			monthly_towards_humanist = societal_value_minor_monthly_move
 			tolerance_heretic = 0.25
 			tolerance_heathen = 0.25
@@ -141,13 +140,15 @@
 						tag = BOH
 						tag = HAB
 						culture = { has_culture_group = culture_group:caucasian_group }
+						culture = { has_culture_group = culture_group:iranian_group }
+						culture = { has_culture_group = culture_group:indian_group }
 						capital.sub_continent = sub_continent:west_africa
 						capital.sub_continent = sub_continent:central_africa
 						capital.sub_continent = sub_continent:east_africa
 						capital.sub_continent = sub_continent:south_east_asia
 					}
 				}
-				add = 300
+				add = 400
 			}
 			else = {
 				add = -500

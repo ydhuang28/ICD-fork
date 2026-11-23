@@ -13,6 +13,32 @@ icd_movements_setup = {
 		}
 	}
 	
+	location:haresabad = {
+		spawn_movement = {
+			movement_definition = movement_definition:sufi_shiite_messianism
+			supporters = {
+				value = population
+				multiply = 0.1
+			}
+		}
+	}
+	
+	religion:shia = {
+		ordered_movement_in_religion = {
+			max = 1
+			order_by = { value = 1 }
+			spread_to_location = {
+				location = location:ardabil
+				supporters_percent = 0.05
+			}
+			spread_to_location = {
+				location = location:tabriz
+				supporters_percent = 0.05
+			}
+		}
+	}
+
+	
 	location:nishapur = {
 		spawn_movement = {
 			movement_definition = movement_definition:turkification_culture_movement

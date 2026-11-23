@@ -1,5 +1,5 @@
 ﻿#generic privileges
-REPLACE:dhimmi_pact_of_umar= {
+TRY_REPLACE:dhimmi_pact_of_umar= {
 	estate = dhimmi_estate
 	potential = {
 		always = no
@@ -16,7 +16,7 @@ REPLACE:dhimmi_pact_of_umar= {
 	}
 }
 
-REPLACE:dhimmi_abrahamic_communities = {
+TRY_REPLACE:dhimmi_abrahamic_communities = {
 	estate = dhimmi_estate
 	potential = {
 		always = no
@@ -33,7 +33,7 @@ REPLACE:dhimmi_abrahamic_communities = {
 	}
 }
 
-REPLACE:dharmic_dhimmi_communities = {
+TRY_REPLACE:dharmic_dhimmi_communities = {
 	estate = clergy_estate
 	potential = {
 		always = no
@@ -45,7 +45,7 @@ REPLACE:dharmic_dhimmi_communities = {
 	}
 }
 
-REPLACE:dhimmi_land_rights = {
+TRY_REPLACE:dhimmi_land_rights = {
 	estate = dhimmi_estate
 	
 	allow = {
@@ -77,7 +77,7 @@ REPLACE:dhimmi_land_rights = {
 	}
 }
 
-REPLACE:dhimmi_promote_tolerance = {
+TRY_REPLACE:dhimmi_promote_tolerance = {
 	estate = dhimmi_estate
 
 	country_modifier = {
@@ -114,7 +114,7 @@ REPLACE:dhimmi_promote_tolerance = {
 	}
 }
 
-REPLACE:dhimmi_administrative_posts = {
+TRY_REPLACE:dhimmi_administrative_posts = {
 	estate = dhimmi_estate
 
 	allow = {
@@ -136,6 +136,7 @@ REPLACE:dhimmi_administrative_posts = {
 		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
 		global_dhimmi_estate_power = 0.1	# as game 1.4.9 (was 0.25)
 		cultures_capacity = 0.1
+		pure_tooltip_entry = icd_dhimmi_nobles_yes_frontier
 	}
 	country_modifier = {
 		country_cabinet_efficiency = 0.05
@@ -154,7 +155,7 @@ REPLACE:dhimmi_administrative_posts = {
 	}
 }
 
-REPLACE:dhimmi_legal_autonomy = {
+TRY_REPLACE:dhimmi_legal_autonomy = {
 	estate = dhimmi_estate
 	
 	allow = {
@@ -187,7 +188,7 @@ REPLACE:dhimmi_legal_autonomy = {
 	}
 }
 
-REPLACE:dhimmi_mazalim_court = {
+TRY_REPLACE:dhimmi_mazalim_court = {
 	estate = dhimmi_estate
 	
 	allow = {
@@ -220,7 +221,7 @@ REPLACE:dhimmi_mazalim_court = {
 	}
 }
 
-REPLACE:dhimmi_in_administration = {
+TRY_REPLACE:dhimmi_in_administration = {
 	estate = dhimmi_estate
 
 	allow = {
@@ -252,14 +253,15 @@ REPLACE:dhimmi_in_administration = {
 		local_heathen_pop_conversion_speed_modifier = -0.25
 	}
 }
-REPLACE:dhimmi_promote_dhimmi_hierarchy = {
+TRY_REPLACE:dhimmi_promote_dhimmi_hierarchy = {
 	estate = dhimmi_estate
 	
 	country_modifier = {
 		dhimmi_estate_target_satisfaction = small_privilege_target_satisfaction
 		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction_penalty
-		dhimmi_estate_max_tax = -0.1
+		nobles_estate_max_tax = 0.1
 		global_dhimmi_estate_power = 0.1	# as game 1.4.9 (was 0.2)
+		pure_tooltip_entry = icd_dhimmi_nobles_yes
 	}
 	
 	location_modifier = {
@@ -271,7 +273,7 @@ REPLACE:dhimmi_promote_dhimmi_hierarchy = {
 	}
 }
 
-REPLACE:dhimmi_traditions = {
+TRY_REPLACE:dhimmi_traditions = {
 	estate = dhimmi_estate
 	
 	country_modifier = {

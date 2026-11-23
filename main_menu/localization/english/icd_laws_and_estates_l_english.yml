@@ -87,12 +87,12 @@
  icd_province_assimilate_primary_tt: "[provinces|e] assimilate to your [primary_culture|e] if:\nThey host a sizeable minority (10%) of your [primary_culture|e]\nThey neighbor a [location|e] of your [primary_culture]."
  icd_location_assimilate_acceptance_tt: "[locations|e] where the [dominant_culture|e] is an [accepted_culture|e] always assimilate to their [dominant_culture|e]"
  icd_location_assimilate_primary_tt: "[locations|e] where the [dominant_culture|e] is an [accepted_culture|e] assimilate to the [primary_culture|e] if conditions are met"
- icd_province_assimilate_german_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('german_group')] cultures if they are a minority or neighbor it (excluding Czech, Frisian and Ashkenazi)."
- icd_province_assimilate_italian_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('italian_group')] cultures if they are a minority or neighbor it (excluding Italki)."
- icd_province_assimilate_arabic_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('arabic_group')] cultures if they are a minority or neighbor it (excluding Syriac)."
- icd_province_assimilate_tatar_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('tatar_group')] and [ShowLanguageName('kipchak_language')]-speaking cultures if they are a minority or neighbor it."
- icd_province_assimilate_mandarin_tt: "[provinces|e] will assimilate to [ShowCultureName('jin_culture')] and [ShowLanguageName('mandarin_language')]-speaking cultures if they are a minority or neighbor it."
- 
+ icd_province_assimilate_german_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('german_group')] cultures if they have a minority of these cultures or neighbor a province where they are the [dominant_culture|e] (excluding Czech, Frisian and Ashkenazi)."
+ icd_province_assimilate_italian_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('italian_group')] cultures if they have a minority of these cultures or neighbor a province where they are the [dominant_culture|e] (excluding Italki)."
+ icd_province_assimilate_arabic_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('arabic_group')] cultures if they have a minority of these cultures or neighbor a province where they are the [dominant_culture|e] (excluding Syriac)."
+ icd_province_assimilate_tatar_tt: "[provinces|e] will assimilate to [ShowCultureGroupName('tatar_group')] and [ShowLanguageName('kipchak_language')]-speaking cultures if they have a minority of these cultures or neighbor a province where they are the [dominant_culture|e]."
+ icd_province_assimilate_mandarin_tt: "[provinces|e] will assimilate to [ShowCultureName('jin_culture')] and [ShowLanguageName('mandarin_language')]-speaking cultures if they have a minority of these cultures or neighbor a province where they are the [dominant_culture|e]."
+ icd_province_assimilate_english_scottish_tt: "[provinces|e] will assimilate to [ShowCultureName('english')] and [ShowCultureName('scottish')] if they have a minority of these cultures or neighbor a province where they are the [dominant_culture|e]."
  
  
  minority_rule_tt: "With this policy, pops will only assimilate to their province's dominant culture, regardless of the country's primary culture. This policy creates a risk for the primary culture as primary culture minorities will get assimilated into their respective locations' dominant culture. Reducing cultural assimilation becomes preferable to increasing it. This can only be altered with the use of the Promote Culture cabinet action. The Marking cabinet action is disabled."
@@ -273,3 +273,46 @@
  icd_repression_desc: "In our state, religions are not to be merely dismantled by decree. We shall institutionalise religious persecution, rigorously asphyxiating all heretics and heathens."
  icd_syncretic_persuasion: "Syncretic Persuasion"
  icd_syncretic_persuasion_desc: "We seek to embrace and understand the strange and diverse cultures in our territory. So long as they follow our religious creeds, we can syncretise our beliefs with their indigenous practices. Doing so should aid religious conversion at the cost of changing what our religion's pure form."
+
+ icd_autonomous_jurists: "Autonomous Jurists"
+ icd_autonomous_jurists_desc: "Communities of fuqaha' ('jurists') and Sharia courts are completely autonomous from our political authority and state government. They are free to exercise their role as interpreters of Islamic law independently from our political necessities."
+ icd_institutionalized_qadi: "Institutionalised Qadi"
+ icd_institutionalized_qadi_desc: "Though muftis and other jurists in the 'ulama retain considerable independence, the qadis and their Sharia courts have been completely integrated into our state apparatus."
+ icd_four_appointed_chiefs: "Four Chief Qadi"
+ icd_four_appointed_chiefs_desc: "To strengthen and legitimise our position of authority, we shall represent the four main schools of Sunni Islamic jurisprudence in our territory. A chief qadis will be appointed for each of them."
+ icd_office_of_the_sadr: "Office of the Ṣadr"
+ icd_office_of_the_sadr_desc: "Though Muslim jurists in our territory retain considerable autonomy, we shall nominate a leading scholar as the Sadr, with the authority to supervise Islamic courts, appoint prayer leaders and oversee the 'ulama as a whole."
+ icd_imperial_ulama: "al-Ifta' al-Sultani"
+ icd_imperial_ulama_desc: "The 'ulama in our territory will be entirely institutionalised and integrated into our state bureaucracy, extending our control and involvement with religion. Every qadi and mufti will be a salaried government official."
+
+ dialects_of_english: "Plural British Identities"
+ dialects_of_english_desc: "There are many kinds of Brits in the world, and though we represent only a specific kind of Brit, we recognise and appreciate the differences that exist between all of us."
+ icd_ulama_bureaucracy: "Institutionalization of the 'Ulama"
+ icd_ulama_bureaucracy_desc: "The extent of our control over the 'ulama is a question to consider. We should seek to understand whether the 'ulama should be composed of autonomous courts, jurists and theologians that are dependent on waqf concessions, or whether they should be integrated into the state as a religious bureaucracy with fixed salaries."
+ 
+ icd_centralized_endowment_institution: "Centralized Ministry of Endowments"
+ icd_centralized_endowment_institution_desc: "By creating a bureaucracy that oversees and regulates waqf concessions, we retain a level of control over the granting of said concessions that prevents fraud and excessive grants that would harm our taxation."
+ icd_qasimid_waqf_reforms: "Qasimid Waqf Reforms"
+ icd_qasimid_waqf_reforms_desc: "The Qasimid dynasty of Yemen was pioneering in being the first to control waqf concessions tightly, and the first to effectively make the concession of a family waqf almost impossible."
+ 
+ icd_culture_conversion_boost_tt: "Boosts Cultural [communal_conversion|e]"
+ icd_pagan_conversion_disabled_tt: "Disables [communal_conversion|e] of [ethnic_religions|e]"
+ icd_voluntary_conversion_boosted_tt: "Boosts [voluntary_conversion|e]"
+ icd_voluntary_conversion_disabled_tt: "Disables [voluntary_conversion|e]"
+ icd_coercive_conversion_disabled_tt: "Disables [forced_conversion|e]"
+ icd_culture_conversion_disabled_tt: "Disables Cultural [communal_conversion|e]"
+ 
+ icd_increase_waqf_gain: "Increase [waqf|e] gain"
+ icd_reduce_waqf_gain: "Reduce [waqf|e] gain"
+ icd_reduce_waqf_gain_massive: "Reduce [waqf|e] gain significantly"
+ icd_dhimmi_nobles_yes: "[ShowPopTypeName('nobles')] can be part of the [ShowEstateTypeName('dhimmi_estate')]"
+ icd_dhimmi_nobles_yes_frontier: "[ShowPopTypeName('nobles')] can be part of the [ShowEstateTypeName('dhimmi_estate')] in non-Core [locations|e]"
+ 
+ icd_nizari_imamate: "Nizari Imamate"
+ icd_nizari_imamate_desc: "The leader of our state is the Imam to Nizari Isma'ili Muslims"
+
+ 
+
+
+
+

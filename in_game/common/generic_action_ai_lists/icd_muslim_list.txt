@@ -4,5 +4,34 @@
 	}
 	actions = {
 		icd_muslim_dhimmi_choose
+		icd_supervise_heir_education
+		icd_sponsor_sufi_musician
+		icd_organize_public_rituals
+	}
+}
+icd_sunni_list = {
+	potential = {
+		religion = religion:sunni
+	}
+	actions = {
+		icd_claim_caliphate 
+		icd_claim_caliphate_through_abbasid
+		icd_challenge_caliph
+		icd_non_muslim_decree
+		icd_denounce_shia_sect
+		icd_ecumenics_with_shia
+		icd_sunni_jihad
+	}
+}
+icd_nizari_list = {
+	potential = {
+		religion = religion:nizari_religion
+	}
+	actions = {
+		icd_send_imam_support
+		icd_request_a_dawa
+		icd_seek_an_interpretation
+		icd_nizari_denounce_sect
+		icd_nizari_ecumenics
 	}
 }

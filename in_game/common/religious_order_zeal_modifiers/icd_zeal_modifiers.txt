@@ -1,0 +1,29 @@
+﻿TRY_REPLACE:zeal_papal_authority_alignment = {
+	order_trigger = {
+		exists = international_organization:catholic_church
+		this.religion = religion:catholic
+	}
+	order_scale = {
+		value = international_organization:catholic_church.var:papal_authority
+		subtract = 50
+		multiply = 0.4
+	}
+	value = 1
+}
+
+icd_zeal_at_war_with_heathen = {
+	valid_for_callings = { icd_mahdist_calling }
+	country_trigger = {
+		any_enemy_war_leader = {
+			NOT = { religion.group = scope:religious_order.religion.group }
+		}
+	}
+	value = 12
+}
+zeal_is_shia = {
+	valid_for_callings = { icd_mahdist_calling }
+	country_trigger = {
+		religion = religion:shia
+	}
+	value = 0.5
+}

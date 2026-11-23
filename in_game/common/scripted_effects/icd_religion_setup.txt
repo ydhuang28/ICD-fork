@@ -1,6 +1,893 @@
 ﻿
 icd_religion_setup = {
 
+	every_location_in_the_world = {
+		limit = { is_holding_of_any_religious_order = yes 
+			OR = {
+				dominant_religion.group = religion_group:muslim
+				owner.religion.group = religion_group:muslim
+			}
+		}
+		construct_building = { 
+			building_type = building_type:sufi_lodge
+			instant = yes
+		}
+	}
+
+	c:QHT = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:mustali_religion }
+		change_religion = religion:mustali_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = { 0.45 0.5 }
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:judaism }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = { 0.15 0.2 }
+			}
+		}
+	}
+	c:YAM = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:mustali_religion }
+		change_religion = religion:mustali_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = { 0.5 0.55 }
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:judaism }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = { 0.15 0.2 }
+			}
+		}
+	}
+	c:DUL = {
+		set_religious_school = religious_school:usuli_school
+	}
+	c:IHB = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:zaydi_religion }
+		change_religion = religion:zaydi_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:zaydi_religion
+				fraction = { 0.35 0.45 }
+			}
+		}
+	}
+	c:TLM = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:zaydi_religion }
+		change_religion = religion:zaydi_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:zaydi_religion
+				fraction = { 0.5 0.55 }
+			}
+		}
+	}
+	c:GLI = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:nizari_religion }
+		change_religion = religion:nizari_religion
+	}
+	c:HNZ = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:nizari_religion }
+		change_religion = religion:nizari_religion
+	}
+	c:MZN = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:zaydi_religion }
+		change_religion = religion:zaydi_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:zaydi_religion
+				fraction = { 0.35 0.4 }
+			}
+		}
+	}
+	c:LCK = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:zaydi_religion }
+		change_religion = religion:zaydi_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:zaydi_religion
+				fraction = { 0.05 0.1 }
+			}
+		}
+	}
+	c:HLL = {
+		change_culture = culture:iraqi_culture
+		ruler = { change_character_religion = religion:zaydi_religion }
+		ruler.dynasty = { every_character_in_dynasty = { limit = { religion = religion:shia owner ?= c:HLL } change_character_religion = religion:zaydi_religion } }
+	}
+	area:mazandaran_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				split_pop = {
+					religion = religion:nizari_religion
+					fraction = { 0.2 0.3 }
+				}
+			}
+		}
+	}
+	area:upper_indus_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					OR = {
+						culture = culture:pamiri_culture
+						culture = culture:chitrali
+						culture = culture:shina_culture
+						culture = culture:burusho
+						culture = culture:kashmiri_culture
+						culture = culture:balti_culture
+					}
+					religion = religion:shia
+				}
+				change_pop_religion = religion:nizari_religion
+			}
+		}
+	}
+	area:badakhshan_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					OR = {
+						culture = culture:pamiri_culture
+						culture = culture:chitrali
+						culture = culture:shina_culture
+						culture = culture:burusho
+						culture = culture:kashmiri_culture
+						culture = culture:balti_culture
+					}
+					religion = religion:shia
+				}
+				change_pop_religion = religion:nizari_religion
+			}
+		}
+	}
+	area:tarim_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					OR = {
+						culture = culture:pamiri_culture
+						culture = culture:chitrali
+						culture = culture:shina_culture
+						culture = culture:burusho
+						culture = culture:kashmiri_culture
+						culture = culture:balti_culture
+					}
+					religion = religion:shia
+				}
+				change_pop_religion = religion:nizari_religion
+			}
+		}
+	}
+	location:qazvin = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.63
+			}
+		}
+	}
+	location:kashan = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.31
+			}
+		}
+	}
+	location:mahallat = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.11
+			}
+		}
+	}
+	location:khomeyn = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = { 0.10 0.13 }
+			}
+		}
+	}
+	location:natanz = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.11
+			}
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.20
+			}
+		}
+	}
+	location:neyasar = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.10
+			}
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.18
+			}
+		}
+	}
+	location:takestan = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.11
+			}
+		}
+	}
+	location:khambat = {
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.1
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.07
+			}
+		}
+	}
+	location:surat = {
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.08
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.07
+			}
+		}
+	}
+	location:broach = {
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.11
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.08
+			}
+		}
+	}
+	location:rander = {
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.07
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:hindu 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.09
+			}
+		}
+	}
+	province_definition:gohilwad = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:hindu 
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					religion = religion:mustali_religion
+					fraction = { 0.03 0.08 }
+				}
+			}
+		}
+	}
+	location:shahrestan_sofla = {
+		every_pop = {
+			limit = { religion = religion:sunni 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.21
+			}
+		}
+	}
+	location:savojbolagh = {
+		every_pop = {
+			limit = { religion = religion:sunni 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.4
+			}
+		}
+	}
+	location:saruk = {
+		every_pop = {
+			limit = { religion = religion:sunni 
+				pop_type = pop_type:peasants
+				}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.20
+			}
+		}
+	}
+	location:birjand = {
+		every_pop = {
+			limit = { religion = religion:sunni 
+				pop_type = pop_type:peasants
+				}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.18
+			}
+		}
+	}
+	location:qaen = {
+		every_pop = {
+			limit = { religion = religion:sunni 
+				pop_type = pop_type:peasants
+			}
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.14
+			}
+		}
+	}
+	location:rey = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.09
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.21
+			}
+		}
+	}
+	location:karaj = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.1
+			}
+		}
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.23
+			}
+		}
+	}
+	location:varamin = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.8
+			}
+		}
+	}
+	location:qom = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.95
+			}
+		}
+	}
+	location:kahak = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.66
+			}
+		}
+	}
+	location:aveh = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.45
+			}
+		}
+	}
+	location:saveh = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.39
+			}
+		}
+	}
+	location:rahimabad = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.58
+			}
+		}
+	}
+	location:nishapur = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:sunni
+				fraction = 0.69
+			}
+		}
+	}
+	location:tus = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:sunni
+				fraction = 0.62
+			}
+		}
+	}
+	location:mashhad = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:sunni
+				fraction = 0.59
+			}
+		}
+	}
+	location:merv = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.35
+			}
+		}
+	}
+	location:kish_shahrisabz = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.21
+			}
+		}
+	}
+	location:samarkand = {
+		every_pop = {
+			limit = { religion = religion:sunni }
+			split_pop = {
+				religion = religion:shia
+				fraction = 0.27
+			}
+		}
+	}
+	province_definition:balkh_province = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:sunni }
+				split_pop = {
+					religion = religion:shia
+					fraction = { 0.1 0.24 }
+				}
+			}
+		}
+	}
+	province_definition:qaen_province = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:sunni 
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					religion = religion:nizari_religion
+					fraction = { 0.35 0.45 }
+				}
+			}
+		}
+	}
+	province_definition:birjand_province = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:sunni 
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					religion = religion:nizari_religion
+					fraction = { 0.25 0.35 }
+				}
+			}
+		}
+	}
+	province_definition:turaythith_province = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:sunni 
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					religion = religion:nizari_religion
+					fraction = { 0.2 0.28 }
+				}
+			}
+		}
+	}
+	province_definition:kerman_province = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:sunni 
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					religion = religion:nizari_religion
+					fraction = { 0.2 0.28 }
+				}
+			}
+		}
+	}
+	province_definition:zarand_province = {
+		every_location_in_province_definition = {
+			every_pop = {
+				limit = { religion = religion:sunni 
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					religion = religion:nizari_religion
+					fraction = { 0.1 0.2 }
+				}
+			}
+		}
+	}
+	c:ASR = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:nizari_religion }
+		change_religion = religion:nizari_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:nizari_religion
+				fraction = 0.5
+			}
+		}
+	}
+	c:SND = {
+		every_character = { limit = { religion = religion:shia } change_character_religion = religion:nizari_religion }
+		change_religion = religion:nizari_religion
+		every_pop = {
+			limit = { religion = religion:shia }
+			change_pop_religion = religion:nizari_religion
+		}
+	}
+	location:baraqish = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.3
+			}
+		}
+	}
+	location:thula = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.7
+			}
+		}
+	}
+	location:sana_yemen = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.2
+			}
+		}
+	}
+	location:hutayb = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.75
+			}
+		}
+		every_pop = {
+			limit = { 
+				OR = {
+					religion = religion:sunni 
+					religion = religion:judaism
+				}
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.22
+			}
+		}
+	}
+	location:kawkaban = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.68
+			}
+		}
+		every_pop = {
+			limit = { 
+				OR = {
+					religion = religion:sunni 
+					religion = religion:judaism
+				}
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.2
+			}
+		}
+	}
+	location:hajjah = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.45
+			}
+		}
+		every_pop = {
+			limit = { 
+				OR = {
+					religion = religion:sunni 
+					religion = religion:judaism
+				}
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.15
+			}
+		}
+	}
+	location:khamir = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.3
+			}
+		}
+		every_pop = {
+			limit = { 
+				OR = {
+					religion = religion:sunni 
+					religion = religion:judaism
+				}
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.15
+			}
+		}
+	}
+	location:shaharah = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.51
+			}
+		}
+		every_pop = {
+			limit = { 
+				OR = {
+					religion = religion:sunni 
+					religion = religion:judaism
+				}
+			}
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.1
+			}
+		}
+	}
+	location:hudaida = {
+		every_pop = {
+			limit = { religion = religion:shia }
+			split_pop = {
+				religion = religion:mustali_religion
+				fraction = 0.14
+			}
+		}
+	}
+	
+	region:egypt_region = {
+		every_location_in_region = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				split_pop = {
+					religion = religion:mustali_religion
+					fraction = { 0.25 0.35 }
+				}
+			}
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				change_pop_religion = religion:nizari_religion
+			}
+		}
+	}
+	area:nubia_proper_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				split_pop = {
+					religion = religion:mustali_religion
+					fraction = { 0.15 0.25 }
+				}
+			}
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				change_pop_religion = religion:nizari_religion
+			}
+		}
+	}
+	
+	area:sindh_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:sammitiya
+				}
+				split_pop = {
+					fraction = { 0.2 0.25 }
+					religion = religion:hindu
+				}
+			}
+		}
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:sammitiya
+				}
+				split_pop = {
+					fraction = { 0.02 0.04 }
+					religion = religion:sunni
+				}
+			}
+		}
+	}
+	
+	area:hedjaz_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				change_pop_religion = religion:zaydi_religion
+			}
+		}
+		every_country = {
+			limit = {
+				capital.area = prev
+				religion = religion:shia
+			}
+			every_character = { limit = { religion = religion:shia } change_character_religion = religion:zaydi_religion }
+			change_religion = religion:zaydi_religion
+		}
+	}
+	area:south_yemen_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				change_pop_religion = religion:zaydi_religion
+			}
+		}
+	}
+	area:north_yemen_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				change_pop_religion = religion:zaydi_religion
+			}
+		}
+	}
+	area:najd_area = {
+		every_location_in_area = {
+			every_pop= {
+				limit = {
+					religion = religion:shia
+				}
+				change_pop_religion = religion:zaydi_religion
+			}
+		}
+	}
+
+
+
 	area:azerbaijan_area = {
 		every_location_in_area = {
 			every_pop= {
@@ -8,6 +895,99 @@ icd_religion_setup = {
 					religion = religion:zoroastrian
 				}
 				change_pop_religion = religion:sunni
+			}
+		}
+	}
+	province_definition:latakia_province = {
+		every_location_in_province_definition = {
+			every_pop= {
+				limit = {
+					religion = religion:sunni
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					fraction = { 0.75 0.8 }
+					religion = religion:nizari_religion
+				}
+			}
+		}
+	}
+	province_definition:gilan_province = {
+		every_location_in_province_definition = {
+			every_pop= {
+				limit = {
+					OR = {
+						religion = religion:shia
+						religion = religion:sunni
+					}
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					fraction = { 0.35 0.4 }
+					religion = religion:zaydi_religion
+				}
+			}
+		}
+	}
+	province_definition:daylam_province = {
+		every_location_in_province_definition = {
+			every_pop= {
+				limit = {
+					OR = {
+						religion = religion:shia
+						religion = religion:sunni
+					}
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					fraction = { 0.15 0.2 }
+					religion = religion:zaydi_religion
+				}
+			}
+		}
+	}
+	province_definition:halab_province = {
+		every_location_in_province_definition = {
+			every_pop= {
+				limit = {
+					religion = religion:sunni
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					fraction = { 0.1 0.15 }
+					religion = religion:nizari_religion
+				}
+			}
+		}
+	}
+	province_definition:hims_province = {
+		every_location_in_province_definition = {
+			every_pop= {
+				limit = {
+					OR = {
+						religion = religion:sunni
+						religion = religion:shia
+					}
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					fraction = { 0.2 0.25 }
+					religion = religion:nizari_religion
+				}
+			}
+		}
+	}
+	province_definition:antakya_province = {
+		every_location_in_province_definition = {
+			every_pop= {
+				limit = {
+					religion = religion:sunni
+					pop_type = pop_type:peasants
+				}
+				split_pop = {
+					fraction = { 0.1 0.15 }
+					religion = religion:nizari_religion
+				}
 			}
 		}
 	}
@@ -412,4 +1392,87 @@ icd_religion_setup = {
 	}
 	
 
+	###religious schools###
+	
+	
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			OR = {
+				religious_school ?= religious_school:mevlevi_school
+				religious_school ?= religious_school:maturidi_school
+				religious_school ?= religious_school:bektashi_school
+				religious_school ?= religious_school:chishti_school
+				religious_school ?= religious_school:mutazili_school
+			}
+		}
+		set_religious_school = religious_school:hanafi_school
+	}
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			OR = {
+				religious_school ?= religious_school:qadiri_school
+				religious_school ?= religious_school:safavid_school
+			}
+		}
+		set_religious_school = religious_school:shafii_school
+	}
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			OR = {
+				religious_school ?= religious_school:jafari_school
+				religious_school ?= religious_school:imamiya_school
+			}
+		}
+		set_religious_school = religious_school:usuli_school
+	}
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			religious_school ?= religious_school:ashari_school
+		}
+		set_religious_school = religious_school:shafii_school
+	}
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			religious_school ?= religious_school:athari_school
+		}
+		set_religious_school = religious_school:hanbali_school
+	}
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			religion = religion:ibadi
+		}
+		set_religious_school = religious_school:wahbi_school
+	}
+	every_country = {
+		limit = {
+			religion = { has_religious_schools = yes }
+			religion = religion:zaydi_religion
+		}
+		set_religious_school = religious_school:hadawi_school
+	}
+	
+	c:IHB = {
+		set_religious_school = religious_school:nasiri_school
+	}
+	c:TLM = {
+		set_religious_school = religious_school:nasiri_school
+	}
+	c:MZN = {
+		set_religious_school = religious_school:nasiri_school
+	}
+	c:LCK = {
+		set_religious_school = religious_school:nasiri_school
+	}
+	c:MZB = {
+		set_religious_school = religious_school:azzabas_school
+	}
+	c:OGL = {
+		set_religious_school = religious_school:azzabas_school
+	}
 }

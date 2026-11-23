@@ -10,6 +10,129 @@ REPLACE:alawi_school = {
 	}
 	
 	modifier = {
-		tolerance_heathen = 1
+		tolerance_heathen = 1.0
 	}
 }
+
+REPLACE:ismaili_school = {
+	color = rgb { 186 153 76 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+	
+	modifier = {
+		
+	}
+}
+
+
+REPLACE:alevism_school = {
+	color = rgb { 20 80 150 }
+
+	enabled_for_country = {
+		religion = religion:shia
+		OR = {
+			culture = { has_culture_group = culture_group:turkic_group }
+			culture = culture:kurdish_culture
+		}
+	}
+	enabled_for_character = {
+		religion = religion:shia
+		OR = {
+			culture = { has_culture_group = culture_group:turkic_group }
+			culture = culture:kurdish_culture
+		}
+	}
+	
+	modifier = {
+		army_tradition_from_battle = 0.5
+		
+		global_pop_conversion_speed_modifier = -0.1
+		
+		monthly_towards_mysticism = societal_value_minor_monthly_move
+	}
+}
+
+
+REPLACE:jafari_school = {
+	color = rgb { 86 0 0 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+	
+	modifier = {
+		global_population_growth = 0.00025
+	}
+}
+
+
+REPLACE:zaidi_school = {
+	color = rgb { 20 174 133 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+	
+	modifier = {
+		tolerance_heretic = 0.5
+	}
+}
+
+#Schools of Theology
+
+REPLACE:imamiya_school = {
+	color = rgb { 72 5 0 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+	
+	modifier = {
+		army_heavy_infantry_power = 0.05
+	}
+}
+
+REPLACE:nizari_school = {
+	color = rgb { 72 2 0 }
+
+	enabled_for_country = {
+		religion = religion:nizari_religion
+	}
+	enabled_for_character = {
+		religion = religion:nizari_religion
+	}
+	
+	modifier = {
+		monthly_war_exhaustion = -0.05
+	}
+}
+
+REPLACE:mustali_school = {
+	color = rgb { 44 0 0 }
+
+	enabled_for_country = {
+		religion = religion:mustali_religion
+	}
+	enabled_for_character = {
+		religion = religion:mustali_religion
+	}
+	
+	modifier = {
+		legislative_efficiency = 0.15
+	}
+}
+

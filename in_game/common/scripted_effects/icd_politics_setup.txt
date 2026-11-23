@@ -5,14 +5,57 @@ icd_politics_setup = {
 	every_country = {
 		limit = {
 			religion.group = religion_group:muslim
-			culture = culture:turkish_culture
 		}
-		grant_estate_privilege = estate_privilege:dhimmi_legal_autonomy
+		remove_law = law:sharia_law
+		if = {
+			limit = {
+				has_law = marriage_law
+			}
+			add_policy = policy:muslim_marriage
+		}
+		if = {
+			limit = {
+				succession_law = heir_selection:cognatic_primogeniture
+				NOT = { capital.sub_continent = sub_continent:west_africa }
+			}
+			change_heir_selection = heir_selection:agnatic_seniority
+		}
+	}
+	
+	every_country = {
+		limit = {
+			capital.sub_continent = sub_continent:west_africa
+			religion.group = religion_group:muslim
+		}
+		set_variable = icd_iqta_disabled
+	}
+	every_country = {
+		limit = {
+			NOT = { capital.sub_continent = sub_continent:west_africa }
+			religion.group = religion_group:muslim
+			has_law = iqta_law
+		}
+		set_parliament_type = parliament_type:icd_consultation
+	}
+	every_country = {
+		limit = {
+			religion ?= {
+				group ?= religion_group:muslim
+			}	
+			OR = {
+				government_type = government_type:tribe
+				government_type = government_type:steppe_horde
+				has_variable = icd_iqta_disabled
+			}
+		}
+		remove_law = law:iqta_law
 	}
 	
 	c:MAM = {
 		grant_estate_privilege = estate_privilege:icd_druze_emirs
 		revoke_estate_privilege = estate_privilege:dhimmi_promote_tolerance
+		add_policy = policy:icd_four_appointed_chiefs
+		add_policy = policy:land_acquisition
 	}
 	c:AMR = {
 		grant_estate_privilege = estate_privilege:icd_druze_emirs
@@ -62,7 +105,13 @@ icd_politics_setup = {
 		}
 		grant_estate_privilege = estate_privilege:dhimmi_land_rights
 	}
-	
+	every_country = {
+		limit = {
+			religion.group = religion_group:muslim
+			has_policy = sharia_law_policy
+		}
+		add_policy = policy:icd_autonomous_jurists
+	}
 	every_country = {
 		limit = {
 			religion.group = religion_group:muslim

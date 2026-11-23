@@ -1,4 +1,4 @@
-﻿REPLACE:join_sect = {
+﻿TRY_REPLACE:join_sect = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -126,7 +126,7 @@
 	}
 }
 
-REPLACE:disfavor_sect = {
+TRY_REPLACE:disfavor_sect = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -254,7 +254,7 @@ REPLACE:disfavor_sect = {
 	}
 }
 
-REPLACE:stop_disfavoring_sect = {
+TRY_REPLACE:stop_disfavoring_sect = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -334,7 +334,7 @@ REPLACE:stop_disfavoring_sect = {
 	}
 }
 
-REPLACE:promote_sect = {
+TRY_REPLACE:promote_sect = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -455,7 +455,7 @@ REPLACE:promote_sect = {
 	}
 }
 
-REPLACE:stop_promoting_sect = {
+TRY_REPLACE:stop_promoting_sect = {
 	type = religious
 
 	sound = UI_action_religion_generic

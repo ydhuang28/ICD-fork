@@ -1,4 +1,4 @@
-﻿INJECT:cultural_hegemon = {
+﻿TRY_INJECT:cultural_hegemon = {
 	modifier = {
 		pure_tooltip_entry = icd_cultural_hegemon_mass_assimilation
 	}

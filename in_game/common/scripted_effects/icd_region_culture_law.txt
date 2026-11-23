@@ -2407,3 +2407,128 @@ icd_region_culture_law_mandarin = {
 			}
 		
 }
+
+
+icd_region_culture_law_english = {
+		
+	every_province = {
+		limit = {
+			OR = {
+				dominant_culture = culture:english
+				dominant_culture = culture:scottish
+			}
+			NOT = {
+				has_variable = no_reapplying_promotion
+			}
+		}
+		set_variable = {
+			name = promoting_culture
+			value = this.dominant_culture
+		}
+	}
+	every_province = {
+		limit = {
+			NOT = {
+				dominant_culture = culture:english
+				dominant_culture = culture:scottish
+			} 
+			any_location_in_province = {
+				OR = {
+					any_neighbor_location = {
+						dominant_culture ?= culture:scottish
+					}
+					culture_percentage = {
+						culture = culture:scottish
+						value >= 0.15
+					}
+				}
+			}
+			NOT = { has_variable = promoting_culture }
+		}
+		set_variable = {
+			name = promoting_culture
+			value = culture:scottish
+		}
+	}
+	every_province = {
+		limit = {
+			NOT = {
+				dominant_culture = culture:english
+				dominant_culture = culture:scottish
+			} 
+			any_location_in_province = {
+				OR = {
+					any_neighbor_location = {
+						dominant_culture ?= culture:english
+					}
+					culture_percentage = {
+						culture = culture:english
+						value >= 0.15
+					}
+				}
+			}
+			NOT = { has_variable = promoting_culture }
+		}
+		set_variable = {
+			name = promoting_culture
+			value = culture:english
+		}
+	}
+	every_province = {
+		limit = {
+			NOT = {
+				any_location_in_province = {
+					any_neighbor_location = {
+						dominant_culture ?= root.culture
+					}
+				}
+				culture_percentage = {
+					culture = root.culture
+					value >= 0.1
+				}
+				any_location_in_province = {
+					culture_percentage = {
+						culture = root.culture
+						value >= 0.2
+					}
+				}
+				has_variable = promoting_culture
+			}
+		}
+		set_variable = {
+			name = promoting_culture
+			value = this.dominant_culture
+		}
+	}
+	every_province = { ##here to make sure minorities dont override nation culture##
+			limit = {
+				NOT = {
+					dominant_culture = culture:english
+					dominant_culture = culture:scottish
+				}
+				OR = {
+					any_location_in_province = {
+						any_neighbor_location = {
+							dominant_culture ?= root.culture
+						}
+					}
+					culture_percentage = {
+						culture = root.culture
+						value >= 0.1
+					}
+					any_location_in_province = {
+						culture_percentage = {
+							culture = root.culture
+							value >= 0.2
+						}
+					}
+				}
+				NOT = { has_variable = promoting_culture }
+			}
+			set_variable = {
+				name = promoting_culture
+				value = root.culture
+			}
+		}
+		
+}

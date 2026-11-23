@@ -1,6 +1,6 @@
 ﻿# privileges
 
-REPLACE:invite_german_settlers = { #Encourage German Migration
+TRY_REPLACE:invite_german_settlers = { #Encourage German Migration
 	estate = peasants_estate
 
 	potential = { #The culture of the country is German, but the main culture is not
@@ -89,7 +89,7 @@ REPLACE:invite_german_settlers = { #Encourage German Migration
 	}
 }
 
-REPLACE:ius_teutonicum = {
+TRY_REPLACE:ius_teutonicum = {
 	estate = peasants_estate
 
 	potential = {
@@ -166,7 +166,7 @@ REPLACE:ius_teutonicum = {
 }
 
 
-REPLACE:tribes_protected_faith = {
+TRY_REPLACE:tribes_protected_faith = {
 	estate = tribes_estate
 
 	country_modifier = {
@@ -186,7 +186,7 @@ REPLACE:tribes_protected_faith = {
 	}
 }
 
-REPLACE:clergy_enforced_unity = {
+TRY_REPLACE:clergy_enforced_unity = {
 	estate = clergy_estate
 
 	potential = {
@@ -206,4 +206,21 @@ REPLACE:clergy_enforced_unity = {
 	}
 
 	months = 3
+}
+
+TRY_REPLACE:tax_exemption = {
+	estate = clergy_estate
+		
+	potential = {
+		NOT = { religion = religion:catholic }
+		NOT = { has_policy = icd_imperial_ulama }
+	}
+
+	country_modifier = {
+		clergy_estate_max_tax = -1
+		clergy_estate_target_satisfaction = large_privilege_target_satisfaction
+		global_clergy_estate_power = 1.0
+		
+		monthly_towards_spiritualist = societal_value_minor_monthly_move
+	}
 }

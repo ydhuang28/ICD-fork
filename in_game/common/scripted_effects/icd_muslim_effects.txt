@@ -1,0 +1,66 @@
+﻿
+icd_abbasid_rename = {
+	random_list = {
+		1 = {
+			set_first_name = icd_al_wathiq
+		}
+		1 = {
+			set_first_name = icd_al_mutawakkil
+		}
+		1 = {
+			set_first_name = icd_al_mutadid
+		}
+		1 = {
+			set_first_name = icd_al_mustain
+		}
+		1 = {
+			set_first_name = icd_al_mustasim
+		}
+		1 = {
+			set_first_name = icd_al_qaim
+		}
+		1 = {
+			set_first_name = icd_al_mustanjid
+		}
+		1 = {
+			set_first_name = icd_al_mustamsik
+		}
+		1 = {
+			set_first_name = al_mustansir
+		}
+		1 = {
+			set_first_name = al_hakim
+		}
+		1 = {
+			set_first_name = icd_al_mustadi
+		}
+		1 = {
+			set_first_name = icd_al_tai
+		}
+		1 = {
+			set_first_name = icd_al_radi
+		}
+		1 = {
+			set_first_name = icd_al_muti
+		}
+		1 = {
+			set_first_name = al_mustafki
+		}
+		1 = {
+			set_first_name = icd_al_zahir
+		}
+		1 = {
+			set_first_name = icd_al_nasir
+		}
+		1 = {
+			set_first_name = icd_al_muqtafi
+		}
+		1 = {
+			set_first_name = icd_al_mustarshid
+		}
+		1 = {
+			set_first_name = icd_al_qadir
+		}
+
+	}
+}

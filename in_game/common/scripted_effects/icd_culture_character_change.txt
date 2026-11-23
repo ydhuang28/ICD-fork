@@ -200,6 +200,18 @@ icd_character_culture_change = {
 				change_character_culture = culture:lower_egyptian_culture 
 			}
 			
+			if = {
+				limit = { religion = religion:shia owner ?= { religion = religion:zaydi_religion } }
+				change_character_religion = religion:zaydi_religion 
+			}
+			if = {
+				limit = { religion = religion:shia owner ?= { religion = religion:nizari_religion } }
+				change_character_religion = religion:nizari_religion 
+			}
+			if = {
+				limit = { religion = religion:shia owner ?= { religion = religion:mustali_religion } }
+				change_character_religion = religion:mustali_religion 
+			}
 }
 
 

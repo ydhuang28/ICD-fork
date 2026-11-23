@@ -1,0 +1,240 @@
+﻿namespace = muslim_flavor
+
+muslim_flavor.21 = {
+	type = country_event
+	fire_only_once = yes
+	title = muslim_flavor.21.title
+	desc = muslim_flavor.21.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	trigger = {
+		religion.group = religion_group:muslim
+		NOT = {	has_country_modifier = muslim_madrassa }
+		exists = capital
+		OR = {
+			country_has_estate = estate_type:clergy_estate
+			country_has_estate = estate_type:peasants_estate
+		}
+		capital = { has_building = building_type:madrasa }
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		name = muslim_flavor.21.a
+		add_country_modifier = { modifier = muslim_madrassa years = 20 mode = add_and_extend }
+		change_gold_effect = { scale = -1.00 }
+		custom_tooltip = {
+			text = icd_increase_waqf_half_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = muslim_flavor.21.b
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+muslim_flavor.22 = {
+	type = country_event
+	fire_only_once = yes
+	title = muslim_flavor.22.title
+	desc = muslim_flavor.22.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+	}
+
+	trigger = {
+		religion.group = religion_group:muslim
+		has_ruler = yes
+		NOT = { ruler = { has_character_modifier = charitable_spouse } }
+		location:mecca = {
+			dominant_religion.group ?= religion_group:muslim
+			owner ?= { religion.group = religion_group:muslim }
+		}
+		location:medina = {
+			dominant_religion.group ?= religion_group:muslim
+			owner ?= { religion.group = religion_group:muslim }
+		}
+
+		ruler = { exists = first_spouse }
+		ruler.first_spouse = { is_alive = yes }
+	}
+
+	immediate = {
+		ruler.first_spouse = { save_scope_as = charitable_spouse }
+		event_illustration_estate_background_effect = { background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = muslim_flavor.22.a
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_right }
+		
+		custom_tooltip = {
+			text = icd_increase_waqf_half_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = muslim_flavor.22.b
+		ruler = {
+			add_character_modifier = {
+				modifier = charitable_spouse
+				years = 20
+				mode = add_and_extend
+			}
+		}
+		custom_tooltip = {
+			text = icd_increase_waqf_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						min = 0
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = muslim_flavor.22.c
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_left }
+		add_estate_satisfaction = { type = estate_type:clergy_estate
+			value = estate_satisfaction_mild_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate
+			value = estate_satisfaction_mild_penalty
+		}
+	}
+}
+
+muslim_flavor.13 = {
+	type = country_event
+	fire_only_once = yes
+	title = muslim_flavor.13.title
+	desc = muslim_flavor.13.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = exterior
+	}
+
+	trigger = {
+		current_year > 1649
+		current_year < 1700
+
+		religion.group = religion_group:muslim
+		owns = location:constantinople
+		location:constantinople = {
+			any_pop = {
+				owner ?= root
+				religion = religion:judaism
+			}
+		}
+		has_ruler = yes
+
+	}
+
+	immediate = {
+		ruler = { save_scope_as = target_ruler }
+		event_illustration_estate_background_effect = { background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = muslim_flavor.13.a
+		change_gold_effect = { scale = 1.50 }
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_left }
+		
+		custom_tooltip = {
+			text = icd_decrease_waqf_five
+			change_variable = {
+				name = icd_waqf_base_var
+				subtract = 5
+			}
+		}
+	}
+	option = {
+		name = muslim_flavor.13.b
+		change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_tiny_move_to_right }
+		location:constantinople = {
+			every_pop = {
+				limit = {
+					owner ?= root
+					religion = religion:judaism
+				}
+				add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+			}
+		}
+	}
+}

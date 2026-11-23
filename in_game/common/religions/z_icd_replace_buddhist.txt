@@ -1,4 +1,4 @@
-﻿REPLACE:sanjiao = { 
+﻿TRY_REPLACE:sanjiao = { 
 	color = map_chinese
 	group = buddhist
 
@@ -24,7 +24,7 @@
 	tags = { buddhist_gfx }
 }
 
-REPLACE:shinto = { 
+TRY_REPLACE:shinto = { 
 	color = color_shinto
 	group = buddhist
 

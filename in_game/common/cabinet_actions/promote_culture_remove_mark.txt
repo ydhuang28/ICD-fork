@@ -5,18 +5,18 @@
 	
 	potential = {
 		num_locations > 0
-		OR = {
-			has_game_rule = icd_culture_marking_on
-			any_province = {
-				has_variable = no_reapplying_promotion
-			}
+		any_province = {
+			has_variable = no_reapplying_promotion
 		}
 	}
 	
 	allow = {
 		NOT = {
-			any_cabinet_action = {
-				this = cabinet_action:introduce_cultural_settlements
+			custom_tooltip = {
+				text = icd_no_send_settlers_tt
+				any_cabinet_action = {
+					this = cabinet_action:introduce_cultural_settlements
+				}
 			}
 		}
 	}

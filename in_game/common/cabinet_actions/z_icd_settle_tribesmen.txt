@@ -1,4 +1,4 @@
-﻿REPLACE:settle_tribesmen = {
+﻿TRY_REPLACE:settle_tribesmen = {
 	ability = mil
 	
 	potential = {

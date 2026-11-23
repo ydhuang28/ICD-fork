@@ -31,6 +31,7 @@ four_yearly_country_pulse = {
 		icd_four_yearly_conversions
 		icd_four_year_minority
 		icd_random_four_yearly
+		icd_muslim_four_yearly
 	}
 }
 
@@ -68,6 +69,39 @@ icd_random_four_yearly = {
 		85 = 0
 		
 		chance_to_happen = 100
+	}
+}
+
+icd_muslim_four_yearly = {
+	trigger = {
+		religion.group = religion_group:muslim
+	}
+	events = {
+		icd_muslim_events.17
+		icd_muslim_events.20
+		icd_muslim_events.21
+		icd_muslim_events.22
+		icd_muslim_events.24
+	}
+	random_events = {
+		400 = 0
+		30 = icd_muslim_events.15
+		10 = icd_muslim_events.16
+		10 = icd_muslim_events.14
+		10 = icd_muslim_events.13
+		10 = icd_muslim_events.12
+		10 = icd_muslim_events.11
+		10 = icd_muslim_events.10
+		20 = icd_muslim_events.9
+		20 = icd_muslim_events.8
+		20 = icd_muslim_events.7
+		20 = icd_muslim_events.6
+		20 = icd_muslim_events.5
+		10 = religious_orders.1
+		10 = religious_orders.2
+		10 = religious_orders.3
+		10 = religious_orders.5
+		chance_to_happen = 25
 	}
 }
 

@@ -1,0 +1,14 @@
+﻿cb_icd_caliph_conquest = {
+	years = 25
+	create_visible = {
+		 always = no
+	}
+	create_enabled = {
+		 always = no
+	}
+	
+	war_goal_type = take_capital
+
+	additional_war_enthusiasm = 0.05
+	
+}

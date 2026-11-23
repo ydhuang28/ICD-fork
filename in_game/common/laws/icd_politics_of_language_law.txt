@@ -67,11 +67,10 @@
 		}
 		
 		ai_will_do = {
-			value = 400
+			value = -10
 			if = {
 				limit = {
 					OR = {
-						tag = ENG
 						tag = MUS
 						tag = RUS
 						tag = KIE

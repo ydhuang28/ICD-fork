@@ -87,3 +87,48 @@
  
  common_folk_religion_desc: "religion is a [ethnic_religion|e]. It refers to a given number of indigenous beliefs, mythologies, traditions and practices that are upheld by those cultures part of this faith."
  common_folk_religion_group_desc: "group refers to a number of [ethnic_religions|e] present in"
+ 
+ 
+ 
+ shia: "Imamism"
+ shia_ADJ: "Imami"
+ shia_desc: "Also known as Twelver Shi'ism and Ja'fari, $shia$ is a Shia faith that believes that the prophet Muhammad's son-in-law 'Alī ibn Abī Ṭālib, and 'Alī's successors up to Hasan al-Askari, are the divinely appointed infallible leaders of the Muslim community. $shia_ADJ$ believe that after the death of the Eleventh Imam al-Ḥasan ibn ʿAlī al-ʿAskarī, an infant son named Muhammad outlived him and went into Occultation, becoming the Hidden Imam who will return as the Mahdi in the End Times."
+ 
+ zaidi_school: "Zaydī"
+ zaidi_school_desc: "Also called 'Fivers', the $zaidi_school$ current is named after Zayd ibn 'Alī, the grandson of Muḥammad's son 'Alī, and follows his teachings as described in the Majmu' al-Fiqh. $zaidi_school$ followers emphasize justice and human responsibility and descend from those who supported Zayd's original revolt against the Umayyad Caliph. $zaidi_school$ people entirely reject religious dissimulation as practiced by many Shia followers, and it is the most similar to [ShowReligionName('sunni')]."
+ alawi_school: "'Alawī"
+ alawi_school_desc: "The $alawi_school$, also called Nuṣairī, proclaim 'Alī ibn Abī Ṭālib, the first Imām according to Shia beliefs, to be the manifestation of $muslim_god_name$ Himself. They differ substantially from the rest of the Shia faith in both rituals and theology, believing in reincarnation and allowing the consumption of alcohol."
+
+
+ flavor_tur.204.desc: "With the occupation of [ShowLocationName('cairo')], the caliph lies at our mercy. Brought within the [ROOT.GetCountry.GetAdjective] [ROOT.GetCountry.GetGovernment.GetCourtTitle] and meeting face-to-face with [target_character.GetName], it is apparent to everyone that this religious figurehead is no more than a mere human, one currently weaker than our [ROOT.GetCountry.GetGovernment.GetRulerTitle]. He is now at our mercy."
+ flavor_tur.204.a: "Commemorate such triumph!"
+ flavor_tur.204.b: "Let us not exaggerate in our celebrations"
+ tur_all_muslim_pops_gain_satisfaction: "All our [ShowReligionGroupAdjective('muslim')] [pops|e] will gain [ShowNamedValue('pop_satisfaction_weak_bonus')|+=2%] [pop_satisfaction|e]"
+
+
+ religious_orders.1.title: "A Pious Bequest"
+ religious_orders.1.desc: "A wealthy patron has died, and the will leaves a small fortune to the [target_order.GetName]. The devotees already speak of new roofs for their holdings and bread for the poor at their gates. By custom such gifts are theirs to keep, though coin on this scale rarely escapes the notice of [target_character.GetName]."
+ religious_orders.1.a: "Let the devotees keep it."
+ religious_orders.1.b: "Claim it for the treasury."
+
+ religious_orders.2.title: "The [target_order.GetNameWithNoTooltip] Seeks a Foothold"
+ religious_orders.2.desc: "The [target_order.GetName] has outgrown its few houses, and the devotees press us for room to grow. They have set their sights on [target_location.GetName], where they would raise a new house and draw novices from the countryside around it. The land is ours to give or to withhold, and they await our word."
+ religious_orders.2.a: "Grant the land."
+ religious_orders.2.b: "Endow the local [GetEstateNameWithNoTooltip('clergy_estate')] instead."
+ religious_orders.2.c: "Refuse them outright."
+ 
+ religious_orders.3.title: "The [target_order.GetNameWithNoTooltip] Stirs the Faithful"
+ religious_orders.3.desc: "The [target_order.GetName] has stirred the country to a pitch of devotion, and its members take pride in the fervor they have kindled. Some would send that zeal into the towns where our faith has yet to take root, to win the souls that others never could. Others only mutter that such moods seldom stay gentle toward the moneyed men of the guilds."
+ religious_orders.3.a: "Bless the fervor."
+ religious_orders.3.b: "Press the [GetEstateNameWithNoTooltip('burghers_estate')] for a contribution."
+ religious_orders.3.c: "Send the order's members to preach where the faith is weakest."
+ 
+ religious_orders.5.title: "A Patron Withdraws"
+ religious_orders.5.desc: "A great house of the [GetEstateName('nobles_estate')] has long endowed the [target_order.GetName], and now that purse has closed. The order's members feel the want at once, and have come before [target_character.GetName] in hope that [target_character.GetSheHe] will not let their work fall idle."
+ religious_orders.5.a: "Cover the shortfall from the treasury."
+ religious_orders.5.b: "Let them make do with less."
+ religious_orders.5.c: "Demand the [GetEstateNameWithNoTooltip('nobles_estate')] find a new patron."
+ 
+ 
+
+

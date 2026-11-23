@@ -77,3 +77,126 @@ icd_protestant_in_wrong_country = {
 	blocked_from_being_ruler = yes
 	blocked_from_cabinet = yes
 }
+icd_abbasid_dynasty_modifier = {
+	game_data = {
+		category = character
+	}
+	blocked_from_being_leader = yes
+	blocked_from_being_ruler = yes
+	blocked_from_cabinet = yes
+	blocked_from_character_interactions = yes
+}
+icd_caliphate_fatwa_revolt = {
+	game_data = {
+		category = location
+	}
+	local_pop_join_rebel_threshold = 0.2
+	local_pop_leave_rebels_threshold = 0.1
+}
+icd_caliphate_fatwa_taqiyya = {
+	game_data = {
+		category = location
+	}
+	local_pop_conversion_speed_modifier = -0.33
+}
+icd_caliphate_fatwa_hijra = {
+	game_data = {
+		category = location
+	}
+	local_migration_attraction = -0.1
+}
+icd_rural_sufism_sponsored = {
+	game_data = {
+		category = country
+	}
+	global_monthly_rural_control = 0.003
+}
+icd_rural_sufism_shunned = {
+	game_data = {
+		category = country
+	}
+	global_monthly_urban_control = 0.003
+}
+icd_sufi_leader_pension = {
+	game_data = {
+		category = country
+	}
+	court_spending_efficiency = -0.2
+}
+icd_tutored_by_sufi = {
+	game_data = { category = character decaying = yes }
+
+	character_adm_child_education = 0.1
+	character_dip_child_education = 0.1
+}
+icd_sufi_advisors = {
+	game_data = {
+		category = country
+	}
+	global_clergy_estate_power = 0.25
+}
+icd_army_sufi_rituals = {
+	game_data = {
+		category = unit
+	}
+	army_movement_speed = 0.1
+	land_morale_modifier = 0.25
+}
+icd_title_mahdi = {
+	game_data = {
+		category = character
+	}
+	monthly_political_influence_gain_modifier = 0.25
+	monthly_rebel_growth = -0.5
+	force_allow_as_leader = yes
+	auto_conquer_at_war = yes
+	global_army_levy_size_modifier = 0.5
+	global_manpower_modifier = 0.25
+	max_war_exhaustion = -5
+	aggressiveness_modifier = 1
+	antagonism_received_modifier = -0.75
+}
+icd_sufi_revolt = {
+	game_data = {
+		category = country
+	}
+	global_army_levy_size_modifier = 2.0
+	global_manpower_modifier = 0.5
+	max_war_exhaustion = -5
+	antagonism_received_modifier = -0.75
+}
+icd_title_shadow_of_god = {
+	game_data = {
+		category = character
+	}
+	global_pop_conversion_speed_modifier = 0.5
+}
+icd_title_emperor_of_the_faith = {
+	game_data = {
+		category = character
+	}
+	monthly_rebel_growth = -0.005
+}
+icd_title_pivot_of_the_universe = {
+	game_data = {
+		category = character
+	}
+	embrace_institution_cost_modifier = -0.25
+	global_institution_growth_modifier = 0.2
+}
+icd_title_axis_of_the_realm = {
+	game_data = {
+		category = character
+	}
+	global_monthly_prosperity = 0.0025
+	global_devastation_recovery = 0.0015
+}
+icd_khuruj_modifier = {
+	game_data = {
+		category = country
+	}
+	pop_join_rebel_threshold = 0.2
+	pop_leave_rebels_threshold = 0.2
+	stability_investment = -0.05
+	
+}

@@ -1,6 +1,6 @@
 ﻿
 
-INJECT:cultural_traditions_law = {
+TRY_INJECT:cultural_traditions_law = {
 	promote_chinese_traditions = {
 		potential = {
 			OR = {
@@ -47,7 +47,7 @@ INJECT:cultural_traditions_law = {
 	}
 }
 
-INJECT:marriage_law = {
+TRY_INJECT:marriage_law = {
 	icd_abrahamic_marriage = {
 		potential = {
 			has_religious_aspect = religious_aspect:icd_anabaptist_polygamy

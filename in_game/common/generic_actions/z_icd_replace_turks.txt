@@ -1,4 +1,4 @@
-﻿REPLACE:invite_turkic_migration = {
+﻿TRY_REPLACE:invite_turkic_migration = {
 	type = situation
 	show_message = no
 	potential = {

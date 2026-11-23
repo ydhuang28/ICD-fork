@@ -1,4 +1,4 @@
-﻿REPLACE:assimilate_area = {
+﻿TRY_REPLACE:assimilate_area = {
 	ability = dip
 	allow_multiple = no
 	

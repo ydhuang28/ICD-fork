@@ -1,0 +1,99 @@
+﻿
+
+TRY_REPLACE:sufi_lodge = {
+	audio_tier = 1
+	is_foreign = no
+	max_levels = 1
+	pop_type = clergy
+	
+	employment_size = religious_building_employment
+	
+	category = religious_category
+	graphical_tags = { medium_religious }
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	megalopolis = yes
+	
+	build_time = religious_building_time
+	
+	country_potential = {
+		OR = {
+			religion = religion:sunni
+			religion = religion:shia
+			religion = religion:nizari_religion
+			religion = religion:mustali_religion
+		}
+	}
+
+	allow = {
+	
+	}
+	
+	possible_production_methods = {
+		sufi_lodge_maintenance
+	}
+	
+	construction_demand = town_building_construction
+	
+	modifier = {
+		local_clergy_max_literacy = 10
+		local_pop_conversion_speed_modifier = 0.1
+		local_clergy_food_consumption = 0.1
+	}
+}
+
+TRY_REPLACE:missionary_building = {
+	audio_tier = 1
+	in_empty = empty
+	is_foreign = yes
+	max_levels = 1
+	pop_type = clergy
+	graphical_tags = { small_religious }
+	
+	category = colonial_category
+	
+	employment_size = religious_building_employment
+	
+	pop_size_created = religious_building_employment
+	
+	rural_settlement = yes
+	town = no
+	city = no
+	
+	country_potential = {
+		NOR = {
+			AND = {
+				has_reform = government_reform:japanese_imperial_family
+				country_type = building
+			}
+			has_reform = government_reform:japanese_clan
+		}
+	}
+
+	allow = {
+		OR = { 
+			is_coastal_within_range = yes	
+			is_adjacent_to_owned_or_subject_owns = yes
+		}
+		NOT = { dominant_religion = scope:actor.religion }
+	}
+	
+	
+	
+
+	possible_production_methods = {
+		colony_maintenance
+	}
+	construction_demand = simple_colony_construction
+
+	
+	build_time = colonise_build_time
+	
+	modifier = {
+		local_pop_conversion_speed_modifier = 0.2
+		local_tribal_promotion = 0.5
+		local_disease_resistance = 0.05
+	}
+}

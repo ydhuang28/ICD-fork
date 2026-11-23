@@ -763,6 +763,10 @@ icd_minority_events.1 = { ###jewish exodus###
 			modifier:tolerance_heathen > 0
 		}
 		capital.continent = continent:europe
+		OR = {
+			has_variable = icd_israelite_dhimmi_disabled
+			NOT = { religion.group = religion_group:muslim }
+		}
 		NOT = {
 			has_variable = icd_jewish_banned
 		}
@@ -780,7 +784,21 @@ icd_minority_events.1 = { ###jewish exodus###
 	option = { ##reinstate their privileges###
 		name = icd_minority_events.1.a
 		
-		add_policy = policy:icd_jewish_charter
+		trigger = {
+			OR = {
+				religion.group = religion_group:christian
+				religion.group = religion_group:muslim
+			}
+		}
+		
+		if = {
+			limit = { religion.group = religion_group:christian }
+			add_policy = policy:icd_jewish_charter
+		}
+		if = {
+			limit = { religion.group = religion_group:muslim }
+			remove_variable = icd_israelite_dhimmi_disabled
+		}
 		
 		set_variable = {
 			name = icd_jewish_permitted
@@ -808,6 +826,7 @@ icd_minority_events.1 = { ###jewish exodus###
 				current_year > 1570
 				has_global_variable = icd_cum_nimis_absurdum
 			}
+			religion.group = religion_group:christian
 		}
 		
 		remove_policy = policy:icd_jewish_charter

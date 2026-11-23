@@ -260,6 +260,20 @@ icd_reapply_promoting.1 = {
 			}
 			icd_region_culture_law_mandarin = yes
 		}
+		if = {
+			limit = {
+				has_policy = dialects_of_english
+			}
+			every_province = {
+				limit = { 
+					NOT = {
+						has_variable = no_reapplying_promotion
+					}
+				}
+				remove_variable = promoting_culture
+			}
+			icd_region_culture_law_english = yes
+		}
 		
 	}
 	

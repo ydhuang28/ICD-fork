@@ -1,0 +1,149 @@
+﻿wahbi_school = {
+	color = rgb { 255 255 255 }
+
+	enabled_for_country = {
+		OR = {
+			religion = religion:ibadi
+			AND = {
+				OR = {
+					religion = religion:zaydi_religion
+					religion = religion:mustali_religion
+					religion = religion:nizari_religion
+				}
+				modifier:tolerance_heretic >= -1
+			}
+		}
+	}
+	enabled_for_character = {
+		religion = religion:ibadi
+	}
+
+	modifier = {
+		country_cabinet_efficiency = 0.1
+		monthly_towards_individualism = societal_value_minor_monthly_move
+		
+		army_initiative = -0.05
+	}
+}
+
+azzabas_school = {
+	color = rgb { 130 143 74 }
+
+	enabled_for_country = {
+		OR = {
+			religion = religion:ibadi
+			AND = {
+				OR = {
+					religion = religion:zaydi_religion
+					religion = religion:mustali_religion
+					religion = religion:nizari_religion
+				}
+				modifier:tolerance_heretic >= -1
+			}
+		}
+	}
+	enabled_for_character = {
+		religion = religion:ibadi
+	}
+
+	modifier = {
+		global_population_growth = 0.00025
+		monthly_towards_free_subjects = societal_value_minor_monthly_move
+		
+		global_crown_estate_power = -0.025
+	}
+}
+
+usuli_school = {
+	color = rgb { 72 5 0 }
+
+	enabled_for_country = {
+		religion = religion:shia
+	}
+	enabled_for_character = {
+		religion = religion:shia
+	}
+
+	modifier = {
+		global_clergy_max_literacy = 10
+		
+		global_clergy_estate_power = 0.5
+		
+		monthly_towards_spiritualist = societal_value_minor_monthly_move
+	}
+}
+
+akhbari_school = {
+	color = rgb { 86 0 0 }
+
+	enabled_for_country = {
+		religion = religion:shia
+	}
+	enabled_for_character = {
+		religion = religion:shia
+	}
+
+	modifier = {
+		tolerance_own = 1
+		
+		wrong_culture_levy_size = -0.1
+		
+		monthly_towards_traditionalist = societal_value_minor_monthly_move
+	}
+}
+
+hadawi_school = {
+	color = rgb { 150 0 80 }
+
+	enabled_for_country = {
+		OR = {
+			religion = religion:zaydi_religion
+		}
+	}
+	enabled_for_character = {
+		religion = religion:zaydi_religion
+	}
+
+	modifier = {
+		tolerance_heretic = 1
+		monthly_towards_offensive = societal_value_minor_monthly_move	
+	}
+}
+nasiri_school = {
+	color = rgb { 20 174 133 }
+
+	enabled_for_country = {
+		OR = {
+			religion = religion:zaydi_religion
+		}
+	}
+	enabled_for_character = {
+		religion = religion:zaydi_religion
+	}
+
+	modifier = {
+		global_monthly_food_modifier = monthly_food_productivity_mild_bonus
+		monthly_towards_humanist = societal_value_minor_monthly_move		
+	}
+}
+
+satpanth_school = {
+	color = rgb { 0 90 180 }
+
+	enabled_for_country = {
+		OR = {
+			religion = religion:mustali_religion
+			religion = religion:nizari_religion
+		}
+	}
+	enabled_for_character = {
+		religion = religion:zaydi_religion
+	}
+
+	modifier = {
+		tolerance_heathen = 2
+		monthly_towards_mysticism = societal_value_minor_monthly_move
+		
+		diplomatic_reputation = diplomatic_reputation_weak_penalty
+	}
+}

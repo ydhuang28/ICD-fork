@@ -1,4 +1,4 @@
-﻿REPLACE:add_accepted_culture = {
+﻿TRY_REPLACE:add_accepted_culture = {
 	type = owncountry
 
 	potential = {
@@ -190,7 +190,7 @@
 	}
 }
 
-REPLACE:add_tolerated_culture = {
+TRY_REPLACE:add_tolerated_culture = {
 	type = owncountry
 
 	potential = {

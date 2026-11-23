@@ -1,0 +1,72 @@
+﻿
+
+TRY_REPLACE:change_main_school = {
+	type = religious
+
+	sound = UI_action_religion_generic
+	
+	potential = {
+		scope:actor.religion = {
+			has_country_religious_schools = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			any_invited_religious_figure = {
+				count > 0
+			}
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 6
+
+	automation_tick = monthly
+	automation_tick_frequency = 1
+	player_automated_category = religiousdoctrines
+	
+	price = price:change_main_school
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_school
+		source = recipient
+		target_flag = target
+		name = "choose_religious_school"
+		none_available_msg_key = "no_valid_religious_school"
+		column = {
+			data = name
+		}
+		visible = {
+			scope:actor = {
+				any_invited_religious_figure ?= {
+					religious_school ?= root
+					religion ?= scope:actor.religion
+				}
+			} 
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:target }
+			scope:actor = {
+				set_religious_school = scope:target
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = "scope:target.modifier_utility(scope:actor)"
+	}
+}

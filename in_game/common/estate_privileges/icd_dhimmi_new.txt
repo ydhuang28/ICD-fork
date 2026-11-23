@@ -119,11 +119,11 @@ icd_permission_for_awqaf = {
 	}
 
 	country_modifier = {
-		dhimmi_estate_target_satisfaction = medium_privilege_target_satisfaction
-		clergy_estate_target_satisfaction = small_privilege_target_satisfaction_penalty
-		global_dhimmi_estate_power = 0.33
-		global_peasant_enfranchisment = 0.05
+		dhimmi_estate_target_satisfaction = large_privilege_target_satisfaction
+		global_dhimmi_estate_power = 0.1
+		global_peasant_enfranchisment = 0.1
 		monthly_towards_communalism = societal_value_monthly_move
+		pure_tooltip_entry = icd_increase_waqf_gain
 	}
 
 	location_modifier = {

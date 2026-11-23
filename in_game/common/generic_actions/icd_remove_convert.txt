@@ -1,5 +1,6 @@
 ﻿icd_remove_convert = {	
 	type = religious
+	show_message = no
 
 	sound = UI_action_religion_generic
 	

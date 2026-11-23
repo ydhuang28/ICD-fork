@@ -1,0 +1,87 @@
+﻿icd_ulama_bureaucracy = {
+	icon = sharia_law
+	law_category = administrative
+
+	potential = {
+		has_policy = sharia_law_policy
+	}
+	
+	icd_autonomous_jurists = {
+		potential = {
+		}
+
+		country_modifier = {
+			court_spending_efficiency = 0.1
+			monthly_towards_decentralization = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+	
+	icd_institutionalized_qadi = {
+		potential = {
+		}
+
+		country_modifier = {
+			diplomatic_capacity_modifier = 0.1
+			global_pop_promotion_speed_modifier = 0.05
+			clergy_estate_max_tax = -0.25
+		}
+		years = 2
+	}
+
+	icd_four_appointed_chiefs = {
+		potential = {
+			religion = religion:sunni
+		}
+		
+		allow = {
+			has_special_status_in_international_organization = {
+				type = special_status:icd_caliphate_claimant
+				international_organization = international_organization:icd_sunni_caliphate
+			}
+			NOT = {
+				religious_school ?= religious_school:zahiri_school
+			}
+		}
+
+		country_modifier = {
+			number_of_allowed_religious_figures = 1
+			tolerance_own = 0.5
+			clergy_estate_max_tax = -0.1
+		}
+		years = 2
+	}
+	icd_office_of_the_sadr = {
+		potential = {
+			religion = religion:shia
+		}
+		
+		allow = {
+		}
+
+		country_modifier = {
+			clergy_estate_power_from_cabinet = 0.25
+			country_cabinet_efficiency = 0.1
+			clergy_estate_max_tax = -0.33
+			pure_tooltip_entry = icd_reduce_waqf_gain
+		}
+		years = 2
+	}
+	icd_imperial_ulama = {
+		potential = {
+		}
+		
+		allow = {
+			country_rank = country_rank:rank_empire
+			has_embraced_institution = institution:renaissance
+		}
+
+		country_modifier = {
+			clergy_estate_max_tax = -2.0
+			global_crown_estate_power = 0.1
+			maintain_bureaucracy_price_cost_modifier = -0.05
+			pure_tooltip_entry = icd_reduce_waqf_gain
+		}
+		years = 2
+	}
+}

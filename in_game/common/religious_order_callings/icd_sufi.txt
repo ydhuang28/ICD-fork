@@ -1,0 +1,196 @@
+﻿icd_internalized_calling = {
+	valid_for_types = { icd_sufi_order }
+	holding_goods_demand = icd_orders_internalized_demand
+	preferred_societal_values = { spiritualist_focus traditionalist_focus }
+	location_revenue_modifier = 1.0
+	location_trigger = {
+		has_building_with_at_least_one_level = sufi_lodge
+	}
+	location_modifier = {
+		local_clergy_estate_power = 8.0
+		local_pop_conversion_speed_modifier = 0.25
+		local_clergy_pop_growth = 0.20
+	}
+	country_modifier = {
+		global_max_literacy = 3
+	}
+	low_zeal_country_modifier = {
+		clergy_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+		peasants_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+	}
+	trait_category = cabinet
+	leader_adm = 20
+	leader_dip = -10
+	leader_mil = -10
+
+	zeal_target_base = 10
+	ai_will_select = {
+		add = 20	# always good
+		
+		add = {
+			value = "scope:actor.modifier:bias_for_scholar_policies"
+			multiply = 2
+		}
+		
+	}
+}
+icd_expressive_calling = {
+	valid_for_types = { icd_sufi_order }
+	holding_goods_demand = icd_orders_expressive_demand
+	preferred_societal_values = { mysticism_focus communalism_focus }
+	location_revenue_modifier = 1.0
+	location_trigger = {
+		has_building_with_at_least_one_level = sufi_lodge
+	}
+	location_modifier = {
+		local_cultural_tradition = 0.2
+		local_pop_assimilation_speed_modifier = 0.3
+	}
+	country_modifier = {
+		global_migration_speed_modifier = 0.1
+	}
+	low_zeal_country_modifier = {
+		clergy_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+		peasants_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+	}
+	trait_category = cabinet
+	leader_adm = -5
+	leader_dip = 12
+	leader_mil = -5
+
+	zeal_target_base = 10
+	ai_will_select = {
+		add = 20	# always good
+		
+		add = {
+			value = "scope:actor.modifier:bias_for_colonialist_policies"
+			multiply = 2
+		}
+	}
+}
+icd_civic_calling = {
+	valid_for_types = { icd_sufi_order }
+	holding_goods_demand = icd_orders_civic_demand
+	preferred_societal_values = { jurisprudence_focus conciliatory_focus }
+	location_revenue_modifier = 1.0
+	location_trigger = {
+		has_building_with_at_least_one_level = sufi_lodge
+	}
+	location_modifier = {
+		local_clergy_estate_power = 8.0
+		local_trade_protection_factor = 0.025
+		local_trade_center_power = 0.1
+		local_merchant_capacity_modifier = 0.1
+	}
+	country_modifier = {
+		trade_range_modifier = 0.15
+	}
+	low_zeal_country_modifier = {
+		clergy_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+		peasants_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+	}
+	trait_category = cabinet
+	leader_adm = 10
+	leader_dip = 10
+	leader_mil = -20
+
+	zeal_target_base = 10
+	ai_will_select = {
+		add = 20	# always good
+		
+		add = {
+			value = "scope:actor.modifier:bias_for_capitalist_policies"
+			multiply = 2
+		}
+		add = {
+			value = "scope:actor.societal_value:capital_economy_vs_traditional_economy"
+			multiply = 2
+		}
+	}
+}
+icd_mortifying_calling = {
+	valid_for_types = { icd_sufi_order }
+	holding_goods_demand = icd_orders_mortifying_demand
+	preferred_societal_values = { mysticism_focus spiritualist_focus }
+	location_revenue_modifier = 1.0
+	location_trigger = {
+		has_building_with_at_least_one_level = sufi_lodge
+	}
+	location_modifier = {
+		local_clergy_estate_power = 8.0
+		local_hostile_attrition = 0.15
+		local_pop_leave_rebels_threshold = -0.1
+	}
+	country_modifier = {
+		global_max_rgo_size_modifier = 0.1
+	}
+	low_zeal_country_modifier = {
+		clergy_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+		peasants_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+	}
+	trait_category = cabinet
+	leader_adm = 10
+	leader_dip = -20
+	leader_mil = 10
+
+	zeal_target_base = 10
+	ai_will_select = {
+		add = 5	# always good
+		
+		add = {
+			value = "scope:actor.modifier:bias_for_militarist_policies"
+			multiply = 0.5
+		}
+	}
+}
+icd_syncretic_calling = {
+	valid_for_types = { icd_sufi_order }
+	holding_goods_demand = icd_orders_syncretic_demand
+	preferred_societal_values = { mysticism_focus humanist_focus }
+	location_revenue_modifier = 1.0
+	location_trigger = {
+		has_building_with_at_least_one_level = sufi_lodge
+	}
+	location_modifier = {
+		local_clergy_estate_power = 8.0
+		pure_tooltip_entry = icd_local_voluntary_conversion_tt
+	}
+	country_modifier = {
+		tolerance_heretic = 0.25
+		tolerance_heathen = 0.25
+	}
+	low_zeal_country_modifier = {
+		clergy_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+		peasants_estate_target_satisfaction = unique_permanent_target_satisfaction_penalty
+	}
+	trait_category = cabinet
+	leader_adm = 10
+	leader_dip = 10
+	leader_mil = -20
+
+	zeal_target_base = 10
+	ai_will_select = {
+		add = 20	# always good
+		
+		add = {
+			value = "scope:actor.modifier:bias_for_tolerant_policies"
+			multiply = 2
+		}
+		
+		if = {
+			limit = { exists = scope:location }
+			if = {
+				limit = {
+					scope:location = {
+						NOT = { dominant_religion.group = religion_group:muslim }
+						any_pop = {
+							is_dhimmi = yes
+							count > 1.0
+						}
+					}
+				}
+				add = 50
+			}
+		}
+	}
+}

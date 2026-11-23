@@ -1,0 +1,50 @@
+﻿## Not hardcoded
+# Modifiers in this file will automatically be applied to all countries
+#	- Tooltips will also be generated
+#	- The AI will also understand them
+
+icd_waqf_impact = {
+	type = country
+	
+	potential_trigger = {
+		num_locations > 0
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+	}
+	
+	scales_with = {
+		value = icd_waqf_country
+	} 
+	
+	hide_effects = no
+	alert = no
+	requires_real = yes
+
+	global_crown_estate_power = -0.003
+	global_pop_conversion_speed_modifier = 0.01
+	clergy_estate_max_tax = -0.01
+	nobles_estate_max_tax = -0.0025
+	global_monthly_development = 0.00002
+}
+icd_nizari = {
+	type = country
+	
+	potential_trigger = {
+		religion = religion:nizari_religion
+		international_organization:icd_nizari_imamate_io = {
+			international_organization_has_leader = yes
+		}
+	}
+	
+	scales_with = {
+		value = icd_nizari_stability_value
+	} 
+	
+	hide_effects = no
+	alert = no
+	requires_real = yes
+
+	monthly_political_influence_gain_modifier = 0.02
+	land_morale_modifier = 0.02
+	global_pop_conversion_speed_modifier = 0.025
+}

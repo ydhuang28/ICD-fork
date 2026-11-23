@@ -1,0 +1,66 @@
+organization_religious_theme = {
+
+	blockoverride "card_header_button_header_content" { # Remove leave/join/invite IO icon + add member icon
+        margin_left = 18
+        icon = {
+            size = { 30 30 }
+            block "card_header_button_icon_texture" {
+                texture = "gfx/interface/icons/religious_doctrines/catholic/religious_actions.dds"
+            }
+            texture_density = 2
+            glow = {
+                name = "drop_shadow"
+                glow_radius = 3
+                color = {0.0 0.0 0.0 1.0}
+                alpha = 0.3
+            }
+        }
+        block "card_header_button_text_single" {
+            text_single = {
+                margin_left = 7
+                block "card_header_button_raw_text" {
+                    raw_text = "IO or Situation"
+                }
+            }
+        }
+        expand = {}
+    }
+	
+	blockoverride "country_header_character_visible" {
+   		visible = "[GetGlobalVariable('icd_current_caliph').IsSet]" ###change this up, different variable that applies to the country and is just the leader unless you got the abbasid caliph in place - in which case applies to the abbasid###
+    }
+   	blockoverride "country_header_character_context" {
+        datacontext = "[GetGlobalVariable('icd_current_caliph').GetCharacter]"
+    }
+    blockoverride "extra_titles_flag_overview" { }
+	blockoverride "country_header_character_name" {
+        datacontext = "[GetGlobalVariable('icd_current_caliph').GetCharacter]"
+        margin = {2 0}
+		character_label_name = {
+			margin_left = 0
+			margin_right = 10
+            blockoverride "character_label_name_extra" {
+                country_flag_small = {
+                    datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
+                }
+            }
+            blockoverride "character_name_text" {
+                raw_text = "[Character.GetNameToFit('(int32)40', '(bool)yes')]"
+            }
+		}
+    }
+
+	blockoverride "country_header_extra" {
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 10 10 }
+			spacing = 8
+
+			expand = {}
+		}
+	}
+
+	
+	
+}

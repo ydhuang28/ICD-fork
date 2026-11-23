@@ -1,0 +1,41 @@
+﻿namespace = flavor_mor
+
+flavor_mor.35 = {
+	type = country_event
+	title = flavor_mor.35.title
+	desc = flavor_mor.35.desc
+	outcome = neutral
+	
+	orphan = yes
+	fire_only_once = yes
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		religion.group = religion_group:muslim
+		always = no
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		set_global_variable = isawiyya_founded
+	}
+
+	option = {
+		name = flavor_mor.35.a
+
+		custom_tooltip = mor_unlock_isawiyya_school_tt
+	}
+
+	option = {
+		name = flavor_mor.35.b
+
+	change_societal_value = { type = mysticism_vs_jurisprudence value = societal_value_move_to_left }
+		set_religious_school = religious_school:isawiyya_school
+
+		custom_tooltip = mor_unlock_isawiyya_school_tt
+	}
+}

@@ -1,0 +1,47 @@
+﻿icd_waqf_action = { 
+	type = religious
+	show_message = no
+
+	sound = UI_action_religion_generic
+	
+	potential = {
+		scope:actor = {
+			religion.group = religion_group:muslim
+			has_variable = icd_waqf_base_var
+			num_locations > 0
+		}
+	}
+	
+	allow = {
+	}
+
+	price = price:icd_dhimmi_price
+
+	ai_tick = never
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+	}
+	
+	effect = {
+		scope:actor = {
+			trigger_event_silently = icd_muslim_events.2000
+		}
+	}
+	
+	ai_will_do = {
+		#base
+		if = {
+			limit = {
+				has_variable = icd_waqf_base_var
+				var:icd_waqf_base_var > 60
+			}
+		}
+	}
+}

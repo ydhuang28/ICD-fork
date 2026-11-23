@@ -1,5 +1,6 @@
 ﻿icd_muslim_dhimmi_choose = {
 	type = religious
+	show_message = no
 
 	sound = UI_action_religion_generic
 	

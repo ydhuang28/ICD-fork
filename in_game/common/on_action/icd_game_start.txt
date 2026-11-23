@@ -30,6 +30,7 @@ icd_culture_on_action = {
 		icd_politics_setup = yes
 		icd_romani_setup = yes
 		icd_religious_view_setup = yes
+		icd_create_nizari_imamate = yes
 	}
 
 }
@@ -88,6 +89,25 @@ icd_destroy_movements = {
 			every_movement_in_culture = {
 				destroy_movement = yes
 			}
+		}
+		religion:shia = {
+			every_movement_in_religion = {
+				destroy_movement = yes
+			}
+		}
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				every_location_in_religious_order = {
+					remove_religious_order = prev
+				}
+			}
+		}
+		every_country = {
+			limit = { religion.group = religion_group:muslim }
+			trigger_event_silently = icd_muslim_events.26
 		}
 	}
 }

@@ -1,0 +1,13 @@
+﻿
+icd_consultation = {
+	type = country
+	allow = {
+		religion.group = religion_group:muslim
+	}
+	modifier = {
+		has_a_parliamentary_system = yes
+		clergy_estate_can_participate_in_parliament = yes
+		clergy_estate_agenda_impact = 0.1
+	}
+}
+ 

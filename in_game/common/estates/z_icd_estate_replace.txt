@@ -1,5 +1,5 @@
 ﻿
-REPLACE:tribes_estate = {
+TRY_REPLACE:tribes_estate = {
 	color = pop_tribes
 	tax_per_pop = 0.01
 	rival = -0.01

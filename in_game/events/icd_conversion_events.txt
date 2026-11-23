@@ -339,8 +339,8 @@ icd_conversion_events.1 = { #
 	type = country_event
 	hide_portraits = yes
 	fire_only_once = yes
-	title = icd_muslim_events.1.title
-	desc = icd_muslim_events.1.desc
+	title = icd_conversion_events.1.title
+	desc = icd_conversion_events.1.desc
 	outcome = neutral
 		
 	trigger = {
@@ -396,7 +396,7 @@ icd_conversion_events.1 = { #
 	}
 
 	option = {
-		name = icd_muslim_events.1.a
+		name = icd_conversion_events.1.a
 
 		custom_tooltip = icd_bosnian_conversion_tt
 		set_variable = icd_bosnian_conversion
@@ -407,7 +407,7 @@ icd_conversion_events.1 = { #
 	}
 	
 	option = {
-		name = icd_muslim_events.1.b
+		name = icd_conversion_events.1.b
 
 		add_estate_satisfaction = { type = estate_type:dhimmi_estate value = estate_satisfaction_severe_bonus }
 	}

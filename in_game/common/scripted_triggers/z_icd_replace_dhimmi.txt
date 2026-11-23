@@ -29,6 +29,16 @@
 			owner ?= { NOT = { has_variable = icd_buddhist_dhimmi_disabled }  }
 		}
 	}
+	OR = {
+		NOT = { pop_type = pop_type:nobles }
+		owner ?= { has_estate_privilege = estate_privilege:dhimmi_promote_dhimmi_hierarchy }
+		AND = {
+			owner ?= { has_estate_privilege = estate_privilege:dhimmi_administrative_posts }
+			location ?= {
+				NOT = { integration_level = core }
+			}
+		}
+	}
 	owner ?= { 
 		religion.group = religion_group:muslim
 	}

@@ -1,0 +1,16 @@
+﻿
+
+icd_opinion_madhhab_disfavoured = {
+	value = -35
+	yearly_decay = 5
+}
+icd_opinion_madhhab_favoured = {
+	value = 60
+	yearly_decay = 5
+}
+io_opinion_icd_sunni_caliphate = {
+	value = 0
+}
+io_opinion_icd_nizari_imamate_io = {
+	value = 90
+}

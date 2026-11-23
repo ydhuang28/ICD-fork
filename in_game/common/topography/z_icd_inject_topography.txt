@@ -1,5 +1,5 @@
 ﻿
-INJECT:mountains = {
+TRY_INJECT:mountains = {
 	location_modifier = { 
 		local_pop_assimilation_speed_modifier = -0.75
 		local_tribal_promotion = -0.1
@@ -7,13 +7,13 @@ INJECT:mountains = {
 	}
 }
 
-INJECT:hills = {
+TRY_INJECT:hills = {
 	location_modifier = { 
 		local_pop_assimilation_speed_modifier = -0.25
 	}
 }
 
-INJECT:wetlands = {
+TRY_INJECT:wetlands = {
 	location_modifier = { 
 		local_pop_assimilation_speed_modifier = -0.50
 		local_tribal_promotion = -0.05

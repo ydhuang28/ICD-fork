@@ -1,0 +1,40 @@
+﻿icd_mahdist_calling = {
+	valid_for_types = { icd_militant_sufi_order }
+	holding_goods_demand = icd_mahdist_order_demand
+	preferred_societal_values = { mysticism_focus belligerent_focus }
+	location_revenue_modifier = 1.0
+	location_trigger = {
+		OR = {
+			dominant_religion = religion:sunni
+			dominant_religion = religion:shia
+		}
+		OR = {
+			location_rank ?= location_rank:city
+			location_rank ?= location_rank:megalopolis
+			location_rank ?= location_rank:town
+		}
+	}
+	location_modifier = {
+		local_crown_estate_power = -0.5
+		local_pop_join_rebel_threshold = 0.1
+		local_levy_size_modifier = 1.0
+		local_manpower = 0.005
+	}
+	country_modifier = {
+		army_maintenance_efficiency = 0.1
+		tribes_estate_levy_size = 0.1
+	}
+	low_zeal_country_modifier = {
+		global_mercenaries_modifier = 0.25
+	}
+	trait_category = general
+	leader_adm = -5
+	leader_dip = 0
+	leader_mil = 20
+
+	zeal_target_base = 10
+	ai_will_select = {
+		add = -20
+		
+	}
+}

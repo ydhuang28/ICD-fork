@@ -1,5 +1,5 @@
 ﻿
-REPLACE:sect_name = {
+TRY_REPLACE:sect_name = {
 	type = international_organization
 
 	text = {

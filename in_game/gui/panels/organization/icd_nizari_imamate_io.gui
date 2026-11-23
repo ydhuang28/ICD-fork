@@ -1,0 +1,42 @@
+organization_religious_theme = {
+
+	blockoverride "card_header_button_header_content" { # Remove leave/join/invite IO icon + add member icon
+        margin_left = 18
+        icon = {
+            size = { 30 30 }
+            block "card_header_button_icon_texture" {
+                texture = "gfx/interface/icons/religious_doctrines/catholic/religious_actions.dds"
+            }
+            texture_density = 2
+            glow = {
+                name = "drop_shadow"
+                glow_radius = 3
+                color = {0.0 0.0 0.0 1.0}
+                alpha = 0.3
+            }
+        }
+        block "card_header_button_text_single" {
+            text_single = {
+                margin_left = 7
+                block "card_header_button_raw_text" {
+                    raw_text = "IO or Situation"
+                }
+            }
+        }
+        expand = {}
+    }
+
+	blockoverride "country_header_extra" {
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 10 10 }
+			spacing = 8
+
+			expand = {}
+		}
+	}
+
+	
+	
+}

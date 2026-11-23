@@ -1,0 +1,107 @@
+﻿sufi_shiite_messianism = { ##ardabil spawn in haresabad
+	religion = shia
+
+	potential = {
+	}
+
+	allow = {
+		custom_tooltip = {
+			text = sufi_shiite_messianism_allow_tt
+			always = no
+		}
+	}
+
+	monthly_spawn_chance = {
+		value = 0	
+	}
+	
+	spawn = {
+	}
+
+	#what's done by spreaders
+	environmental_infection = {
+		value = 0.05
+	}
+	
+	required_cultures = { iraqi_culture khorasani_culture turkoman_culture turkmen_culture mongolian_culture oirat_culture azeri_culture 
+		kurdish_culture lur_culture
+	}
+	required_pop_types = { tribesmen laborers }
+	required_religions = {
+		sunni
+		tengri
+	}
+	
+	calc_interval_days = 90
+
+	r0 = {
+		if = {
+			limit = {
+				NOT = {
+					region = region:crescent_region
+					region = region:anatolia_region
+					region = region:caucasus_region
+					region = region:persia_region
+					region = region:western_india_region
+					region = region:khorasan_region
+				}
+			}
+			value = 0
+		}
+		else_if = {
+			limit = {
+				religion:sunni = {
+					any_religious_order_in_religion = {
+						order_calling ?= calling:icd_mahdist_calling
+						any_location_in_religious_order = {
+							this = root
+						}
+					}
+				}
+			}
+			value = { 0.0 0.02 }
+		}
+		else_if = {
+			limit = { dominant_religion ?= religion:shia }
+			value = { 0.0 0.001 }
+		}
+		else = {
+			value = { 0.0 0.01 }
+		}
+	}
+
+	# Only pops of these religions can convert to Lutheranism
+	
+	local_control = negative
+	pop_satisfaction = negative
+
+	location_spread_threshold = { value = 0.01 }
+
+	#on_spread_to_country = {
+		#
+	#}
+
+	map_color = {
+		if = {
+			limit = {
+				"religion_percentage(religion:shia)" = 0
+			}
+			value = define:NMapColors|MAP_COLOR_NULL
+		}
+		else_if = {
+			limit = {
+				dominant_religion = religion:shia
+			}
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = {
+				"religion_percentage(religion:shia)" > 0.1
+			}
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+	}
+}

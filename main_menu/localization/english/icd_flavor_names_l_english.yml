@@ -1,0 +1,23 @@
+﻿l_english:
+ 
+ clergy_estate_buddhist_austroasiatic: "Sang"
+ clergy_estate_tengri: "Böge"
+ clergy_estate_tibetan_buddhism: "Lamas"
+ clergy_estate_nusantaran_hindu: "Paṇḍita"
+ clergy_estate_southern_mahayana: "Azhali"
+ clergy_estate_sanjiao_chinese: "Sēngdào"
+ clergy_estate_sanjiao_korean: "Seungga"
+ clergy_estate_sanjiao_vietnamese: "Tăng già"
+ clergy_estate_alawite: "Khassa"
+ 
+ 
+
+ icd_consultation: "Consultation"
+ icd_consultation_desc: "Islamic empires that utilise the Iqta system do not have large aristocracies sufficiently independent of the state to defend their rights in typical parliamentary structures. Instead, Muslim rulers are relatively free to do what they wish, though they usually seek to consult powerful elites first to avoid backlash."
+ icd_protection_from_confiscation: "Protection from Confiscation"
+ icd_protection_from_confiscation_desc: "Secure a considerable number of noble estates under private ownership agreements, rather than the usual Iqta system, thereby increasing the security and trust of the elites in our state."
+ icd_reformer: "Reformer"
+ icd_reformer_die_desc: "Chance"
+ desc_icd_reformer: "A character who defies the paradigm in theology and seeks to change the way faith is upheld."
+ cb_icd_caliph_conquest: "Duel of Caliphates"
+ cb_icd_caliph_conquest_desc: "A large-scale invasion of an equally powerful Islamic state."

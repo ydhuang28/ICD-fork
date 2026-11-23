@@ -1,0 +1,235 @@
+﻿icd_demand_allegiance = {
+	type = diplomacy
+	category = CATEGORY_CALIPHATE_ACTIONS
+
+	potential = {
+		scope:actor = {
+			is_leader_of_international_organization = international_organization:icd_sunni_caliphate
+		}
+	}
+
+	allow = {
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		ai_interaction_source_list = {
+			scope:actor = {
+				ordered_neighbor_country = {
+					limit = {
+						religion = religion:sunni
+					}
+					order_by = {
+						value = military_strength
+						multiply = -1
+					}
+					max = 3
+					check_range_bounds = no
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = recipient
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		column = {
+			data = name
+		}
+		visible = {
+			root != scope:actor
+			religion = religion:sunni
+			is_subject = no
+			NOT = {
+				has_special_status_in_international_organization = {
+					type = special_status:icd_caliphate_claimant
+					international_organization = international_organization:icd_sunni_caliphate
+				}
+			}
+			num_locations < 100
+			
+			OR = {
+				is_neighbor_of = scope:actor
+				AND = {
+					scope:actor = {
+						has_ports = yes
+					}
+					has_ports = yes
+				}
+			}
+		}
+	}
+
+	effect = {
+		scope:recipient = {
+			make_subject_of = {
+				target = scope:actor
+				type = subject_type:tributary
+			}
+		}
+	}
+	
+	ai_will_do = {
+		add = {
+			desc = "TARGET_ACCEPTANCE"
+			value = "scope:actor.country_interaction_acceptance(country_interaction:icd_demand_allegiance|scope:recipient)"
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					has_cooldown = icd_spam_protection_tribute
+				}
+			}
+			value = -500
+		}
+	}
+	
+	accept = {
+		add = {
+			desc = "BASE_RELUCTANCE"
+			value = -100
+		}
+		add = {
+			desc = "THEIR_OPINION_TOOLTIP"
+			value = "scope:recipient.opinion(scope:actor)"
+		}
+		add = {
+			desc = "ICD_THEIR_STRENGTH"
+			value = scope:recipient.country_strength
+			multiply = -4
+		}
+		add = {
+			desc = "ICD_OUR_STRENGTH"
+			value = scope:actor.country_strength
+		}
+	}
+	reject_effect = {
+		hidden_effect = {
+			scope:actor = {
+				add_cooldown = {
+					type = icd_spam_protection_tribute
+					years = 50
+				}
+			}
+		}
+	}
+}
+
+
+icd_petition_for_support = {
+	type = diplomacy
+	category = CATEGORY_CALIPHATE_ACTIONS
+
+	potential = {
+		scope:actor = {
+			NOT = {
+				has_special_status_in_international_organization = {
+					type = special_status:icd_caliphate_claimant
+					international_organization = international_organization:icd_sunni_caliphate
+				}
+			}
+			religion = religion:sunni
+			is_subject = no
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			OR = {
+				is_ai = no
+				NOT = {
+					has_global_variable = icd_claimed_gold
+				}
+			}
+		}
+	}
+	
+	cooldown = {  
+		type = ask_for_money
+		years = 10
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = recipient
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		column = {
+			data = name
+		}
+		visible = {
+			is_leader_of_international_organization = international_organization:icd_sunni_caliphate
+		}
+		enabled = {
+			gold >= {
+				value = scope:actor.country_tax_base
+				min = scope:recipient.country_tax_base
+			}
+		}
+	}
+
+	effect = {
+		scope:recipient = {
+			add_gold = {
+				value = scope:recipient.country_tax_base
+				max = {
+					value = scope:actor.country_tax_base
+					multiply = 4
+				}
+				multiply = -1
+			}
+		}
+		scope:actor = {
+			add_gold = {
+				value = scope:recipient.country_tax_base
+				max = {
+					value = scope:actor.country_tax_base
+					multiply = 4
+				}
+			}
+		}
+		hidden_effect = {
+			if= {
+				limit = {
+					scope:actor = {
+						is_ai = yes
+					}
+				}
+				set_global_variable = {
+					name = icd_claimed_gold
+					years = 70
+				}
+			}
+		}
+	}
+	
+	ai_will_do = {
+		if = {
+			limit = {
+				scope:actor = {	
+					monthly_balance < 0
+				}
+			}
+			add = {
+				value = 10
+			}
+		}
+		add = {
+			desc = "TARGET_ACCEPTANCE"
+			value = "scope:actor.country_interaction_acceptance(country_interaction:icd_demand_allegiance|scope:recipient)"
+		}
+		if = {
+			limit = {
+				has_global_variable = icd_claimed_gold
+			}
+			value = -1000
+		}
+	}
+	
+	diplo_chance = {
+		base = -15
+		in_debt = -100
+		opinion = 0.1
+	}
+}
+
+

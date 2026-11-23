@@ -16,7 +16,9 @@
  game_concept_protected_religion_desc: "Protected religions are religions protected from [forced_conversion|e]. Religions can be protected by specific [policies|e], being part of the [ShowEstateTypeName('dhimmi_estate')] or a country having high [heathenry_tolerance|e] or [heretic_tolerance|e]. High [heathenry_tolerance|e] or [heretic_tolerance|e] blocks conversion based on religion opinion:\n\nA religion viewed as #color_white Kindred#! is protected at or above -1.5 [tolerance|e]\nA religion viewed as #color_white Positive#! is protected at or above -0.5 [tolerance|e]\nA religion viewed as #color_white Neutral#! is protected at or above 0 [tolerance|e]\nA religion viewed as #color_white Negative#! is protected at or above 0.5 [tolerance|e]\nA religion viewed as #color_white Enemy#! is protected at or above 1.5 [tolerance|e]."
  game_concept_icd_forces: "Forces"
  game_concept_forcefully_converted: "Forcefully Converted"
- 
+ game_concept_waqf_distribution: "Waqf Distribution"
+ game_concept_waqf: "Waqf"
+ game_concept_waqf_distribution_desc: "Our Waqf Distribution represents the amount of awqaf/waqfs in our territory - a type of Islamic irrevocable and untaxeable endowment, usually consisting of land and property. The larger our distribution, the less maximum tax we can demand from the [ShowEstateTypeName('clergy_estate')] and from the [ShowEstateTypeName('nobles_estate')] and our [crown_power|e] also decreases. However, our [development|e] gain increases with a higher waqf, as does our [conversion|e] speed.\n\nThere is only one way to reliably reduce waqf outside of unique events: by forcefully and systematically dismantling it under the 'Manage Waqf Distribution' action in the religion tab. This comes with a heavy price, however."
  
  
  

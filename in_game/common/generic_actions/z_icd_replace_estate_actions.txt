@@ -1,0 +1,339 @@
+﻿TRY_REPLACE:extraordinary_taxes = {
+	icon = extraordinary_taxes
+	type = owncountry
+	estate_interaction_action = yes
+
+	ai_tick = daily
+	ai_tick_frequency = 180
+	automation_tick = never
+
+	potential = {
+		scope:actor = {
+			any_estate = {
+				estate_tax_base > 0.01
+			}
+		}
+	}
+
+	allow = {
+	}
+
+	cooldown = {
+		type = extraordinary_taxes_cooldown
+		years = 5
+	}
+
+	price = price:extraordinary_taxes
+	price_modifier = {
+		add = {
+			value = 1
+			desc = BASE_VALUE
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					is_in_defensive_war = yes
+				}
+			}
+			multiply = {
+				value = 0.5
+				desc = estate_emergency_war_defender_discount
+			}
+		}
+	}
+
+	# Catholic clergy is tax-free by religion definition (christian.txt: clergy_estate_max_tax = -1.0).
+	# Block the clergy target for Catholic actors so the +5% emergency modifier cannot bypass that rule.
+	select_trigger = {
+		looking_for_a = estate
+		source = actor
+		target_flag = target
+		name = "mission_select_estate"
+		column = {
+			data = name
+		}
+		enabled = {
+			estate_tax_base > 0.01
+			NOR = {
+				AND = {
+					estate_type = estate_type:clergy_estate
+					scope:actor = { religion = religion:catholic }
+				}
+			}
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			
+			if = {
+				limit = {
+					religion.group = religion_group:muslim
+				}
+				if = {
+					limit = { has_variable = icd_waqf_base_var 
+						var:icd_waqf_base_var < 100
+					}
+					change_variable = {
+						name = icd_waqf_base_var
+						add = {
+							value = scope:actor.icd_waqf_change
+							min = 0
+						}
+					}
+				}
+				if = {
+					limit = { NOT = { has_variable = icd_waqf_base_var } }
+					set_variable = {
+						name = icd_waqf_base_var
+						value = {
+							value = scope:actor.icd_waqf_change
+							min = 0
+						}
+					}
+				}
+			}
+		
+		
+			if = {
+				limit = { scope:target = { estate_type = estate_type:nobles_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_nobles
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			else_if = {
+				limit = { scope:target = { estate_type = estate_type:burghers_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_burghers
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			else_if = {
+				limit = { scope:target = { estate_type = estate_type:clergy_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_clergy
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			else_if = {
+				limit = { scope:target = { estate_type = estate_type:peasants_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_peasants
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			else_if = {
+				limit = { scope:target = { estate_type = estate_type:tribes_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_tribes
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			else_if = {
+				limit = { scope:target = { estate_type = estate_type:dhimmi_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_dhimmi
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			else_if = {
+				limit = { scope:target = { estate_type = estate_type:cossacks_estate } }
+				add_country_modifier = {
+					modifier = estate_emergency_taxes_cossacks
+					months = 12
+					mode = add_and_extend
+				}
+			}
+			if = {
+				limit = {
+					scope:actor = {
+						is_in_defensive_war = yes
+					}
+				}
+				add_estate_satisfaction = {
+					type = scope:target.estate_type
+					value = -0.0625
+				}
+			}
+			else = {
+				add_estate_satisfaction = {
+					type = scope:target.estate_type
+					value = -0.125
+				}
+			}
+		}
+	}
+
+	ai_prerequisite = {
+		OR = {
+			AND = {
+				monthly_balance < -2
+				gold < 100
+			}
+			AND = {
+				at_war = yes
+				gold < 10
+			}
+		}
+		any_estate = { satisfaction > 0.55 }
+		political_influence >= 100
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				exists = scope:target
+				scope:target = { satisfaction > 0.55 }
+				scope:actor = {
+					OR = {
+						AND = { monthly_balance < -2 gold < 100 }
+						AND = { at_war = yes gold < 10 }
+					}
+				}
+			}
+
+			if = {
+				limit = { scope:actor = { monthly_balance < 0 } }
+				subtract = {
+					desc = "Monthly deficit"
+					value = scope:actor.monthly_balance
+				}
+			}
+
+			if = {
+				limit = { scope:actor = { at_war = yes lowest_war_score < 0 } }
+				add = { desc = "At war and losing" value = 15 }
+			}
+
+			add = {
+				desc = "Estate satisfaction buffer"
+				value = scope:target.satisfaction
+				multiply = 20
+			}
+
+			if = {
+				limit = { scope:target = { satisfaction < 0.55 } }
+				multiply = 0
+			}
+		}
+	}
+}
+
+TRY_REPLACE:call_emergency_parliament = {
+	icon = call_emergency_parliament
+	type = owncountry
+	estate_interaction_action = yes
+
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		scope:actor = {
+			has_parliament = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			is_active_parliament = no
+			months_since_last_parliament_called <= "define:NCountry|PARLIAMENT_COOLDOWN_MONTHS"
+			at_war = yes
+			NOT = {
+				modifier:parliament_abolished = yes
+				modifier:has_a_parliamentary_system = no
+			}
+		}
+	}
+
+	cooldown = {
+		type = call_emergency_parliament_cooldown
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = parliament_issue
+		interaction_source_list = {
+			scope:actor = {
+				every_possible_parliament_issue = {
+					add_to_list = source
+				}
+			}
+		}
+		cache_interaction_source_list = yes
+		cache_targets = yes
+		target_flag = parliament_issue
+		name = "select_parliament_debate"
+		none_available_msg_key = "select_parliament_debate_none_available"
+		column = {
+			data = parliament_issue_widget
+		}
+		visible = {
+			is_available_for = scope:actor
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_parliament_location = scope:actor.capital
+			set_parliament_active = yes
+			if = {
+				limit = { exists = scope:parliament_issue }
+				set_parliament_issue = scope:parliament_issue
+				set_parliament_issue_support = {
+					add = {
+						desc = parliament_base_support
+						value = modifier:parliament_base_support
+					}
+					if = {
+						limit = {
+							scope:parliament_issue.estate_type = {
+								always_loyal = no
+							}
+						}
+						add = {
+							desc = estate_power
+							value = "estate_power(scope:parliament_issue.estate_type)"
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					religion.group = religion_group:muslim
+				}
+				if = {
+					limit = { has_variable = icd_waqf_base_var 
+						var:icd_waqf_base_var < 100
+					}
+					change_variable = {
+						name = icd_waqf_base_var
+						add = {
+							value = scope:actor.icd_waqf_change
+							min = 0
+						}
+					}
+				}
+				if = {
+					limit = { NOT = { has_variable = icd_waqf_base_var } }
+					set_variable = {
+						name = icd_waqf_base_var
+						value = {
+							value = scope:actor.icd_waqf_change
+							subtract = parliament_issue_support
+							min = 0
+						}
+					}
+				}
+			}
+			add_legitimacy = legitimacy_mild_penalty
+			add_political_influence = political_influence_severe_penalty
+		}
+	}
+}

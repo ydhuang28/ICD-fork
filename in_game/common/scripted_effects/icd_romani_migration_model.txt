@@ -28,8 +28,8 @@ icd_romani_migration_effect = {
 			
 			if = {
 				limit = {
-					NOT = {
-						this.owner = {
+					this.owner = {
+						NOT = {
 							has_estate_privilege = estate_privilege:icd_romani_slaves
 							has_estate_privilege = estate_privilege:icd_anti_romani_laws
 							has_estate_privilege = estate_privilege:icd_romani_craftsmen
@@ -85,8 +85,8 @@ icd_romani_migration_effect_region = {
 			
 			if = {
 				limit = {
-					NOT = {
-						this.owner = {
+					this.owner = {
+						NOT = {
 							has_estate_privilege = estate_privilege:icd_romani_slaves
 							has_estate_privilege = estate_privilege:icd_anti_romani_laws
 							has_estate_privilege = estate_privilege:icd_romani_craftsmen

@@ -1,0 +1,545 @@
+﻿icd_send_imam_support = { ######
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	automation_tick = never
+	automation_tick_frequency = 12
+
+
+	potential = {
+		scope:actor = {
+			NOT = {
+				this = international_organization:icd_nizari_imamate_io.leader_country
+			}
+			religion = religion:nizari_religion
+		}
+	}
+
+	allow = {
+		international_organization:icd_nizari_imamate_io = {
+			international_organization_has_leader = yes
+		}
+	}
+	
+	cooldown = {
+		type = icd_send_imam_support_cooldown
+		years = 5
+	}
+
+	price = price:icd_nothing_price
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:icd_nizari_imamate_io
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:actor }
+			scope:actor = {
+				add_stability = -15
+				add_government_power = -15
+			}
+			scope:recipient.leader_country = {
+				add_stability = 15
+				add_legitimacy = 15
+			}
+		}
+	}
+	ai_will_do = {
+		if = {
+			limit = {
+				international_organization:icd_nizari_imamate_io.leader_country = {
+					OR = {
+						stability = 0
+						legitimacy = 0
+					}
+				}
+			}
+			value = 500
+		}
+	}
+}
+
+icd_request_a_dawa = { ######
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	automation_tick = never
+	automation_tick_frequency = 12
+
+
+	potential = {
+		scope:actor = {
+			NOT = {
+				this = international_organization:icd_nizari_imamate_io.leader_country
+			}
+			religion = religion:nizari_religion
+		}
+	}
+
+	allow = {
+		international_organization:icd_nizari_imamate_io = {
+			international_organization_has_leader = yes
+		}
+		scope:actor = {
+			favors = {
+				target = international_organization:icd_nizari_imamate_io.leader_country
+				value >= 15
+			}
+		}
+	}
+	
+	cooldown = {
+		type = icd_request_a_dawa_cooldown
+		years = 10
+	}
+
+	price = price:icd_nothing_price
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:icd_nizari_imamate_io
+		}
+	}
+	
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					limit = { NOT = { has_building_with_at_least_one_level = icd_jamatkhana } }
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "choose_location"
+		none_available_msg_key = "no_locations_available"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		visible = {
+			has_owner = yes
+			owner ?= scope:actor
+			NOT = { has_building_with_at_least_one_level = icd_jamatkhana }
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+			NOT = {
+				province = {
+					any_location_in_province = {
+						has_building_with_at_least_one_level = icd_jamatkhana
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:actor }
+			scope:actor = {
+				add_gold = -50
+				add_favors = {
+					target = international_organization:icd_nizari_imamate_io.leader_country
+					value = -15
+				}
+			}
+			scope:target_location = {
+				change_building_level_in_location = {
+					building = building_type:icd_jamatkhana
+					value = 1
+					owner = international_organization:icd_nizari_imamate_io.leader_country
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		value = 500
+	}
+}
+
+icd_seek_an_interpretation = { ######
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	automation_tick = never
+	automation_tick_frequency = 12
+
+
+	potential = {
+		scope:actor = {
+			NOT = {
+				this = international_organization:icd_nizari_imamate_io.leader_country
+			}
+			religion = religion:nizari_religion
+		}
+	}
+
+	allow = {
+		international_organization:icd_nizari_imamate_io = {
+			international_organization_has_leader = yes
+		}
+		scope:actor = {
+			favors = {
+				target = international_organization:icd_nizari_imamate_io.leader_country
+				value >= 40
+			}
+		}
+	}
+	
+	cooldown = {
+		type = icd_seek_an_interpretation_cooldown
+		years = 20
+	}
+
+	price = price:icd_nothing_price
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:icd_nizari_imamate_io
+		}
+	}
+	
+	select_trigger = {
+		looking_for_a = law
+		interaction_source_list = {
+			scope:actor = {
+				every_current_law = {
+					limit = { NOT = { is_locked_for = scope:actor } }
+					add_to_list = source
+				}
+			}
+		}
+		ai_interaction_source_list = {
+			scope:actor = {
+				every_current_law = {
+					limit = { 
+						NOT = { is_locked_for = scope:actor }
+						is_ai_preferred_parliament_change_law = scope:actor
+					}
+					add_to_list = source
+				}
+			}
+		}
+		cache_interaction_source_list = yes
+		target_flag = target_law
+		name = "ask_for_law_changes_select_law_title"
+		none_available_msg_key = "no_valid_laws"
+		column = {
+			data = law_attribute_column
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = policy
+		interaction_source_list = {
+			scope:target_law = {
+				every_policy_in_law = {
+					limit = {
+						policy_possible_for_country = scope:actor
+					}
+					add_to_list = source
+				}
+			}
+		}
+		ai_interaction_source_list = {
+			scope:target_law = {
+				every_policy_in_law = {
+					limit = { is_ai_preferred_parliament_change_policy = scope:actor }
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_policy
+		name = "ask_for_law_changes_select_policies_title"
+		none_available_msg_key = "no_valid_policies"
+		top_widget = law_card_header_at_parlaiment_policy_select
+		column = {
+			data = policy_name_desc
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:actor }
+			scope:actor = {
+				add_favors = {
+					target = international_organization:icd_nizari_imamate_io.leader_country
+					value = -40
+				}
+			}
+			scope:actor = {
+				if = {
+					limit = {
+						exists = scope:target_law
+						exists = scope:target_policy
+					}
+					add_policy = scope:target_policy
+				}
+				else = {
+					custom_tooltip = ask_for_law_changes_select_law_title
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		value = 500
+	}
+}
+
+icd_nizari_denounce_sect = { ######
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	automation_tick = never
+	automation_tick_frequency = 20
+
+
+	potential = {
+		scope:actor = {
+			NOT = {
+				this = international_organization:icd_nizari_imamate_io.leader_country
+			}
+			religion = religion:nizari_religion
+		}
+	}
+
+	allow = {
+		international_organization:icd_nizari_imamate_io = {
+			international_organization_has_leader = yes
+		}
+		scope:actor = {
+			favors = {
+				target = international_organization:icd_nizari_imamate_io.leader_country
+				value >= 5
+			}
+		}
+	}
+	
+	cooldown = {
+		type = icd_nizari_denounce_sect_cooldown
+		years = 1
+	}
+	
+	
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:icd_nizari_imamate_io
+		}
+	}
+		
+	select_trigger = {
+		looking_for_a = religion
+		target_flag = target_religion
+		source_ai_override = actor
+		name = "promote_religion_select_religion"
+		none_available_msg_key = "convert_religion_no_religions"
+		column = {
+			data = name
+		}
+		column = {
+			data = religion_percentage_in_country
+		}
+		default_sort = religion_percentage_in_country
+		visible = {
+			this != religion:nizari_religion
+			group = religion_group:muslim
+			is_religion_enabled = yes
+			reverse_religious_view = {
+				target = religion:nizari_religion
+				value > negative
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = { exists = scope:actor }
+			scope:actor = {
+				add_favors = {
+					target = international_organization:icd_nizari_imamate_io.leader_country
+					value = -5
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:target_religion }
+			scope:target_religion = {
+				reverse_set_religious_view = {
+					target = religion:nizari_religion
+					value = negative
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		value = -50 #Base value
+		
+	}
+}
+
+icd_nizari_ecumenics = { ######
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	automation_tick = never
+	automation_tick_frequency = 20
+
+
+	
+	potential = {
+		scope:actor = {
+			NOT = {
+				this = international_organization:icd_nizari_imamate_io.leader_country
+			}
+			religion = religion:nizari_religion
+		}
+	}
+
+	allow = {
+		international_organization:icd_nizari_imamate_io = {
+			international_organization_has_leader = yes
+		}
+		scope:actor = {
+			favors = {
+				target = international_organization:icd_nizari_imamate_io.leader_country
+				value >= 5
+			}
+		}
+	}
+	
+	cooldown = {
+		type = icd_nizari_denounce_sect_cooldown
+		years = 1
+	}
+	
+	
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:icd_nizari_imamate_io
+		}
+	}
+		
+	select_trigger = {
+		looking_for_a = religion
+		target_flag = target_religion
+		source_ai_override = actor
+		name = "promote_religion_select_religion"
+		none_available_msg_key = "convert_religion_no_religions"
+		column = {
+			data = name
+		}
+		column = {
+			data = religion_percentage_in_country
+		}
+		default_sort = religion_percentage_in_country
+		visible = {
+			this != religion:nizari_religion
+			group = religion_group:muslim
+			is_religion_enabled = yes
+			reverse_religious_view = {
+				target = religion:nizari_religion
+				value < neutral
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = { exists = scope:actor }
+			scope:actor = {
+				add_favors = {
+					target = international_organization:icd_nizari_imamate_io.leader_country
+					value = -5
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:target_religion  }
+			if = {
+				limit = {
+					scope:target_religion = {
+						OR = {
+							this = religion:zaydi_religion
+							this = religion:mustali_religion
+							this = religion:shia
+						}
+					}
+				}
+				scope:target_religion = {
+					reverse_set_religious_view = {
+						target = religion:nizari_religion
+						value = positive
+					}
+				}
+			}
+			else = {
+				scope:target_religion = {
+					reverse_set_religious_view = {
+						target = religion:nizari_religion
+						value = neutral
+					}
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		value = -500
+	}
+}
+

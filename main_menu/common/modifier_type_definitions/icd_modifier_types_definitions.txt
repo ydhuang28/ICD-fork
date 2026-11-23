@@ -11,6 +11,24 @@ icd_expel_minority_price_cost_modifier={
 		category=country
 	}
 }
+icd_religious_order_price_cost_modifier = {
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+icd_caliphate_claimant_can_participate_in_parliament = {
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+icd_caliphate_claimant_agenda_impact = {
+	percent=yes
+	game_data={
+		category=country
+	}
+}
 icd_dhimmi_price_cost_modifier={
 	percent=yes
 	game_data={
@@ -264,6 +282,36 @@ national_cossack_culture_movement_growth_modifier={
 }
 
 local_cossack_culture_movement_growth_modifier={
+	percent=yes
+	game_data={
+		category=location
+	}
+}
+
+
+
+national_sufi_shiite_messianism_resistance_modifier  ={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+local_sufi_shiite_messianism_resistance_modifier ={
+	percent=yes
+	game_data={
+		category=location
+	}
+}
+
+national_sufi_shiite_messianism_growth_modifier={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+local_sufi_shiite_messianism_growth_modifier={
 	percent=yes
 	game_data={
 		category=location

@@ -1,0 +1,14 @@
+﻿REPLACE:ibadi_school = {
+	color = rgb { 255 255 255 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+	
+	modifier = {
+		global_population_growth = 0.00025
+	}
+}

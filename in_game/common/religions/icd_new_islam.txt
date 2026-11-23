@@ -1,0 +1,106 @@
+﻿zaydi_religion = { 
+	color = color_shia
+	group = muslim
+	language = classical_arabic_dialect
+
+	religious_school = hadawi_school
+	religious_school = nasiri_school
+	
+	definition_modifier = {
+		global_crown_estate_power = 0.1
+		diplomatic_reputation = diplomatic_reputation_weak_bonus
+		prestige_decay = -0.001
+		
+		allow_mysticism_vs_jurisprudence = yes
+		
+		ban_imports_of_wine = yes
+		ban_imports_of_beer = yes
+		ban_imports_of_liquor = yes
+		
+		number_of_allowed_religious_figures = 1
+	}
+	
+	opinions = {
+		sunni = positive
+		shia = positive
+		nizari_religion = positive
+		mustali_religion = positive
+	}
+	
+	max_religious_figures_for_religion = {
+		every_country_in_religion = {
+			add = 1.5
+		}
+		every_holy_site_in_religion = {
+			add = 1
+		}
+	}
+
+	unique_names = {
+		name_muhammad
+	}
+
+	tags = { muslim_gfx abrahamic_gfx }
+}
+
+nizari_religion = { 
+	color = rgb { 237 232 88 }
+	group = muslim
+	language = classical_arabic_dialect
+	
+	religious_school = nizari_school
+
+	definition_modifier = {
+		discipline = 0.025
+
+		ban_imports_of_wine = yes
+		ban_imports_of_beer = yes
+		ban_imports_of_liquor = yes
+
+	}
+	
+	opinions = {
+		shia = positive
+		zaydi_religion = positive
+		mustali_religion = kindred
+	}
+
+	unique_names = {
+		name_muhammad
+	}	
+
+	tags = { muslim_gfx abrahamic_gfx }
+}
+
+mustali_religion = { 
+	color = rgb { 99 72 52 } 
+	group = muslim
+	language = classical_arabic_dialect
+	
+	religious_school = mustali_school
+
+	definition_modifier = {
+		trade_range_modifier = 0.15
+		diplomatic_range_modifier = 0.1
+		naval_range_modifier = 0.1
+		colonial_range_modifier = 0.15
+
+		ban_imports_of_wine = yes
+		ban_imports_of_beer = yes
+		ban_imports_of_liquor = yes
+
+	}
+	
+	opinions = {
+		shia = positive
+		zaydi_religion = positive
+		nizari_religion = kindred
+	}
+
+	unique_names = {
+		name_muhammad
+	}	
+
+	tags = { muslim_gfx abrahamic_gfx }
+}
+

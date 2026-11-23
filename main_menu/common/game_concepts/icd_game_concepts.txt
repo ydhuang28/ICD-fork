@@ -23,3 +23,7 @@ protected_religion = {
 	alias = { protected_religions }
 	texture = "location_icons/main_religion"
 }
+waqf_distribution = {
+	alias = { waqf }
+	texture = "location_icons/main_religion"
+}

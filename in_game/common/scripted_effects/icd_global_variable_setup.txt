@@ -15,12 +15,20 @@ icd_global_variable_setup = {
 					}
 				}
 				culture = culture:prussian
+				culture = culture:tunisian
 				culture = { has_culture_group = culture_group:scandinavian_group }
 			}
 		}
 		set_variable = {
 			name = icd_confessional_culture
 			value = this.culture
+		}
+	}
+	every_country = {
+		limit = { religion.group = religion_group:muslim }
+		set_variable = {
+			name = icd_waqf_base_var
+			value = 10
 		}
 	}
 }

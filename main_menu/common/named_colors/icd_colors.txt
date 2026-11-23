@@ -3,5 +3,7 @@ colors = {
 	#eu4 map colors
 	map_anabaptist = rgb { 214 190 182 }
 	map_unitarian = rgb { 172 219 4 }
+	MSHS_color = rgb { 82 157 90 }
+	ardabil_color = rgb { 80 146 8 }
 }
 

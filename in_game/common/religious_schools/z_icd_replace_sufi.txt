@@ -1,0 +1,171 @@
+﻿REPLACE:bektashi_school = {
+	color = rgb { 21 125 66 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		army_light_infantry_power = 0.1
+	}
+}
+
+REPLACE:chishti_school = {
+	color = rgb { 229 60 8 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		pop_join_rebel_threshold = -0.1
+	}
+}
+
+REPLACE:khalwati_school = {
+	color = rgb { 229 137 8 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		stability_investment = standard_stability_investment
+	}
+}
+
+REPLACE:mevlevi_school = {
+	color = rgb { 44 7 15}
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		cultural_influence_modifier = 0.1
+	}
+}
+
+REPLACE:naqshbandi_school = {
+	color = rgb { 44 7 7 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		monthly_legitimacy = 0.1
+	}
+}
+
+REPLACE:qadiri_school = {
+	color = rgb { 38 120 188 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		monthly_prestige = 0.1
+	}
+}
+
+REPLACE:safavid_school = {
+	color = rgb { 56 35 11 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		monthly_army_tradition = 0.05
+	}
+}
+
+REPLACE:shadhili_school = {
+	color = rgb { 56 11 28 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		cultural_tradition_modifier = 0.1
+	}
+}
+
+REPLACE:suhrawardi_school = {
+	color = rgb { 139 50 32 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		global_pop_conversion_speed_modifier = 0.1
+	}
+}
+
+REPLACE:isawiyya_school = {
+	color = rgb { 123 45 27 }
+
+	enabled_for_country = {
+		always = no
+	}
+	enabled_for_character = {
+		always = no
+	}
+
+	modifier = {
+		global_monthly_prosperity = 0.001
+	}
+}
+
+REPLACE:din_i_ilahi_school = {
+	color = rgb { 0 38 10 }
+
+	enabled_for_country = {
+		religion.group = religion_group:muslim
+		has_global_variable = din_i_ilahi_founded
+	}
+	enabled_for_character = {
+		has_global_variable = din_i_ilahi_founded
+		OR = {
+			religion = religion:shia
+			religion = religion:sunni
+		}
+	}
+	
+	modifier = {
+		cultures_capacity = 2
+		tolerance_own = -1
+		tolerance_heathen = 1
+	}
+}

@@ -1,0 +1,75 @@
+﻿
+icd_sufi_order = {
+	color = { 103 184 147 }
+	graphical_cultures = { muslim_gfx }
+	location_overlay_loc_key = ORDER_HOLDING
+	can_field_levies = no
+	default_calling = icd_internalized_calling
+	valid_callings = {
+		icd_internalized_calling
+		icd_expressive_calling
+		icd_civic_calling
+		icd_mortifying_calling
+		icd_syncretic_calling
+	}
+	founding_name_pattern = LOCATION_ORDER_NAME_PATTERN
+	founding_cost_gold = 75
+	holding_goods_demand = icd_sufi_order_holding_demand
+	default_founding_country_allow = {
+		OR = {
+			religion = religion:sunni
+			religion = religion:shia
+		}
+	}
+	default_founding_location_allow = {
+		owner ?= scope:actor
+		has_building_with_at_least_one_level = sufi_lodge
+	}
+
+	on_leader_death = {
+		scope:religious_order = {
+			random_pop_in_religious_order_holding_location = {
+				age = { 30 50 }
+				female = no
+				valid_pop_trigger = {
+					religion = scope:religious_order.religion
+				}
+			}
+		}
+	}
+}
+
+icd_militant_sufi_order = {
+	color = { 105 204 6 }
+	graphical_cultures = { muslim_gfx }
+	location_overlay_loc_key = ORDER_HOLDING
+	can_field_levies = yes
+	starting_regiment = a_order_knights
+	default_calling = icd_mahdist_calling
+	valid_callings = {
+		icd_mahdist_calling
+	}
+	founding_name_pattern = LOCATION_MOVEMENT_NAME_PATTERN
+	founding_cost_gold = 75
+	holding_goods_demand = icd_sufi_order_holding_demand
+	default_founding_country_allow = {
+		OR = {
+			religion = religion:shia
+			religion = religion:sunni
+		}
+	}
+	default_founding_location_allow = {
+		owner ?= scope:actor
+		OR = {
+			region = region:crescent_region
+			region = region:anatolia_region
+			region = region:caucasus_region
+			region = region:persia_region
+			region = region:western_india_region
+			region = region:khorasan_region
+		}
+	}
+
+	on_leader_death = {
+	}
+}

@@ -1,0 +1,66 @@
+﻿
+icd_waqf_country = {
+	value = var:icd_waqf_base_var
+	max = 100
+	min = 0
+	round_to = 1
+}
+
+icd_waqf_change = {
+	value = 3
+
+	if = {
+		limit = {
+			stability < 0
+		}
+		add = 0.5
+	}
+	if = {
+		limit = {
+			has_estate_privilege = estate_privilege:icd_permission_for_awqaf
+		}
+		add = 0.5
+	}
+	if = {
+		limit = {
+			government_power < 0
+		}
+		add = 0.5
+	}
+	if = {
+		limit = {
+			has_policy = land_acquisition
+		}
+		add = 0.5
+	}
+	if = {
+		limit = {
+			has_policy = icd_imperial_ulama
+		}
+		subtract = 0.25
+	}
+	if = {
+		limit = {
+			has_reform = government_reform:icd_centralized_endowment_institution
+		}
+		subtract = 1.5
+	}
+	if = {
+		limit = {
+			has_reform = government_reform:icd_qasimid_waqf_reforms
+		}
+		subtract = 3
+	}
+	min = 0
+}
+
+icd_nizari_stability_value = {
+	if = {
+		limit = { 
+			international_organization:icd_nizari_imamate_io = {
+				international_organization_has_leader = yes
+			}
+		}
+		value = international_organization:icd_nizari_imamate_io.leader_country.stability
+	}
+}

@@ -1,0 +1,725 @@
+﻿
+icd_disband_the_iqta_system = { 
+	decision_category = religious_decisions
+
+	potential = {
+		religion.group = religion_group:muslim
+		NOT = {
+			has_variable = icd_iqta_disabled
+		}
+		current_year > 1350
+	}
+
+	allow = {
+		OR = {
+			has_embraced_institution = institution:global_trade
+			"estate_power(estate_type:nobles_estate)" > 0.8
+			"estate_power(estate_type:nobles_estate)" < 0.15
+		}
+	}
+
+	ai_will_do = {
+		value = 500
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }		
+	}
+
+	option = { ##salaried officers###
+		name = icd_disband_the_iqta_system.a
+		
+		effect = {
+			custom_tooltip = icd_iqta_disbanded_tt
+			set_variable = icd_iqta_disabled
+			
+			change_societal_value = {
+				type = centralization_vs_decentralization
+				value = societal_value_move_to_left
+			}
+		}
+	}
+	
+	option = { ##handover to hereditary nobilities###
+		name = icd_disband_the_iqta_system.b
+		
+		effect = {
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+			
+			custom_tooltip = icd_iqta_disbanded_tt
+			set_variable = icd_iqta_disabled
+			
+			change_societal_value = {
+				type = centralization_vs_decentralization
+				value = societal_value_huge_move_to_right
+			}
+		}
+	}
+	
+}
+
+
+icd_establish_shia_sufi_order = {
+	decision_category = religious_decisions
+	only_once = yes
+
+	potential = {
+		religion = religion:shia
+	}
+	
+	allow = {
+		any_owned_location = {
+			is_holding_of_any_religious_order = yes
+		}
+		current_year > 1400
+	}
+	
+	ai_will_do = {
+		value = -100
+	}
+	
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }	
+	}
+	
+	option = { ## internalized ###
+		name = icd_establish_shia_sufi_order.a
+		
+		effect = {
+			random_owned_location = {
+				found_religious_order = {
+					type = religious_order_type:icd_sufi_order
+					calling = calling:icd_internalized_calling
+					religion = religion:shia
+				}
+			}
+		}
+	}
+	
+	option = { ## externalised ###
+		name = icd_establish_shia_sufi_order.b
+		
+		effect = {
+			random_owned_location = {
+				found_religious_order = {
+					type = religious_order_type:icd_sufi_order
+					calling = calling:icd_expressive_calling
+					religion = religion:shia
+				}
+			}
+		}
+	}
+	
+	option = { ## civic ###
+		name = icd_establish_shia_sufi_order.c
+		
+		effect = {
+			random_owned_location = {
+				found_religious_order = {
+					type = religious_order_type:icd_sufi_order
+					calling = calling:icd_civic_calling
+					religion = religion:shia
+				}
+			}
+		}
+	}
+	
+	option = { ## mortifying ###
+		name = icd_establish_shia_sufi_order.d
+		
+		effect = {
+			random_owned_location = {
+				found_religious_order = {
+					type = religious_order_type:icd_sufi_order
+					calling = calling:icd_mortifying_calling
+					religion = religion:shia
+				}
+			}
+		}
+	}
+}
+
+icd_claim_shadow_of_god = {
+	decision_category = religious_decisions
+	only_once = yes
+
+	potential = {
+		religion = religion:shia
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = icd_owns_eighty_percent_of_region_tt
+			any_region = {
+				any_location_in_region = {
+					percent = 0.85
+					owner ?= root
+				}
+			}
+		}
+		has_ruler = yes
+		ruler ?= {
+			is_child = no
+		}
+		is_subject = no
+		has_any_active_disaster = no
+	}
+	
+	ai_will_do = {
+		value = 200
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }	
+	}
+	
+	option = { ##  ###
+		name = icd_claim_title.a
+		
+		effect = {
+			ruler ?= {
+				add_character_modifier = {
+					modifier = icd_title_shadow_of_god
+				}
+			}
+			capital = {
+				every_pop = {
+					limit = { owner ?= root religion != religion:shia 
+						pop_type != pop_type:slaves
+					}
+					change_pop_religion = religion:shia
+				}
+			}
+		}
+	}
+}
+
+
+icd_claim_emperor_of_the_faith = {
+	decision_category = religious_decisions
+	only_once = yes
+
+	potential = {
+		religion = religion:shia
+	}
+	
+	allow = {
+		"religion_percentage_in_country(religion:shia)" > 0.8
+		current_year > 1400
+		has_ruler = yes
+		ruler ?= {
+			is_child = no
+		}
+		is_subject = no
+		has_any_active_disaster = no
+	}
+	
+	ai_will_do = {
+		value = 200
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }	
+	}
+	
+	option = { ##  ###
+		name = icd_claim_title.a
+		
+		effect = {
+			custom_tooltip = {
+				text = icd_claim_emperor_of_the_faith_tt
+				every_rebel = {
+					destroy_rebel = this
+				}
+			}
+			ruler ?= {
+				add_character_modifier = {
+					modifier = icd_title_emperor_of_the_faith
+				}
+			}
+		}
+	}
+}
+
+icd_claim_pivot_of_the_universe = {
+	decision_category = religious_decisions
+	only_once = yes
+
+	potential = {
+		religion = religion:shia
+	}
+	
+	allow = {
+		any_institutions_embraced = {
+			origin = {
+				owner ?= root
+			}
+		}
+		has_ruler = yes
+		ruler ?= {
+			is_child = no
+		}
+		is_subject = no
+		has_any_active_disaster = no
+	}
+	
+	ai_will_do = {
+		value = 200
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }	
+	}
+	
+	option = { ##  ###
+		name = icd_claim_title.a
+		
+		effect = {
+			add_research_progress = research_progress_ultimate_bonus
+			add_research_progress = research_progress_severe_bonus
+			ruler ?= {
+				add_character_modifier = {
+					modifier = icd_title_pivot_of_the_universe
+				}
+			}
+		}
+	}
+}
+
+icd_claim_axis_of_the_realm = {
+	decision_category = religious_decisions
+	only_once = yes
+
+	potential = {
+		religion = religion:shia
+	}
+	
+	allow = {
+		"estate_power(estate_type:crown_estate)" > 0.35
+		has_ruler = yes
+		ruler ?= {
+			is_child = no
+		}
+		is_subject = no
+		has_any_active_disaster = no
+	}
+	
+	ai_will_do = {
+		value = 200
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }	
+	}
+	
+	option = { ##  ###
+		name = icd_claim_title.a
+		
+		effect = {
+			ruler ?= {
+				add_character_modifier = {
+					modifier = icd_title_axis_of_the_realm
+				}
+			}
+			capital.province = {
+				every_location_in_province = {
+					change_development = development_ultimate_bonus
+				}
+			}
+			ordered_province = {
+				limit = { NOT = { any_location_in_province = { this = root.capital } } }
+				order_by = population
+				max = 1
+				every_location_in_province = {
+					change_development = development_ultimate_bonus
+				}
+			}
+		}
+	}
+}
+
+icd_claim_mahdi = {
+	decision_category = religious_decisions
+
+	potential = {
+		religion = religion:shia
+	}
+	
+	allow = {
+		has_ruler = yes
+		ruler ?= {
+			is_child = no
+		}
+		is_subject = no
+		has_any_active_disaster = no
+		OR = {
+			custom_tooltip = {
+				text = icd_has_mahdist_origins
+				has_variable = icd_possible_mahdi_claim
+			}
+			AND = {
+				num_locations < 2
+				num_subjects = 0
+			}
+		}
+	}
+	
+	ai_will_do = {
+		if = {
+			limit = {
+				ruler = {
+					age_in_years < 30
+				}
+			}
+			value = 500
+		}
+		else = {
+			value = -10
+		}
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }	
+	}
+	
+	option = { ##  ###
+		name = icd_claim_title.a
+		
+		effect = {
+			ruler ?= {
+				add_character_modifier = {
+					modifier = icd_title_mahdi
+				}
+			}
+			every_neighbor_country = {
+				root = {
+					add_casus_belli = {
+						target = prev
+						type = casus_belli:cb_annex
+					}
+				}
+			}
+			remove_variable = icd_possible_mahdi_claim
+		}
+	}
+}
+
+icd_zaydi_reform = {
+	decision_category = religious_decisions
+
+	potential = {
+		religion = religion:zaydi_religion
+		NOT = {
+			has_variable = icd_zaydi_reform_four
+		}
+		NOT = {
+			government_type = government_type:republic
+		}
+	}
+	
+	allow = {
+		has_ruler = yes
+		ruler ?= {
+			is_child = no
+		}
+		is_subject = no
+		has_any_active_disaster = no
+		hidden_trigger = {
+			OR = {
+				AND = {
+					estate_satisfaction:clergy_estate >= 0.85
+					NOT = { has_variable = icd_zaydi_reform_one }
+				}
+				AND = {
+					any_invited_religious_figure = {
+						religion != religion:zaydi_religion
+					}
+					has_variable = icd_zaydi_reform_one
+					NOT = { has_variable = icd_zaydi_reform_two }
+				}
+				AND = {
+					capital = { development >= 20  }
+					has_variable = icd_zaydi_reform_two
+					NOT = { has_variable = icd_zaydi_reform_three }
+				}
+				AND = {
+					any_owned_location = {
+						count > 1
+						is_location_holy_site_for = religion:zaydi_religion
+					}
+					has_variable = icd_zaydi_reform_three
+				}
+			}
+		}
+		trigger_if = {
+			limit = { NOT = { has_variable = icd_zaydi_reform_one } }
+			estate_satisfaction:clergy_estate >= 0.85
+		}
+		trigger_if = {
+			limit = { has_variable = icd_zaydi_reform_one 
+				NOT = { has_variable = icd_zaydi_reform_two }
+			}
+			any_invited_religious_figure = {
+				religion != religion:zaydi_religion
+			}
+			
+		}
+		trigger_if = {
+			limit = { has_variable = icd_zaydi_reform_two 
+				NOT = { has_variable = icd_zaydi_reform_three }
+			}
+			capital = { development >= 20  }
+		}
+		trigger_if = {
+			limit = { has_variable = icd_zaydi_reform_three }
+			any_owned_location = {
+				count > 1
+				is_location_holy_site_for = religion:zaydi_religion
+			}
+		}
+	}
+	
+	ai_will_do = {
+		value = 500
+	}
+	
+	illustration_tags = {
+		10 = happy
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:nobles_estate }	
+	}
+	
+	option = { ##  ###
+		name = icd_zaydi_reform.a
+		
+		effect = {
+			if = {
+				limit = { NOT = { has_variable = icd_zaydi_reform_one } }
+				set_variable = icd_zaydi_reform_one
+				custom_tooltip = icd_lower_khuruj
+				custom_tooltip = {
+					text = icd_decrease_waqf_five
+					change_variable = {
+						name = icd_waqf_base_var
+						subtract = 5
+					}
+				}
+				add_political_influence = 25
+			}
+			if = {
+				limit = { has_variable = icd_zaydi_reform_one 
+					NOT = { has_variable = icd_zaydi_reform_two }
+				}
+				set_variable = icd_zaydi_reform_two
+				custom_tooltip = icd_lower_khuruj
+				custom_tooltip = {
+					text = icd_decrease_waqf_five
+					change_variable = {
+						name = icd_waqf_base_var
+						subtract = 5
+					}
+				}
+				add_political_influence = 25
+			}
+			if = {
+				limit = { has_variable = icd_zaydi_reform_two 
+					NOT = { has_variable = icd_zaydi_reform_three }
+				}
+				set_variable = icd_zaydi_reform_three
+				custom_tooltip = icd_lower_khuruj
+				custom_tooltip = {
+					text = icd_decrease_waqf_five
+					change_variable = {
+						name = icd_waqf_base_var
+						subtract = 5
+					}
+				}
+				add_political_influence = 25
+			}
+			if = {
+				limit = { has_variable = icd_zaydi_reform_three }
+				custom_tooltip = icd_stop_khuruj
+				set_variable = icd_zaydi_reform_four
+				custom_tooltip = {
+					text = icd_decrease_waqf_five
+					change_variable = {
+						name = icd_waqf_base_var
+						subtract = 5
+					}
+					remove_variable = icd_zaydi_reform_one
+					remove_variable = icd_zaydi_reform_two
+					remove_variable = icd_zaydi_reform_three
+				}
+				add_political_influence = 25
+			}
+		}
+	}
+}
+
+
+
+#icd_establish_the_nurbakhshi_order = { 
+#	decision_category = religious_decisions
+#	only_once = yes
+#
+#	potential = {
+#		religion = religion:shia
+#	}
+#
+#	allow = {
+#		any_owned_location = {
+#			is_holding_of_any_religious_order = yes
+#		}
+#		any_religious_order_in_country = {
+#			religion = religion:sunni
+#		}
+#		current_year < 1480
+#		current_year > 1410
+#	}
+#
+#	ai_will_do = {
+#		value = 500
+#	}
+#
+#	illustration_tags = {
+#		10 = armed
+#		10 = exterior
+#	}
+#
+#	illustration_scope = {
+#		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }	
+#
+#		
+#	}
+#
+#	option = { #####
+#		name = icd_establish_the_nurbakhshi_order.a
+#		
+#		effect = {
+#			random_owned_location = {
+#				found_religious_order = {
+#					type = religious_order_type:icd_sufi_order
+#					calling = calling:icd_internalized_calling
+#					religion = religion:shia
+#					
+#					save_scope_as = target_order
+#				}
+#			}
+#			
+#			create_character = {
+#				first_name = name_muhammad
+#				nickname = icd_nurbakhsh
+#				birth_date = 1392.12.13
+#				create_in_limbo = yes
+#				estate = estate_type:clergy_estate
+#				religion = religion:shia
+#				culture = culture:khorasani_culture
+#				female = no
+#				birth_location = location:qaen
+#				save_scope_as = target_character
+#			}
+#			
+#			scope:target_order ?= { set_head_character = scope:target_character }
+#		}
+#	}
+#}
+#
+#icd_establish_the_nimatullahi_order = { 
+#	decision_category = religious_decisions
+#	only_once = yes
+#
+#	potential = {
+#		religion = religion:shia
+#	}
+#
+#	allow = {
+#		any_owned_location = {
+#			is_holding_of_any_religious_order = yes
+#		}
+#		any_religious_order_in_country = {
+#			religion = religion:sunni
+#		}
+#		current_year > 1337
+#		current_year < 1430
+#	}
+#
+#	ai_will_do = {
+#		value = 500
+#	}
+#
+#	illustration_tags = {
+#		10 = armed
+#		10 = exterior
+#	}
+#
+#	illustration_scope = {
+#		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }		
+#	}
+#
+#	option = { #####
+#		name = icd_establish_the_nimatullahi_order.a
+#		
+#		effect = {
+#			random_owned_location = {
+#				found_religious_order = {
+#					type = religious_order_type:icd_sufi_order
+#					calling = calling:icd_civic_calling
+#					religion = religion:shia
+#					save_scope_as = target_order
+#				}
+#			}
+#			
+#			create_character = {
+#				first_name = name_nimatullah
+#				birth_date = 1330.1.1
+#				create_in_limbo = yes
+#				estate = estate_type:clergy_estate
+#				religion = religion:sunni
+#				culture = culture:farsi_culture
+#				female = no
+#				birth_location = location:aleppo
+#				save_scope_as = target_character
+#			}
+#			
+#			scope:target_order ?= { set_head_character = scope:target_character }
+#		}
+#	}
+#}

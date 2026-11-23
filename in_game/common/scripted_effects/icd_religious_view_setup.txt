@@ -516,4 +516,136 @@ icd_religious_view_setup = {
 		}
 	}
 
+	###Religious Schools####
+
+	religious_school:nizari_school = {
+		set_school_opinion = {
+			target = religious_school:mustali_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:mustali_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:jafari_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:ismaili_school
+			value = neutral
+		}
+		set_school_opinion = {
+			target = religious_school:jafari_school
+			value = neutral
+		}
+	}
+	religious_school:mustali_school = {
+		reverse_set_school_opinion = {
+			target = religious_school:maliki_school
+			value = neutral
+		}
+		set_school_opinion = {
+			target = religious_school:ismaili_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:ismaili_school
+			value = neutral
+		}
+	}
+
+	religious_school:alevism_school = {
+		set_school_opinion = {
+			target = religious_school:imamiya_school
+			value = neutral
+		}
+	}
+	
+	religious_school:shafii_school = {
+		set_school_opinion = {
+			target = religious_school:maliki_school
+			value = neutral
+		}
+		set_school_opinion = {
+			target = religious_school:zahiri_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:maliki_school
+			value = neutral
+		}
+	}
+	
+	religious_school:maliki_school = {
+		set_school_opinion = {
+			target = religious_school:zahiri_school
+			value = neutral
+		}
+	}
+	
+	religious_school:hanafi_school = {
+		set_school_opinion = {
+			target = religious_school:maturidi_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:maturidi_school
+			value = neutral
+		}
+		set_school_opinion = {
+			target = religious_school:maliki_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:maliki_school
+			value = neutral
+		}
+	}
+	
+	religious_school:hanbali_school = {
+		set_school_opinion = {
+			target = religious_school:athari_school
+			value = neutral
+		}
+		set_school_opinion = {
+			target = religious_school:mutazili_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:athari_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:wahhabi_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:qadiri_school
+			value = neutral
+		}
+	}
+
+	religious_school:zaidi_school = {
+		set_school_opinion = {
+			target = religious_school:ibadi_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:ibadi_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:imamiya_school
+			value = neutral
+		}
+		set_school_opinion = {
+			target = religious_school:hanafi_school
+			value = neutral
+		}
+		reverse_set_school_opinion = {
+			target = religious_school:hanafi_school
+			value = neutral
+		}
+	}
 }

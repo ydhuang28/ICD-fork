@@ -1,0 +1,2077 @@
+﻿namespace = icd_muslim_events
+
+icd_muslim_events.2000 = { ##reform waqf##
+	type = country_event
+	title = icd_muslim_events.2000.title
+	desc = icd_muslim_events.2000.desc
+	outcome = neutral
+	illustration_tags = {
+        10 = regular
+		10 = exterior
+    }
+	
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+	
+	#option = { ##audit waqfs##
+		#name = icd_muslim_events.2000.a	
+		
+		#custom_tooltip = {
+		#	text = icd_decrease_waqf_fifteen
+		#	change_variable = {
+		#		name = icd_waqf_base_var
+		#		subtract = 15
+		#	}
+		#}
+		
+		#trigger = {
+		#	NOT = {
+		#		has_cooldown = icd_waqf_cooldown
+		#	}
+		#	political_influence >= 50
+		#}
+		#add_cooldown = {
+		#	type = icd_waqf_cooldown
+		#	years = 10
+		#}
+		
+		#add_political_influence = -50
+		
+		#ai_will_select = {
+		#	value = 100
+		#}
+	#}
+	option = { ##give away waqfs##
+		name = icd_muslim_events.2000.b	
+		
+		custom_tooltip = {
+			text = icd_increase_waqf_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						min = 0
+					}
+				}
+			}
+		}
+		
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_bonus }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_severe_bonus }
+		
+		ai_will_select = {
+			value = -50
+		}
+	}
+	option = { ##mass takeover of waqfs - drastic consequences##
+		name = icd_muslim_events.2000.c
+		
+		add_cooldown = {
+			type = icd_waqf_cooldown
+			years = 10
+		}
+		trigger = {
+			NOT = {
+				has_cooldown = icd_waqf_cooldown
+			}
+		}
+		
+		custom_tooltip = {
+			text = icd_decrease_waqf_seventy
+			change_variable = {
+				name = icd_waqf_base_var
+				subtract = 70
+			}
+		}
+		
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_radical_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_radical_penalty }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_radical_penalty }
+		
+		add_stability = -100
+		add_legitimacy = -50
+		
+		ai_will_select = {
+			if = {
+				limit = {
+					var:icd_waqf_base_var > 80
+				}
+				value = 400
+			}
+			else = {
+				value = -50
+			}
+		}
+	}
+
+	option = { ##nevermind##
+		name = icd_muslim_events.2000.d
+	}
+}
+
+icd_muslim_events.1 = {
+	type = country_event
+	title = icd_muslim_events.1.title
+	desc = icd_muslim_events.1.desc
+	outcome = neutral
+	trigger = {
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+		
+		international_organization:icd_sunni_caliphate.leader_country = {
+			save_scope_as = icd_caliph_scope
+		}
+		
+		var:icd_non_muslim_decree_var = {
+			save_scope_as = icd_non_muslim_scope
+		}
+	}
+
+	option = { ##rebellion##
+		name = icd_muslim_events.1.a
+		
+		custom_tooltip = icd_caliphate_our_fatwa_rebellion_tt
+		
+		var:icd_non_muslim_decree_var = {
+			trigger_event_non_silently = icd_muslim_events.2
+		}
+		
+		remove_variable = icd_non_muslim_decree_var
+	}
+	
+	option = { ##taqiyya##
+		name = icd_muslim_events.1.b
+		
+		custom_tooltip = icd_caliphate_our_fatwa_taqiyya_tt
+		
+		var:icd_non_muslim_decree_var = {
+			trigger_event_non_silently = icd_muslim_events.3
+		}
+		
+		remove_variable = icd_non_muslim_decree_var
+		
+		ai_will_select = { value = -500 }
+	}
+	
+	option = { ##hijra##
+		name = icd_muslim_events.1.c
+		
+		custom_tooltip = icd_caliphate_our_fatwa_hijra_tt
+		
+		var:icd_non_muslim_decree_var = {
+			trigger_event_non_silently = icd_muslim_events.4
+		}
+		
+		remove_variable = icd_non_muslim_decree_var
+	}
+}
+
+icd_muslim_events.2 = {
+	type = country_event
+	title = icd_muslim_events.2.title
+	desc = icd_muslim_events.2.desc
+	outcome = neutral
+	trigger = {
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+		
+		global_var:icd_current_caliph = {
+			save_scope_as = icd_caliph_ruler
+		}
+	}
+
+	option = {
+		name = icd_muslim_events.2.a
+		
+		custom_tooltip = {
+			text = icd_caliphate_fatwa_revolt_tt
+			every_owned_location = {
+				limit = {
+					"religion_population(religion:sunni)" > 0.5
+				}
+				add_location_modifier = {
+					modifier = icd_caliphate_fatwa_revolt
+					years = 10
+					mode = add_and_extend
+				}
+				every_pop = {
+					limit = { religion = religion:sunni }
+					add_pop_satisfaction = pop_satisfaction_radical_penalty
+				}
+			}
+		}
+	}
+}
+
+icd_muslim_events.3 = {
+	type = country_event
+	title = icd_muslim_events.3.title
+	desc = icd_muslim_events.3.desc
+	outcome = neutral
+	trigger = {
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+		
+		global_var:icd_current_caliph = {
+			save_scope_as = icd_caliph_ruler
+		}
+	}
+
+	option = {
+		name = icd_muslim_events.3.a
+		
+		custom_tooltip = {
+			text = icd_caliphate_fatwa_taqiyya_tt
+			every_owned_location = {
+				limit = {
+					"religion_population(religion:sunni)" > 0.5
+				}
+				add_location_modifier = {
+					modifier = icd_caliphate_fatwa_taqiyya
+					years = 10
+					mode = add_and_extend
+				}
+			}
+		}
+	}
+}
+
+icd_muslim_events.4 = {
+	type = country_event
+	title = icd_muslim_events.4.title
+	desc = icd_muslim_events.4.desc
+	outcome = neutral
+	trigger = {
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_peasants_foreign_religion_pop_type_effect = yes
+		
+		global_var:icd_current_caliph = {
+			save_scope_as = icd_caliph_ruler
+		}
+		
+		ordered_country_in_diplomatic_range = {
+			limit = {
+				num_provinces >= 3
+				NOT = { 
+					this = root
+					any_overlord_or_above = { 
+						this = root
+					}
+				}
+				religion = religion:sunni
+			}
+			order_by = {
+				value = "border_distance_to(root)"
+				multiply = -1
+			}
+			max = 1
+			save_scope_as = target_recipient_country
+		}
+		
+		scope:target_recipient_country = {
+			random_owned_location = {
+				save_scope_as = target_location_one
+			}
+			random_owned_location = {
+				limit = { NOT = { this = scope:target_location_one } }
+				save_scope_as = target_location_two
+			}
+			random_owned_location = {
+				limit = { NOT = { this = scope:target_location_one } 
+					NOT = { this = scope:target_location_two } 
+				}
+				save_scope_as = target_location_three
+			}
+		}
+	}
+
+	option = {
+		name = icd_muslim_events.4.a
+		
+		custom_tooltip = {
+			text = icd_caliphate_fatwa_hijra_tt
+			every_owned_location = {
+				limit = {
+					"religion_population(religion:sunni)" > 0.5
+				}
+				add_location_modifier = {
+					modifier = icd_caliphate_fatwa_hijra
+					years = 10
+					mode = add_and_extend
+				}
+				
+				add_migration = {
+					from = this.province_definition
+					to = scope:target_location_one.province_definition
+					religion = religion:sunni
+					amount = {
+						value = 0.015
+					}
+					months = 12
+				}
+				add_migration = {
+					from = this.province_definition
+					to = scope:target_location_two.province_definition
+					religion = religion:sunni
+					amount = {
+						value = 0.015
+					}
+					months = 12
+				}
+				add_migration = {
+					from = this.province_definition
+					to = scope:target_location_three.province_definition
+					religion = religion:sunni
+					amount = {
+						value = 0.015
+					}
+					months = 12
+				}
+			}
+		}
+	}
+}
+
+icd_muslim_events.5 = {  ##waqf 1 - unsuitable mustawalli#
+	type = country_event
+	title = icd_muslim_events.5.title
+	desc = icd_muslim_events.5.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+	}
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = { ##a sharia court will appoint a new one##
+		name = icd_muslim_events.5.a
+		
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+	}
+	
+	option = { ##keep him##
+		name = icd_muslim_events.5.b
+		
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
+	}
+	
+	option = { ##use this as an excuse to declare the waqf is invalid##
+		name = icd_muslim_events.5.c
+		
+		custom_tooltip = {
+			text = icd_decrease_waqf_five
+			change_variable = {
+				name = icd_waqf_base_var
+				subtract = 5
+			}
+		}
+	}
+}
+
+icd_muslim_events.6 = {  ##waqf 2 - illicit but positive waqf has been declared#
+	type = country_event
+	title = icd_muslim_events.6.title
+	desc = icd_muslim_events.6.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+		has_advance = hospital_advance
+	}
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		
+		ordered_owned_location = {
+			limit = { NOT = { has_building = building_type:hospital } }
+			order_by = population
+			max = 1
+			check_range_bounds = no
+			save_scope_as = target_location
+		}
+	}
+
+	option = { ##protect the waqf##
+		name = icd_muslim_events.5.a
+		
+		scope:target_location = {
+			change_building_level_in_location = {
+				building = building_type:hospital
+				value = 1
+			}
+			change_development = development_mild_bonus
+		}
+	}
+	
+	option = { ##use this as an excuse to declare the waqf is invalid##
+		name = icd_muslim_events.5.c
+		
+		custom_tooltip = {
+			text = icd_decrease_waqf_five
+			change_variable = {
+				name = icd_waqf_base_var
+				subtract = 5
+			}
+		}
+	}
+}
+
+icd_muslim_events.7 = {  ##waqf 3 - missing evidence#
+	type = country_event
+	title = icd_muslim_events.7.title
+	desc = icd_muslim_events.7.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+	}
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+			}
+
+	option = { ##use this as an excuse##
+		name = icd_muslim_events.7.a
+		
+		custom_tooltip = {
+			text = icd_decrease_waqf_five
+			change_variable = {
+				name = icd_waqf_base_var
+				subtract = 5
+			}
+		}
+		
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_penalty }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_penalty }
+	}
+	
+	option = { ####
+		name = icd_muslim_events.7.b
+	}
+}
+
+icd_muslim_events.8 = {  ##harem's waqf wave of distribution#
+	type = country_event
+	title = icd_muslim_events.8.title
+	desc = icd_muslim_events.8.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+		has_ruler = yes
+		ruler ?= {
+			is_married = yes
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	
+		ruler = {
+			random_spouse = {
+				save_scope_as = icd_spending_spouse
+			}
+		}
+	}
+
+	option = { ##she must stop##
+		name = icd_muslim_events.8.a
+		
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+	}
+	
+	option = { ##let her continue spending##
+		name = icd_muslim_events.8.b
+		
+		custom_tooltip = {
+			text = icd_increase_waqf_half_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+		}
+		
+		random_owned_location = {
+			change_development = development_mild_bonus
+		}
+		random_owned_location = {
+			change_development = development_mild_bonus
+		}
+	}
+}
+
+icd_muslim_events.9 = {  ##kitchens for the poor in capital#
+	type = country_event
+	title = icd_muslim_events.9.title
+	desc = icd_muslim_events.9.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+		has_ruler = yes
+	}
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:clergy_estate }
+	
+		ruler = {
+			save_scope_as = target_ruler
+		}
+		capital = {
+			save_scope_as = target_location
+		}
+	}
+
+	option = { ##create this kitchen##
+		name = icd_muslim_events.8.a
+		
+		capital = {
+			change_development = development_severe_bonus
+			change_prosperity = prosperity_mild_bonus
+		}
+		
+		custom_tooltip = {
+			text = icd_increase_waqf_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						min = 0
+					}
+				}
+			}
+		}
+	}
+	
+	option = { ##do nothing##
+		name = icd_muslim_events.8.b
+	}
+}
+
+###SUFI ORDER EVENTS###
+
+icd_muslim_events.10 = {  ##rebellious sufi#
+	type = country_event
+	title = icd_muslim_events.10.title
+	desc = icd_muslim_events.10.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		heathen_population_fraction > 0.1
+		any_religious_order_in_country = { count > 0 }
+		any_heathen_location = {
+			any_pop = {
+				count > 0.1
+			}
+		}
+	}
+
+	illustration_tags = {
+        10 = regular
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:tribes_estate }
+		random_religious_order_in_country = { save_scope_as = target_order }
+	}
+
+	option = { ##allow him to operate##
+		name = icd_muslim_events.10.a
+		
+		random_heathen_location = {
+			every_pop = {
+				limit = { religion.group != religion_group:muslim }
+				add_pop_satisfaction = pop_satisfaction_severe_penalty
+				split_pop = {
+					religion = root.religion
+					fraction = { 0.3 0.45 }
+				}
+			}
+		}
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_mild_bonus
+		}
+		
+	}
+	
+	option = { ##block their operations##
+		name = icd_muslim_events.10.b
+		
+	}
+}
+
+icd_muslim_events.11 = {  ##a tomb for a master#
+	type = country_event
+	title = icd_muslim_events.11.title
+	desc = icd_muslim_events.11.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		any_religious_order_in_country = { count > 0 }
+	}
+
+	illustration_tags = {
+        10 = happy
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:tribes_estate }
+		
+		random_owned_location = {
+			limit = { is_holding_of_any_religious_order = yes }
+			save_scope_as = target_location
+			random_religious_order_in_location = {
+				save_scope_as = target_order
+			}
+		}
+	}
+
+	option = { ##build the tomb##
+		name = icd_muslim_events.11.a
+		
+		scope:target_location = {
+			create_art = {
+				quality = { 60 90 }
+				type = work_of_art_type:monument
+			}
+		}
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_mild_bonus
+		}
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = -2
+		}
+	}
+	
+	option = { ##dont##
+		name = icd_muslim_events.11.b
+		
+	}
+}
+
+icd_muslim_events.12 = {  ##a sufi order waqf#
+	type = country_event
+	title = icd_muslim_events.12.title
+	desc = icd_muslim_events.12.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+		any_religious_order_in_country = { count > 0 }
+	}
+
+	illustration_tags = {
+        10 = happy
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		
+		random_owned_location = {
+			limit = { is_holding_of_any_religious_order = yes }
+			save_scope_as = target_location
+			random_religious_order_in_location = {
+				save_scope_as = target_order
+			}
+		}
+	}
+
+	option = { ##expand waqf##
+		name = icd_muslim_events.12.a
+		
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_moderate_bonus
+		}
+		custom_tooltip = {
+			text = icd_increase_waqf_half_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+		}
+	}
+	
+	option = { ##dont##
+		name = icd_muslim_events.12.b
+		
+	}
+}
+
+icd_muslim_events.13 = {  ##spread of rural sufism#
+	type = country_event
+	title = icd_muslim_events.13.title
+	desc = icd_muslim_events.13.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+		any_religious_order_in_country = { count > 0 }
+	}
+
+	illustration_tags = {
+        10 = happy
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		random_owned_rural_location = {
+			save_scope_as = target_location
+		}
+		random_religious_order_in_country = {
+			save_scope_as = target_order
+		}
+	}
+
+	option = { ##sponsor##
+		name = icd_muslim_events.13.a
+		
+		add_country_modifier = {
+			modifier = icd_rural_sufism_sponsored
+			years = 5
+			mode = add_and_extend
+		}
+		
+		scope:target_location = { attach_to_religious_order = scope:target_order }
+	}
+	
+	option = { ##have them relocate elsewhere##
+		name = icd_muslim_events.13.b
+		
+		add_country_modifier = {
+			modifier = icd_rural_sufism_shunned
+			years = 5
+			mode = add_and_extend
+		}
+	}
+}
+
+icd_muslim_events.14 = {  ##pensions to sufi masters#
+	type = country_event
+	title = icd_muslim_events.14.title
+	desc = icd_muslim_events.14.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		has_variable = icd_waqf_base_var
+		any_religious_order_in_country = { count > 0 }
+	}
+
+	illustration_tags = {
+        10 = happy
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		random_religious_order_in_country = {
+			save_scope_as = target_order
+		}
+	}
+
+	option = { ##give them pensions##
+		name = icd_muslim_events.14.a
+		
+		add_country_modifier = {
+			modifier = icd_sufi_leader_pension
+			years = 10
+			mode = add_and_extend
+		}
+		
+	}
+	option = { ##grant them more waqf instead##
+		name = icd_muslim_events.14.a
+		
+		custom_tooltip = {
+			text = icd_increase_waqf_half_event
+			if = {
+				limit = { has_variable = icd_waqf_base_var 
+					var:icd_waqf_base_var < 100
+				}
+				change_variable = {
+					name = icd_waqf_base_var
+					add = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_variable = icd_waqf_base_var } }
+				set_variable = {
+					name = icd_waqf_base_var
+					value = {
+						value = root.icd_waqf_change
+						multiply = 0.5
+						min = 0
+					}
+				}
+			}
+		}
+	}
+	
+	option = { ##they can sort themselves out##
+		name = icd_muslim_events.14.b
+		
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_moderate_penalty
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_severe_penalty }
+	}
+}
+
+icd_muslim_events.15 = {  ##criticism of bidah#
+	type = country_event
+	title = icd_muslim_events.15.title
+	desc = icd_muslim_events.15.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		any_religious_order_in_country = { count > 0 }
+		current_year > 1550
+		any_religious_order_in_country = {
+			num_locations_in_religious_order > 1
+		}
+	}
+
+	illustration_tags = {
+        10 = angry
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		random_religious_order_in_country = {
+			limit = { num_locations_in_religious_order > 1 }
+			save_scope_as = target_order
+		}
+
+		random_invited_religious_figure = {
+			save_scope_as = target_figure
+		}
+	}
+
+	option = { ##this is ridiculous!##
+		name = icd_muslim_events.15.a
+		
+		kill_character = scope:target_figure
+	}
+	option = { ##perhaps we cuddle sufis too much##
+		name = icd_muslim_events.15.a
+		
+		scope:target_order = {
+			random_location_in_religious_order = {
+				limit = { owner = root }
+				remove_religious_order = scope:target_order
+			}
+			change_religious_order_zeal = religious_order_moderate_penalty
+		}
+	}
+}
+
+icd_muslim_events.16 = {  ##tariqah shuts down under popular pressure#
+	type = country_event
+	title = icd_muslim_events.16.title
+	desc = icd_muslim_events.16.desc
+	outcome = neutral
+	trigger = {
+		religion.group = religion_group:muslim
+		any_religious_order_in_country = { count > 0 }
+		current_year > 1550
+		any_religious_order_in_country = {
+			num_locations_in_religious_order > 1
+		}
+		num_provinces > 2
+	}
+
+	illustration_tags = {
+        10 = angry
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		random_religious_order_in_country = {
+			limit = { num_locations_in_religious_order > 1 }
+			save_scope_as = target_order
+			random_location_in_religious_order = {
+				limit = { owner = root }
+				save_scope_as = target_location
+			}
+		}
+
+		
+	}
+
+	option = { ##fine##
+		name = icd_muslim_events.16.a
+		
+		scope:target_location = {
+			remove_religious_order = scope:target_order
+		}
+	}
+	option = { ##we will prop up this order!##
+		name = icd_muslim_events.16.a
+		
+		scope:target_location = {
+			province = {
+				every_location_in_province = {
+					every_pop = {
+						add_pop_satisfaction = pop_satisfaction_severe_penalty
+					}
+				}
+			}
+		}
+	}
+}
+
+icd_muslim_events.17 = {  ##formation of hurufism#
+	type = country_event
+	title = icd_muslim_events.17.title
+	desc = icd_muslim_events.17.desc
+	outcome = neutral
+	fire_only_once = yes
+	trigger = {
+		religion.group = religion_group:muslim
+		current_year > 1359
+		current_year < 1450
+		owns = location:baku
+	}
+
+	illustration_tags = {
+        10 = angry
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+		
+		location:aleppo = {
+			owner ?= {
+				trigger_event_silently = {
+					id = icd_muslim_events.18
+					years = 30
+				}
+			}
+		}
+		every_country_in_diplomatic_range = {
+			limit = {
+				religion.group = religion_group:muslim
+				any_owned_location = {
+					OR = {
+						region = region:crescent_region
+						region = region:anatolia_region
+						region = region:caucasus_region
+						region = region:persia_region
+						region = region:western_india_region
+						region = region:khorasan_region
+					}
+				} 
+			}
+			random = {
+				chance = 50
+				trigger_event_silently = {
+					id = icd_muslim_events.19
+					years = { 30 50 }
+				}
+			}
+		}
+		
+		create_character = {
+			first_name = name_fazlullah
+			nickname = icd_astarabadi
+            culture = culture:farsi_culture
+            religion = religion:sunni
+			birth_date = 1339.1.1
+			birth_location = location:gorgan
+            create_in_limbo = yes
+            estate = estate_type:clergy_estate
+			save_scope_as = target_character
+		}
+            
+		
+		location:kashan = {
+			owner ?= {
+				trigger_event_silently = {
+					id = icd_muslim_events.20
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = icd_muslim_events.17.a
+		
+		location:baku = { attach_to_religious_order = scope:target_order }
+		
+		location:baku = {
+			every_pop = {
+				limit = { religion = religion:sunni }
+				split_pop = {
+					fraction = 0.05
+					religion = religion:shia
+				}
+			}
+		}
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_mild_bonus
+		}
+	}
+	option = { 
+		name = icd_muslim_events.17.b
+		
+		kill_character = scope:target_character
+	}
+}
+
+icd_muslim_events.18 = {  ##imadaddin nasimi#
+	type = country_event
+	title = icd_muslim_events.18.title
+	desc = icd_muslim_events.18.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+		
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+		
+				
+		create_character = {
+			first_name = name_ali
+			nickname = icd_imadaddin.icd_nasimi
+            culture = culture:azeri_culture
+            religion = religion:sunni
+			birth_date = 1369.1.1
+			birth_location = location:tabriz
+            create_in_limbo = yes
+            artist_skill = 0.85
+            artist = writer
+            estate = estate_type:clergy_estate
+            save_scope_as = target_character
+        }
+		
+	}
+
+	option = { 
+		name = icd_muslim_events.18.a
+
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_low_bonus
+		}
+	}
+	
+	option = { 
+		name = icd_muslim_events.18.b
+		
+		kill_character = scope:target_character
+		
+	}
+}
+
+
+icd_muslim_events.19 = {  ##spread of hurufism#
+	type = country_event
+	title = icd_muslim_events.19.title
+	desc = icd_muslim_events.19.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+		
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+	}
+
+	option = { 
+		name = icd_muslim_events.19.a
+		
+		random_owned_location = {
+			attach_to_religious_order = scope:target_order
+			every_pop = {
+				limit = { religion = religion:sunni }
+				split_pop = {
+					fraction = 0.01
+					religion = religion:shia
+				}
+			}
+		}
+	}
+	
+	option = { 
+		name = icd_muslim_events.19.b
+		
+	}
+}
+
+icd_muslim_events.20 = {  ##nuqtavi#
+	type = country_event
+	title = icd_muslim_events.20.title
+	desc = icd_muslim_events.20.desc
+	outcome = neutral
+	fire_only_once = yes
+	
+	illustration_tags = {
+        10 = angry
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+		
+	}
+
+	option = { 
+		name = icd_muslim_events.20.a
+		
+		location:kashan = { attach_to_religious_order = scope:target_order }
+		
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_mild_bonus
+		}
+	}
+	
+	option = { 
+		name = icd_muslim_events.20.b
+		
+		add_stability = stability_mild_penalty
+	}
+}
+
+icd_muslim_events.21 = {  ##a preacher in the wetlands#
+	type = country_event
+	title = icd_muslim_events.21.title
+	desc = icd_muslim_events.21.desc
+	outcome = neutral
+	fire_only_once = yes
+	trigger = {
+		religion.group = religion_group:muslim
+		current_year > 1435
+		current_year < 1480
+		owns = location:hoveyzeh
+	}
+
+	illustration_tags = {
+        10 = angry
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+	}
+
+	option = { 
+		name = icd_muslim_events.21.a
+		
+		location:hoveyzeh = { attach_to_religious_order = scope:target_order }
+		
+		scope:target_order = {
+			change_religious_order_zeal = religious_order_mild_bonus
+		}
+		
+		ai_will_select = {
+			value = 500
+		}
+	}
+	
+	option = { 
+		name = icd_muslim_events.21.b
+		
+		add_stability = stability_mild_penalty
+	}
+}
+
+icd_muslim_events.22 = {  ##a sufi order rises - mushashah#
+	type = country_event
+	title = icd_muslim_events.22.title
+	desc = icd_muslim_events.22.desc
+	fire_only_once = yes
+	outcome = neutral
+	trigger = {
+		num_provinces > 2
+		religion.group = religion_group:muslim
+		current_year > 1450
+		religion:shia = {
+			any_religious_order_in_religion = {
+				order_type ?= religious_order_type:icd_militant_sufi_order
+				religious_order_zeal > 80
+			}
+		}
+		any_owned_location = {
+			is_holding_of_any_religious_order = yes
+			OR = {
+				area = area:khuzestan_area
+				area = area:iraq_arabi_area
+			}
+		}
+		any_religious_order_in_country = {
+			order_calling ?= calling:icd_mahdist_calling
+			any_location_in_religious_order = {
+				OR = {
+					area = area:khuzestan_area
+					area = area:iraq_arabi_area
+				}
+			}
+		}
+		OR = {
+			government_type = government_type:monarchy
+			government_type = government_type:tribe
+			government_type = government_type:steppe_horde
+		}
+		at_war = no
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+	}
+
+	option = { 
+		name = icd_muslim_events.22.a
+		
+		ai_will_select = {
+			value = 500
+		}
+		
+		trigger_event_silently = {
+			id = icd_muslim_events.23
+			months = 10
+		}
+		
+		add_stability = stability_severe_penalty
+		add_legitimacy = legitimacy_mild_penalty		
+	}
+	
+}
+
+icd_muslim_events.23 = {  ##a sufi order rises - mushashah#
+	type = country_event
+	title = icd_muslim_events.23.title
+	desc = icd_muslim_events.23.desc
+	fire_only_once = yes
+	outcome = neutral
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+		
+		random_owned_location = {
+			limit = { 
+				OR = {
+					area = area:khuzestan_area
+					area = area:iraq_arabi_area
+				}
+			}
+			create_dynasty_from_location = mushashaiya_dynasty
+			save_scope_as = target_location
+		}
+		
+		create_character = {
+			first_name = name_muhammad
+			dynasty = dynasty:mushashaiya_dynasty
+			age = { 40 60 }
+			female = no
+			estate = estate_type:nobles_estate
+			birth_location = location:wasit
+			culture = culture:iraqi_culture
+			religion = religion:shia
+			save_scope_as = icd_mushasha_scope
+			script = icd_mushasha_founder
+		}
+		
+		create_character = {
+			first_name = name_ali
+			dynasty = dynasty:mushashaiya_dynasty
+			age = 20
+			father = scope:icd_mushasha_scope
+			female = no
+			estate = estate_type:nobles_estate
+			birth_location = location:wasit
+			culture = culture:iraqi_culture
+			religion = religion:shia
+			save_scope_as = icd_mushasha_heir
+		}
+		
+		
+		if = {
+			limit = { num_locations < 10 }
+			create_rebel = {
+				category = pretender
+				name = icd_mushasha_rebels
+				save_scope_as = icd_mushasha_rebels_scope
+			}
+		}
+		else_if = {
+			limit = { num_locations >= 10 }
+			create_rebel = {
+				category = nationalist
+				name = icd_mushasha_rebels
+				save_scope_as = icd_mushasha_rebels_scope
+				culture = culture:iraqi_culture
+			}
+		}
+	}
+
+	option = { 
+		name = icd_muslim_events.23.a ##fight##
+		
+		scope:icd_mushasha_scope = {
+			change_character_allegiance = scope:icd_mushasha_rebels_scope
+		}
+		scope:icd_mushasha_heir = {
+			change_character_allegiance = scope:icd_mushasha_rebels_scope
+		}
+		
+		custom_tooltip = {
+			text = icd_mushasha_pops_rally
+			area:khuzestan_area = {
+				every_location_in_area = {
+					limit = { owner ?= root }
+					every_pop = {
+						limit = {
+							owner = root
+							culture = culture:iraqi_culture
+							religion = religion:shia
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:icd_mushasha_rebels_scope
+					}
+				}
+			}
+			area:iraq_arabi_area = {
+				every_location_in_area = {
+					limit = { owner ?= root }
+					every_pop = {
+						limit = {
+							owner = root
+							culture = culture:iraqi_culture
+							religion = religion:shia
+						}
+						add_pop_satisfaction = pop_satisfaction_ultimate_penalty
+						change_pop_allegiance = scope:icd_mushasha_rebels_scope
+					}
+				}
+			}
+			scope:icd_mushasha_rebels_scope = {
+				add_rebel_progress = 0.9
+			}
+		}
+	}
+	
+	option = { 
+		name = icd_muslim_events.23.b ##no fight##
+		
+		trigger = {
+			num_locations < 51
+			government_type = government_type:monarchy
+		}
+		
+		destroy_rebel = scope:icd_mushasha_rebels_scope
+		
+		set_new_ruler = scope:icd_mushasha_scope
+		
+		set_variable = icd_possible_mahdi_claim
+
+		change_country_name = MSHS
+		change_country_adjective = MSHS_ADJ
+		change_country_color = MSHS_color #rgb { 82 157 90 }#
+		change_culture = culture:iraqi_culture
+		change_religion = religion:shia
+		
+		ai_will_select = {
+			value = 500
+		}
+	}
+}
+
+icd_muslim_events.24 = {  ##a sufi order rises - safavids#
+	type = country_event
+	title = icd_muslim_events.24.title
+	desc = icd_muslim_events.24.desc
+	fire_only_once = yes
+	outcome = neutral
+	trigger = {
+		num_provinces > 2
+		religion.group = religion_group:muslim
+		current_year > 1480
+		religion:shia = {
+			any_religious_order_in_religion = {
+				order_type ?= religious_order_type:icd_militant_sufi_order
+				religious_order_zeal > 80
+			}
+		}
+		any_owned_location = {
+			is_holding_of_any_religious_order = yes
+			OR = {
+				area = area:azerbaijan_area
+				area = area:shirvan_area
+			}
+		}
+		any_religious_order_in_country = {
+			order_calling ?= calling:icd_mahdist_calling
+			any_location_in_religious_order = {
+				OR = {
+					area = area:azerbaijan_area
+					area = area:shirvan_area
+				}
+			}
+		}
+		OR = {
+			government_type = government_type:monarchy
+			government_type = government_type:tribe
+			government_type = government_type:steppe_horde
+		}
+		at_war = no
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+	}
+
+	option = { 
+		name = icd_muslim_events.24.a
+		
+		ai_will_select = {
+			value = 500
+		}
+		
+		trigger_event_silently = {
+			id = icd_muslim_events.25
+			months = 10
+		}
+		
+		add_stability = stability_severe_penalty
+		add_legitimacy = legitimacy_mild_penalty		
+	}
+	
+}
+
+icd_muslim_events.25 = {  ##a sufi order rises - safavids#
+	type = country_event
+	title = icd_muslim_events.25.title
+	desc = icd_muslim_events.25.desc
+	fire_only_once = yes
+	outcome = neutral
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+
+		religion:shia = {
+			every_religious_order_in_religion = {
+				limit = {
+					order_type ?= religious_order_type:icd_militant_sufi_order
+				}
+				save_scope_as = target_order
+			}
+		}
+		
+		random_owned_location = {
+			limit = { 
+				OR = {
+					area = area:azerbaijan_area
+					area = area:shirvan_area
+				}
+			}
+			create_dynasty_from_location = safavid_dynasty
+			save_scope_as = target_location
+		}
+		
+		if = {
+			limit = { current_year < 1488 }
+			create_character = {
+				first_name = name_haidar
+				dynasty = dynasty:safavid_dynasty
+				birth_date = 1459.6.1
+				estate = estate_type:clergy_estate
+				religion = religion:shia
+				culture = culture:kurdish_culture
+				female = no
+				birth_location = location:diyarbekir
+				save_scope_as = icd_haidar_safavid
+			}
+		}
+		
+		if = {
+			limit = { current_year < 1494 
+				current_year > 1470
+			}
+			create_character = {
+				first_name = name_ali.name_mirza
+				dynasty = dynasty:safavid_dynasty
+				birth_date = 1470.1.1
+				father = scope:icd_haidar_safavid
+				estate = estate_type:clergy_estate
+				religion = religion:shia
+				culture = culture:azeri_culture
+				female = no
+				birth_location = location:ardabil
+				save_scope_as = icd_ali_mirza_safavid
+			}
+		}
+		
+		if = {
+			limit = { current_year > 1487 }
+			create_character = {
+				first_name = name_ishmael
+				dynasty = dynasty:safavid_dynasty
+				birth_date = 1487.6.17
+				father = scope:icd_haidar_safavid
+				estate = estate_type:clergy_estate
+				religion = religion:shia
+				culture = culture:azeri_culture
+				female = no
+				birth_location = location:ardabil
+				save_scope_as = icd_ismail_safavid
+			}
+		}
+		
+	}
+
+	option = { 
+		name = icd_muslim_events.25.a ##fight##
+		
+		scope:target_location.area = {
+			every_location_in_area = {
+				limit = {
+					owner ?= root
+					is_capital = no
+				}
+				add_core = c:ABL
+			}
+		}
+
+		create_country_from_cores_in_our_locations = c:ABL
+		
+		scope:icd_haidar_safavid ?= {
+			move_country = c:ABL
+		}
+		scope:icd_ali_mirza_safavid ?= {
+			move_country = c:ABL
+		}
+		scope:icd_ismail_safavid ?= {
+			move_country = c:ABL
+		}
+		
+		c:ABL = {
+			set_variable = icd_possible_mahdi_claim
+			if = {
+				limit = { exists = scope:icd_haidar_safavid }
+				set_new_ruler = scope:icd_haidar_safavid
+			}
+			if = {
+				limit = { exists = scope:icd_ali_mirza_safavid }
+				set_new_ruler = scope:icd_ali_mirza_safavid
+			}
+			if = {
+				limit = { exists = scope:icd_ismail_safavid }
+				set_new_ruler = scope:icd_ismail_safavid
+			}
+			root = {
+				declare_war_with_cb = {
+					target = c:ABL
+					type = casus_belli:cb_annex
+				}
+			}
+
+			every_owned_location = {
+				change_integration_level = core
+			}
+
+			change_culture = culture:farsi_culture
+			change_religion = religion:shia
+			
+			add_accepted_culture = culture:azeri_culture
+			
+			raise_all_levies = {
+				type = army
+				instant = yes
+			}
+			
+			add_country_modifier = {
+				modifier = icd_sufi_revolt
+				years = 5
+			}
+		}
+	}
+	
+	option = { 
+		name = icd_muslim_events.25.b ##no fight##
+		
+		trigger = {
+			num_locations < 110
+		}
+		
+		if = {
+			limit = { exists = scope:icd_haidar_safavid }
+			set_new_ruler = scope:icd_haidar_safavid
+		}
+		if = {
+			limit = { exists = scope:icd_ali_mirza_safavid }
+			set_new_ruler = scope:icd_ali_mirza_safavid
+		}
+		if = {
+			limit = { exists = scope:icd_ismail_safavid }
+			set_new_ruler = scope:icd_ismail_safavid
+		}
+		
+		define_unique_country_tag = ABL
+		change_country_name = ABL
+		change_country_adjective = ABL_ADJ
+		change_country_color = ardabil_color
+		change_country_flag = ABL
+
+		change_culture = culture:farsi_culture
+		change_religion = religion:shia
+		
+		add_accepted_culture = culture:azeri_culture
+		
+		set_variable = icd_possible_mahdi_claim
+		
+		ai_will_select = {
+			value = 500
+		}
+	}
+}
+
+
+icd_muslim_events.26 = {  ##decline of millenarianism#
+	type = country_event
+	title = icd_muslim_events.26.title
+	desc = icd_muslim_events.26.desc
+	fire_only_once = yes
+	outcome = neutral
+
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = { 
+		name = icd_muslim_events.26.a
+		
+		custom_tooltip = icd_millenarian_decline_tt
+	}
+	
+}
+
+
+icd_muslim_events.27 = {  ##khuruj#
+	type = country_event
+	title = icd_muslim_events.27.title
+	desc = icd_muslim_events.27.desc
+	outcome = neutral
+
+	trigger = {
+		religion = religion:zaydi_religion
+		NOT = { has_variable = icd_zaydi_reform_four }	
+	}
+
+	illustration_tags = {
+        10 = armed
+		10 = exterior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		
+		create_rebel = {
+			category = pretender
+			name = imamate_pretenders
+			save_scope_as = target_rebel
+		}
+
+	}
+
+	option = { 
+		name = icd_muslim_events.27.a
+		
+		custom_tooltip = khuruj_allegiance_changes
+		
+		hidden_effect = {
+			random_character  = {
+				limit = { estate_type = estate_type:nobles_estate }
+				save_scope_as = target_character
+				change_character_allegiance = scope:target_rebel
+			}
+			ordered_province = {
+				limit = { dominant_religion = religion:zaydi_religion }
+				order_by = {
+					value = province_satisfaction
+					multiply = -1
+				}
+				max = 1
+				every_location_in_province = {
+					every_pop = {
+						change_pop_allegiance = scope:target_rebel
+					}
+				}
+			}
+		}
+		
+		add_country_modifier = {
+			modifier = icd_khuruj_modifier
+			mode = extend
+			years = {
+				value = 15
+				if = {
+					limit = { has_variable = icd_zaydi_reform_one }
+					subtract = 5
+				}
+				if = {
+					limit = { has_variable = icd_zaydi_reform_two }
+					subtract = 5
+				}
+				if = {
+					limit = { has_variable = icd_zaydi_reform_three }
+					subtract = 5
+				}
+			}
+		}
+	}
+	
+}
+
+
+icd_muslim_events.28 = {  ##change of stance - sadr#
+	type = country_event
+	title = icd_muslim_events.28.title
+	desc = icd_muslim_events.28.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = { 
+		name = icd_muslim_events.28.a
+	}	
+}
+
+icd_muslim_events.29 = {  ##change of stance - aga khan#
+	type = country_event
+	title = icd_muslim_events.29.title
+	desc = icd_muslim_events.29.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = { 
+		name = icd_muslim_events.29.a
+	}
+}
+
+icd_muslim_events.30 = {  ##change of stance - ascension#
+	type = country_event
+	title = icd_muslim_events.30.title
+	desc = icd_muslim_events.30.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = { 
+		name = icd_muslim_events.29.a
+	}
+}
+
+icd_muslim_events.31 = {  ##change of stance - revival#
+	type = country_event
+	title = icd_muslim_events.31.title
+	desc = icd_muslim_events.31.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = { 
+		name = icd_muslim_events.29.a
+	}
+}
+
+icd_muslim_events.32 = {  ##change of stance - taqiyya#
+	type = country_event
+	title = icd_muslim_events.32.title
+	desc = icd_muslim_events.32.desc
+	outcome = neutral
+
+	illustration_tags = {
+        10 = regular
+		10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:clergy_estate }
+	}
+
+	option = { 
+		name = icd_muslim_events.29.a
+	}
+}
+
+##scope:target_location = {
+#				found_religious_order = {
+#					type = scope:order_type
+#					calling = scope:calling
+#					religion = scope:actor.religion
+#				}
+#			}

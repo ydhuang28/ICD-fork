@@ -23,7 +23,7 @@
 	}
 }
 
-REPLACE:native_policy = {
+TRY_REPLACE:native_policy = {
 	law_category = socioeconomic
 	potential = {
 	}
@@ -69,7 +69,7 @@ REPLACE:native_policy = {
 
 }
 
-REPLACE:tribal_religious_values_law = {
+TRY_REPLACE:tribal_religious_values_law = {
 	law_category = religious
     potential = { has_tribal_government = yes }
     allow = { has_tribal_government = yes }
@@ -105,7 +105,7 @@ REPLACE:tribal_religious_values_law = {
     }
 }
 
-REPLACE:education_elites_law = {
+TRY_REPLACE:education_elites_law = {
 	law_category = socioeconomic
 	potential = {}
 
@@ -253,7 +253,7 @@ REPLACE:education_elites_law = {
 	}
 }
 
-REPLACE:inquisition_law = {
+TRY_REPLACE:inquisition_law = {
 	law_category = religious
 	law_religion_group = {
 		catholic
@@ -501,7 +501,123 @@ REPLACE:inquisition_law = {
 	}
 }
 
-REPLACE:heir_religion_law = {
+TRY_REPLACE:iqta_law = {
+	law_category = religious
+	law_religion_group = {
+		sunni
+		ibadi
+		shia
+		nizari_religion
+		mustali_religion
+		zaydi_religion
+		alawite_religion
+	} 
+	
+	potential = {
+		religion ?= {
+			group ?= religion_group:muslim
+		}
+		NOT = {
+			has_reform = government_reform:revolutionary_empire
+			has_reform = government_reform:revolutionary_republic
+			has_reform = government_reform:revolutionary_autocracy
+			has_reform = government_reform:military_regime_reform
+			has_reform = government_reform:constitutional_state
+		}
+		NOT = {
+			government_type = government_type:tribe
+			government_type = government_type:steppe_horde
+		}
+		NOT = {
+			has_variable = icd_iqta_disabled
+		}
+	}
+	
+	locked = {
+	}
+
+	efficient_tax_farming = {
+		unique = yes
+		potential = {
+			NOR = {
+				has_or_had_tag = MUG
+				culture = { has_culture_group = culture_group:indian_group }
+			}
+		}
+		
+		country_modifier = {
+			global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+			tax_income_efficiency = medium_tax_income_efficiency_bonus
+			monthly_towards_capital_economy = societal_value_monthly_move
+			pure_tooltip_entry = reduces_diwan_al_jund_negative_tt
+			allow_estate_parliament = no
+			allow_constitutional_parliament = no
+			nobles_estate_agenda_impact = -0.33
+			global_dhimmi_estate_power = -0.5
+		}
+		estate_preferences = {
+			clergy_estate
+		}
+		years = 2
+	}
+	jagir_taxation = {
+		unique = yes
+		potential = {
+			OR = {
+				has_or_had_tag = MUG
+				culture = { has_culture_group = culture_group:indian_group }
+			}
+		}
+		country_modifier = {
+			peasants_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+			tax_income_efficiency = large_tax_income_efficiency_bonus
+			monthly_towards_capital_economy = societal_value_monthly_move
+			diwan_al_jund_bureaucracy_impact_modifier = 0.2
+			allow_estate_parliament = no
+			allow_constitutional_parliament = no
+			nobles_estate_agenda_impact = -0.33
+			global_dhimmi_estate_power = -0.5
+		}
+		estate_preferences = {
+			nobles_estate
+		}
+		years = 2
+	}
+	land_acquisition = {
+		country_modifier = {
+			global_rgo_build_time = -0.2
+			global_max_rgo_size_modifier = 0.2
+			nobles_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+			monthly_towards_centralization = societal_value_minor_monthly_move
+			pure_tooltip_entry = icd_increase_waqf_gain
+			allow_estate_parliament = no
+			allow_constitutional_parliament = no
+			nobles_estate_agenda_impact = -0.33
+			global_dhimmi_estate_power = -1.0
+		}
+		estate_preferences = {
+			crown_estate
+		}
+		years = 2
+	}
+	lenient_taxation = {
+		country_modifier = {
+			global_estate_target_satisfaction = medium_permanent_target_satisfaction
+			tax_income_efficiency = small_tax_income_efficiency_penalty
+			global_monthly_prosperity = 0.001
+			monthly_towards_traditional_economy = societal_value_monthly_move
+			allow_estate_parliament = no
+			allow_constitutional_parliament = no
+			nobles_estate_agenda_impact = -0.33
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 2
+	}
+}
+
+TRY_REPLACE:heir_religion_law = {
 	law_category = religious
 
 	locked = {
@@ -597,4 +713,201 @@ REPLACE:heir_religion_law = {
 		}
 		years = 2
 	}
+}
+
+TRY_REPLACE:sharia_law = {
+	law_category = administrative
+	potential = {
+		has_policy = sharia_law_policy
+		always = no
+	}
+
+	locked = {
+		custom_tooltip = {
+			text = sharia_changed_through_main_school_tt
+			religious_school ?= {
+				OR = {
+					this = religious_school:hanafi_school
+					this = religious_school:hanbali_school
+					this = religious_school:maliki_school
+					this = religious_school:shafii_school
+					this = religious_school:zahiri_school
+					this = religious_school:ismaili_school
+					this = religious_school:jafari_school
+					this = religious_school:zaidi_school
+				}
+			}
+			OR = {
+				has_policy = hanafi_policy
+				has_policy = hanbali_policy
+				has_policy = maliki_policy
+				has_policy = shafii_policy
+				has_policy = zahiri_policy
+				has_policy = ismaili_policy
+				has_policy = jafari_policy
+				has_policy = zaidi_policy
+			}
+		}
+	}
+
+	hanafi_policy = {
+		potential = {
+			religion = religion:sunni
+			religious_school ?= {
+				NOR = {
+					this = religious_school:hanbali_school
+					this = religious_school:maliki_school
+					this = religious_school:shafii_school
+					this = religious_school:zahiri_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_communalism = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	hanbali_policy = {
+		potential = {
+			religion = religion:sunni
+			religious_school ?= {
+				NOR = {
+					this = religious_school:hanafi_school
+					this = religious_school:maliki_school
+					this = religious_school:shafii_school
+					this = religious_school:zahiri_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_traditionalist = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	maliki_policy = {
+		potential = {
+			religion = religion:sunni
+			religious_school ?= {
+				NOR = {
+					this = religious_school:hanafi_school
+					this = religious_school:hanbali_school
+					this = religious_school:shafii_school
+					this = religious_school:zahiri_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_spiritualist = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	shafii_policy = {
+		potential = {
+			religion = religion:sunni
+			religious_school ?= {
+				NOR = {
+					this = religious_school:hanafi_school
+					this = religious_school:hanbali_school
+					this = religious_school:maliki_school
+					this = religious_school:zahiri_school
+				}
+			}
+		}
+
+		country_modifier = {
+			selling_efficiency = small_selling_efficiency_bonus
+			monthly_towards_free_trade = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	zahiri_policy = {
+		potential = {
+			religion = religion:sunni
+			religious_school ?= {
+				NOR = {
+					this = religious_school:hanafi_school
+					this = religious_school:hanbali_school
+					this = religious_school:maliki_school
+					this = religious_school:shafii_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_conciliatory = societal_value_minor_monthly_move
+			monthly_towards_inward = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	ismaili_policy = {
+		potential = {
+			religion = religion:shia
+			religious_school ?= {
+				NOR = {
+					this = religious_school:jafari_school
+					this = religious_school:zaidi_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_belligerent = societal_value_minor_monthly_move
+			monthly_towards_outward = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	jafari_policy = {
+		potential = {
+			religion = religion:shia
+			religious_school ?= {
+				NOR = {
+					this = religious_school:ismaili_school
+					this = religious_school:zaidi_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_humanist = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	zaidi_policy = {
+		potential = {
+			religion = religion:shia
+			religious_school ?= {
+				NOR = {
+					this = religious_school:ismaili_school
+					this = religious_school:jafari_school
+				}
+			}
+		}
+
+		country_modifier = {
+			monthly_towards_free_subjects = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
+	ibadi_policy = {
+		potential = {
+			religion = religion:ibadi
+		}
+
+		country_modifier = {
+			monthly_towards_individualism = societal_value_minor_monthly_move
+		}
+		years = 2
+	}
+
 }

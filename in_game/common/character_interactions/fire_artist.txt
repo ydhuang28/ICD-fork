@@ -7,7 +7,7 @@
 	}
 
 	ai_tick = monthly
-	ai_tick_frequency = 4
+	ai_tick_frequency = 24
 
 	allow = {
 	}

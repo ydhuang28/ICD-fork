@@ -1,7 +1,7 @@
-﻿INJECT:mandeaism = { 
+﻿TRY_INJECT:mandeaism = { 
 	culture_locked = yes
 }
-INJECT:zoroastrian = { 
+TRY_INJECT:zoroastrian = { 
 	culture_locked = yes
 }
 

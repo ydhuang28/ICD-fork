@@ -202,6 +202,7 @@ icd_romani_events.3 = { ####spread reformation age###
 	desc = icd_minority_events.1.desc
 	outcome = neutral
 	
+	hidden = yes
 	
 	trigger = {
 		owns = location:sredets

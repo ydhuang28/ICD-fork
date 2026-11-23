@@ -1,4 +1,4 @@
-﻿REPLACE:merge_culture_group = {
+﻿TRY_REPLACE:merge_culture_group = {
 	ability = adm
 	allow_multiple = no
 	years = 10
@@ -75,4 +75,4 @@
 			merge_culture_group = scope:target
 		}
 	}				
-	}
+}

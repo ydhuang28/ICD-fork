@@ -1,0 +1,37 @@
+﻿
+WE_PERFORM_icd_demand_allegiance_ACTION = {
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = diplomacy
+}
+ACTION_icd_demand_allegiance_PERFORMED_ON_US = {
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = diplomacy
+}
+WE_PERFORM_icd_petition_for_support_ACTION = {
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = diplomacy
+}
+ACTION_icd_petition_for_support_PERFORMED_ON_US = {
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = diplomacy
+}

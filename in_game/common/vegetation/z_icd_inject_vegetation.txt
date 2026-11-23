@@ -1,17 +1,17 @@
-﻿INJECT:desert = {
+﻿TRY_INJECT:desert = {
 	location_modifier = { 
 		local_tribal_promotion = -0.4
 		local_pop_assimilation_speed_modifier = -0.15
 	}
 }
 
-INJECT:sparse = {
+TRY_INJECT:sparse = {
 	location_modifier = { 
 		local_tribal_promotion = -0.25
 	}
 }
 
-INJECT:jungle = {
+TRY_INJECT:jungle = {
 	location_modifier = { 
 		local_tribal_promotion = -0.35
 		local_pop_assimilation_speed_modifier = -0.25
@@ -19,7 +19,7 @@ INJECT:jungle = {
 	}
 }
 
-INJECT:farmland = {
+TRY_INJECT:farmland = {
 	location_modifier = { 
 		local_tribal_promotion = 0.05
 	}

@@ -6,3 +6,6 @@ icd_nothing_price = {
 icd_dhimmi_price = {
 	
 }
+icd_religious_order_price = {
+	political_influence = 20
+}

@@ -1,0 +1,11 @@
+﻿
+#satpanth_order = {
+	#graphical_cultures = { muslim_gfx }
+	#type = icd_sufi_order
+	#calling = icd_internalized_calling
+	#religion = nizari_religion
+	#color = { 191 40 121 }
+	#zeal = 85
+	#locations = { umarkot }
+	#head_character = icd_pir_sadardin
+#}

@@ -1,0 +1,98 @@
+﻿
+TRY_REPLACE:change_order_calling = {
+	type = religious
+
+	sound = UI_action_religion_generic
+
+	ai_tick = never
+
+	potential = {
+		scope:actor = {
+			has_any_religious_order_presence = yes
+			NOT = { religion.group = religion_group:muslim }
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			num_order_holdings > 0
+		}
+	}
+
+	price = price:change_order_calling_price
+
+	cooldown = {
+		type = change_order_calling
+		years = 10
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_change_calling"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_change_calling"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	select_trigger = {
+		looking_for_a = calling
+		source = actor
+		target_flag = new_calling
+		name = "choose_calling_for_change_calling"
+		column = {
+			data = name
+		}
+		visible = {
+			calling_valid_for_type = scope:target.order_type
+			NOT = { calling_is_current_of_order = scope:target }
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				exists = scope:new_calling
+			}
+			scope:target = {
+				change_religious_order_calling = scope:new_calling
+				change_religious_order_zeal = -10
+			}
+		}
+		else = {
+			custom_tooltip = selected_order_loses_10_zeal
+		}
+	}
+
+	ai_will_do = {
+		value = 0	# We do not want the AI to randomly change the callings of their orders. It would lead to too much chaos
+	}
+}

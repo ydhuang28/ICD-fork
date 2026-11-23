@@ -117,6 +117,8 @@
  ruthenian_culture_movement_allow_tt: "Ruthenia exists and has begun establishing a new culture."
  turkification_culture_movement_allow_tt: "The Eastern Turco-Mongol Tradition has not begun."
  dutch_culture_movement_allow_tt: "The Netherlands exists and has begun establishing a new culture."
+ sufi_shiite_messianism_allow_tt: "The Sufi Mahdist movements are not present."
+ 
  
  AUTO_MODIFIER_NAME_icd_tribesmen_assimilation: "Base Tribesmen Value"
  
@@ -169,4 +171,57 @@
  
  MODIFIER_TYPE_NAME_icd_dhimmi_price_cost_modifier: "dhimmi price cost modifier"
  MODIFIER_TYPE_DESC_icd_dhimmi_price_cost_modifier: "dhimmi price cost modifier"
+ MODIFIER_TYPE_NAME_icd_religious_order_price_cost_modifier: "religious order price cost modifier"
+ MODIFIER_TYPE_DESC_icd_religious_order_price_cost_modifier: "religious order price cost modifier"
+ MODIFIER_TYPE_NAME_icd_caliphate_claimant_can_participate_in_parliament: "Icd caliphate claimant can participate in parliament"
+ MODIFIER_TYPE_DESC_icd_caliphate_claimant_can_participate_in_parliament: "desc"
+ MODIFIER_TYPE_NAME_icd_caliphate_claimant_agenda_impact: "Icd caliphate claimant agenda impact"
+ MODIFIER_TYPE_DESC_icd_caliphate_claimant_agenda_impact: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_national_cossack_culture_movement_resistance_modifier: "National cossack culture movement resistance modifier"
+ MODIFIER_TYPE_DESC_national_cossack_culture_movement_resistance_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_local_cossack_culture_movement_resistance_modifier: "Local cossack culture movement resistance modifier"
+ MODIFIER_TYPE_DESC_local_cossack_culture_movement_resistance_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_national_cossack_culture_movement_growth_modifier: "National cossack culture movement growth modifier"
+ MODIFIER_TYPE_DESC_national_cossack_culture_movement_growth_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_local_cossack_culture_movement_growth_modifier: "Local cossack culture movement growth modifier"
+ MODIFIER_TYPE_DESC_local_cossack_culture_movement_growth_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_national_sufi_shiite_messianism_resistance_modifier: "National sufi shiite messianism resistance modifier"
+ MODIFIER_TYPE_DESC_national_sufi_shiite_messianism_resistance_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_local_sufi_shiite_messianism_resistance_modifier: "Local sufi shiite messianism resistance modifier"
+ MODIFIER_TYPE_DESC_local_sufi_shiite_messianism_resistance_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_national_sufi_shiite_messianism_growth_modifier: "National sufi shiite messianism growth modifier"
+ MODIFIER_TYPE_DESC_national_sufi_shiite_messianism_growth_modifier: "TODO : Write a desc"
+ MODIFIER_TYPE_NAME_local_sufi_shiite_messianism_growth_modifier: "Local sufi shiite messianism growth modifier"
+ MODIFIER_TYPE_DESC_local_sufi_shiite_messianism_growth_modifier: "TODO : Write a desc"
  
+ STATIC_MODIFIER_NAME_icd_army_sufi_rituals: "Military Karamat Impression"
+ STATIC_MODIFIER_NAME_icd_sufi_advisors: "Sufi Court Teachers"
+ STATIC_MODIFIER_NAME_icd_tutored_by_sufi: "Tutored by Sufi Teachers"
+ 
+ icd_religious_order_price: "Religious Order Price"
+ icd_opinion_madhhab_disfavoured: "Disfavoured Madhhab"
+ icd_opinion_madhhab_favoured: "Favoured Madhhab"
+ io_opinion_icd_sunni_caliphate: "Sunni Caliphate Opinion"
+ 
+ STATIC_MODIFIER_NAME_icd_abbasid_dynasty_modifier: "Abbasid Dynasty Modifier"
+ STATIC_MODIFIER_NAME_icd_caliphate_fatwa_revolt: "Fatwa on Sunni Revolt"
+ STATIC_MODIFIER_NAME_icd_caliphate_fatwa_taqiyya: "Fatwa on Sunni Taqiyya"
+ STATIC_MODIFIER_NAME_icd_caliphate_fatwa_hijra: "Fatwa on Sunni Hijra"
+ STATIC_MODIFIER_NAME_icd_rural_sufism_sponsored: "Rural Sufism Sponsored"
+ STATIC_MODIFIER_NAME_icd_rural_sufism_shunned: "Rural Sufism Shunned"
+ STATIC_MODIFIER_NAME_icd_sufi_leader_pension: "Pension for Sufi Leaders"
+ STATIC_MODIFIER_NAME_icd_title_mahdi: "Mahdi Claimant"
+ STATIC_MODIFIER_NAME_icd_khuruj_modifier: "Khuruj"
+
+ 
+ AUTO_MODIFIER_NAME_icd_waqf_impact: "Impact of our [waqf_distribution|e]"
+ select_character: "Select [character|e]
+ choose_religious_order_unit: "Choose army unit"
+ 
+ STATIC_MODIFIER_NAME_icd_title_axis_of_the_realm: "Axis of the Realm"
+ STATIC_MODIFIER_NAME_icd_title_emperor_of_the_faith: "Emperor of the Faith"
+ STATIC_MODIFIER_NAME_icd_title_pivot_of_the_universe: "Pivot of the Universe"
+ STATIC_MODIFIER_NAME_icd_title_shadow_of_god: "Shadow of God"
+ STATIC_MODIFIER_NAME_icd_sufi_revolt: "Sufi Takeover"
+ 
+ AUTO_MODIFIER_NAME_icd_nizari: "Impact of Nizari Imamate's Stability"

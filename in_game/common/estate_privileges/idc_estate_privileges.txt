@@ -1,5 +1,6 @@
 ﻿
 
+
 icd_entrenched_tribal_livelihood = {
 	icon = nobles_land_rights
 	estate = tribes_estate
@@ -153,6 +154,7 @@ icd_druze_emirs = {
 	country_modifier = {
 		nobles_estate_target_satisfaction = 0
 		global_nobles_estate_power = 0.2
+		pure_tooltip_entry = icd_dhimmi_nobles_yes
 	}
 	
 	location_modifier = {

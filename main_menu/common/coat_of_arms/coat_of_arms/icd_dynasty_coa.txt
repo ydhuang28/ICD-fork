@@ -1,0 +1,26 @@
+
+###
+icd_abbasid_dynasty = { # 
+	pattern = "pattern_solid.dds"
+	color1 = "black"
+	color2 = "white"
+				
+	textured_emblem = {
+		texture = "icd_abbasid.dds"		
+		instance = { position = { 0.5 0.475 } scale = { 0.85 0.85 } }					
+	}
+}
+icd_fatimid_dynasty = { # 
+	pattern = "pattern_solid.dds"
+	color1 = "green"
+	color2 = "white"
+				
+	textured_emblem = {
+		texture = "icd_fatimid_dynasty.dds"		
+		instance = { position = { 0.27 0.43 } scale = { 1.0 1.0 } }					
+	}
+} 
+NIZAR = {
+	pattern = "pattern_solid.dds"
+	color1 = rgb { 1 149 49 }
+}

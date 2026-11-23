@@ -1,0 +1,159 @@
+﻿icd_nizari_imamate_io = {
+	has_target = no
+	unique = yes
+	expel_members_who_are_targets_of_other_members = no
+	disband_if_no_leader = yes
+	show_leave_message = no
+	
+	has_leader_country = yes
+	leader_title_key = "NIZARI_IMAM_LEADER"
+	override_ruler_title = yes
+	leader_type = character
+	leader = {
+		leader_country ?= {
+			ruler ?= {
+				add_to_list = leaders
+			}
+		}
+	}
+		
+	on_creation = {
+		
+	}
+	
+	can_declare_war = {
+		always = yes
+	}
+	
+	can_leave_trigger = {
+		always = no
+	}
+	
+	auto_leave_trigger = {
+		NOT = {
+			religion = religion:nizari_religion
+		}
+	}
+	
+	modifier = {
+	}
+	
+	leader_modifier = {
+		monthly_legitimacy = 0.1
+		monthly_republican_tradition = 0.1
+		monthly_devotion = 0.1
+		monthly_horde_unity = 0.1
+		monthly_tribal_cohesion = 0.1
+	}
+	
+	can_join_trigger = {
+		religion = religion:nizari_religion
+		is_rebel_country = no
+	}
+	
+	create_visible_trigger = {
+		always = no
+	}
+	
+	auto_disband_trigger = {
+	}
+	
+	on_joined = {
+	}
+
+	on_left = {
+	}
+	
+	monthly_effect = {
+		hidden_effect = {
+			if = { ##nizari countries join###
+				limit = {
+					any_country = {
+						is_rebel_country = no
+						religion = religion:nizari_religion
+						NOT = { is_member_of_international_organization = international_organization:icd_nizari_imamate_io }
+					}
+				}
+				every_country = {
+					limit = {
+						is_rebel_country = no
+						religion = religion:nizari_religion
+						NOT = { is_member_of_international_organization = international_organization:icd_nizari_imamate_io }
+					}
+					root = { add_country_to_international_organization = prev }
+				}
+			}
+		}
+		if = {
+			limit = {
+				current_year > 1340
+				international_organization_has_leader = no
+				NOT = { international_organization_has_policy = policy:icd_sadr }
+			}
+			add_policy_to_international_organization = policy:icd_sadr
+			every_international_organization_member = {
+				trigger_event_silently = icd_muslim_events.28
+			}
+		}
+		else_if = {
+			limit = {
+				current_year > 1750
+				NOT = { international_organization_has_policy = policy:icd_aga_khan }
+			}
+			add_policy_to_international_organization = policy:icd_aga_khan
+			every_international_organization_member = {
+				trigger_event_silently = icd_muslim_events.29
+			}
+		}
+		else_if = {
+			limit = {
+				any_international_organization_member = {
+					country_rank_level > 2
+				}
+				NOT = { international_organization_has_policy = policy:icd_ascension_stance }
+			}
+			add_policy_to_international_organization = policy:icd_ascension_stance
+			every_international_organization_member = {
+				trigger_event_silently = icd_muslim_events.30
+			}
+		}
+		else_if = {
+			limit = {
+				any_international_organization_member = {
+					current_year > 1400
+					any_province = {
+						dominant_religion = religion:nizari_religion
+					}
+				}
+				NOT = { international_organization_has_policy = policy:icd_revival_stance }
+			}
+			add_policy_to_international_organization = policy:icd_revival_stance
+			every_international_organization_member = {
+				trigger_event_silently = icd_muslim_events.31
+			}
+		}
+		else_if = {
+			limit = { NOT = { international_organization_has_policy = policy:icd_taqiyya_stance } }
+			add_policy_to_international_organization = policy:icd_taqiyya_stance
+			every_international_organization_member = {
+				trigger_event_silently = icd_muslim_events.32
+			}
+		}
+	}
+	
+	variables = {
+	}
+	
+	special_statuses_implemented = {
+	}
+	
+	ai_desire_to_join = {
+	}
+	
+	ai_desire_to_allow_new_member = {
+		add = {
+			desc = "WE_WANT_THE_ORGANIZATION_TO_GROW"
+			value = 20
+		}
+	}
+}

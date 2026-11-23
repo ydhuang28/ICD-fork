@@ -1,0 +1,129 @@
+﻿REPLACE:ibadi = { 
+	color = color_ibadi
+	group = muslim
+	language = classical_arabic_dialect
+
+	
+	religious_school = wahbi_school
+	religious_school = azzabas_school
+
+	definition_modifier = {
+		global_merchant_power = 0.05
+		country_cabinet_efficiency = 0.05
+		
+		ban_imports_of_wine = yes
+		ban_imports_of_beer = yes
+		ban_imports_of_liquor = yes
+
+		number_of_allowed_religious_figures = 1
+	}
+	
+	opinions = {
+	}
+
+	unique_names = {
+		name_muhammad
+	}
+
+	max_religious_figures_for_religion = {
+		every_country_in_religion = {
+			add = 1.5
+		}
+		every_holy_site_in_religion = {
+			add = 1
+		}
+	}
+
+	tags = { muslim_gfx abrahamic_gfx }
+}
+
+REPLACE:shia = { 
+	color = rgb { 166 24 17 }
+	group = muslim
+	language = classical_arabic_dialect
+	
+	religious_school = din_i_ilahi_school
+	religious_school = usuli_school
+	religious_school = akhbari_school
+	religious_school = alevism_school
+
+	definition_modifier = {
+		land_morale_modifier = 0.05
+
+		allow_mysticism_vs_jurisprudence = yes
+
+		ban_imports_of_wine = yes
+		ban_imports_of_beer = yes
+		ban_imports_of_liquor = yes
+
+		number_of_allowed_religious_figures = 1
+	}
+	
+	opinions = {
+		mustali_religion = positive
+		zaydi_religion = positive
+		nizari_religion = positive
+	}
+
+	unique_names = {
+		name_muhammad
+	}	
+
+	max_religious_figures_for_religion = {
+		every_country_in_religion = {
+			add = 1.5
+		}
+		every_holy_site_in_religion = {
+			add = 1
+		}
+	}
+
+	tags = { muslim_gfx abrahamic_gfx }
+}
+
+REPLACE:sunni = { 
+	color = religion_sunni
+	group = muslim
+	language = classical_arabic_dialect
+	
+	religious_school = hanafi_school
+ 	religious_school = hanbali_school
+	religious_school = maliki_school
+	religious_school = shafii_school
+	religious_school = zahiri_school
+	religious_school = din_i_ilahi_school
+
+	definition_modifier = {
+
+		selling_efficiency = tiny_trade_efficiency_bonus		
+
+		allow_mysticism_vs_jurisprudence = yes
+		
+		ban_imports_of_wine = yes
+		ban_imports_of_beer = yes
+		ban_imports_of_liquor = yes
+
+		number_of_allowed_religious_figures = 1
+	}
+	
+	opinions = {
+		zaydi_religion = positive
+	}
+
+	unique_names = {
+		name_muhammad
+	}
+
+	max_religious_figures_for_religion = {
+		every_country_in_religion = {
+			add = 1.5
+		}
+		every_holy_site_in_religion = {
+			add = 1
+		}
+	}
+
+	tags = { muslim_gfx abrahamic_gfx }
+}
+
+

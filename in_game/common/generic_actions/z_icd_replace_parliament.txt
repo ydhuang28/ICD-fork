@@ -1,0 +1,269 @@
+﻿
+TRY_REPLACE:force_parliament_issue = {
+	icon = call_parliament
+	type = parliament
+	allow = {
+		scope:actor = {
+			is_active_parliament = yes
+			trigger_if = {
+				limit = { tag = HUN }
+				OR = {
+					AND = {
+						has_ruler = yes
+						ruler = {
+							has_character_modifier = hun_absolute_rule
+						}
+					}
+					parliament_type = parliament_type:autocratic_parliament
+				}
+			}
+			trigger_else = { 
+				OR = {
+					parliament_type = parliament_type:autocratic_parliament 
+					parliament_type = parliament_type:icd_consultation
+				}
+			}
+		}
+	}
+
+	cooldown = { #only once per parliament session
+		type = has_forced_parliament_issue
+		years = 5
+	}
+
+	effect = {
+		if = {
+			limit = {
+				scope:actor = { parliament_type = parliament_type:icd_consultation }
+			}
+			scope:actor = {
+				custom_tooltip = {
+					text = icd_increase_waqf
+					if = {
+						limit = { has_variable = icd_waqf_base_var 
+							var:icd_waqf_base_var < 100
+						}
+						change_variable = {
+							name = icd_waqf_base_var
+							add = {
+								value = scope:actor.icd_waqf_change
+								min = 0
+							}
+						}
+					}
+					if = {
+						limit = { NOT = { has_variable = icd_waqf_base_var } }
+						set_variable = {
+							name = icd_waqf_base_var
+							value = {
+								value = scope:actor.icd_waqf_change
+								min = 0
+							}
+						}
+					}
+				}
+			}
+		}
+		scope:actor = {
+			set_parliament_issue_support = {
+				value = 1
+			}
+			if = {
+				limit = {
+					current_age_or_later = { age = age_5_absolutism }
+				}
+				change_societal_value = {
+					type = absolutism_vs_liberalism
+					value = societal_value_move_to_left
+				}
+			}
+		}
+	}
+	ai_tick = daily
+	ai_tick_frequency = 90
+
+	automation_tick = daily
+	automation_tick_frequency = 1
+	player_automated_category = parliament
+	
+	ai_will_do = {
+		if = {
+			limit = {
+				scope:actor = {
+					parliament_type = parliament_type:icd_consultation
+				}
+			}
+			add = 5
+		}
+		
+		#Base
+		subtract = {
+			value = 1
+		}
+
+		add = {
+			if = {
+				limit = {
+					scope:actor = {
+						calc_true_if = {
+							estate_satisfaction:nobles_estate > 0.5
+							estate_satisfaction:clergy_estate > 0.5
+							estate_satisfaction:burghers_estate > 0.5
+							amount >= 2
+						}
+					}
+				}
+				value = 2
+			}
+		}
+	}
+}
+
+TRY_REPLACE:force_parliament_support = {
+	type = parliament
+
+	sound = PARLIAMENT_REQUEST_MORE_TAXES
+
+	ai_tick = daily
+	ai_tick_frequency = 100
+	automation_tick = daily
+	automation_tick_frequency = 7
+	player_automated_category = parliament
+
+	allow = {
+		scope:actor = {
+			NOT = { parliament_type = parliament_type:icd_consultation }
+			is_active_parliament = yes
+			political_influence >= {
+				value = political_influence_radical_penalty
+				multiply = -1
+			}
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			add_political_influence = political_influence_radical_penalty
+			change_parliament_issue_support = {
+				value = 0.25
+			}
+			if = {
+				limit = {
+					modifier:nobles_estate_can_participate_in_parliament = yes
+					country_has_estate = estate_type:nobles_estate
+				}
+				add_estate_satisfaction = {
+					type = estate_type:nobles_estate
+					value = -0.10
+				}
+			}
+			if = {
+				limit = {
+					modifier:clergy_estate_can_participate_in_parliament = yes
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_estate_satisfaction = {
+					type = estate_type:clergy_estate
+					value = -0.10
+				}
+			}
+			if = {
+				limit = {
+					modifier:burghers_estate_can_participate_in_parliament = yes
+					country_has_estate = estate_type:burghers_estate
+				}
+				add_estate_satisfaction = {
+					type = estate_type:burghers_estate
+					value = -0.10
+				}
+			}
+			if = {
+				limit = {
+					modifier:peasants_estate_can_participate_in_parliament = yes
+					country_has_estate = estate_type:peasants_estate
+				}
+				add_estate_satisfaction = {
+					type = estate_type:peasants_estate
+					value = -0.10
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		# Base negative — costs 75 PI and upsets every participating estate
+		subtract = {
+			value = 2
+			desc = "base reluctance"
+		}
+
+		# Never waste this if support is already above the request threshold
+		add = {
+			if = {
+				limit = {
+					scope:actor = {
+						or = {
+							parliament_issue_support >= modifier:parliament_request_issue_support_needed
+							parliament_issue_support < 0.25
+						}
+					}
+				}
+				value = -1000
+			}
+			desc = "too high or too low support"
+		}
+
+		# Core value: support is below threshold and we cannot act without a boost
+		add = {
+			if = {
+				limit = {
+					scope:actor = {
+						parliament_issue_support < modifier:parliament_request_issue_support_needed
+					}
+				}
+				value = 5
+			}
+			desc = "below threshold"
+		}
+
+		# Urgency when at war — need taxes and levies from parliament
+		add = {
+			if = {
+				limit = {
+					scope:actor = { at_war = yes }
+				}
+				value = 3
+			}
+			desc = "at war"
+		}
+
+		# Strong urgency when losing — every parliamentary tool matters
+		add = {
+			if = {
+				limit = {
+					scope:actor = { is_in_losing_war = yes }
+				}
+				value = 5
+			}
+			desc = "losing war"
+		}
+
+		# Caution: avoid compounding estate grievances when multiple estates already discontented
+		add = {
+			if = {
+				limit = {
+					scope:actor = {
+						calc_true_if = {
+							amount >= 2
+							estate_satisfaction:nobles_estate < 0.5
+							estate_satisfaction:clergy_estate < 0.5
+							estate_satisfaction:burghers_estate < 0.5
+						}
+					}
+				}
+				value = -4
+			}
+			desc = "low estate satisfaction"
+		}
+	}
+}

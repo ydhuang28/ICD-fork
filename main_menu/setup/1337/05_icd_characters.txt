@@ -1,0 +1,221 @@
+#Remember to write sons and daughters ALWAYS after their parents to avoid crashes
+
+character_db={
+
+	mam_al_hakim = {
+		first_name = { name = al_hakim }
+		culture = iraqi_culture
+		estate = nobles_estate
+		religion = sunni
+		birth_date = 1262.11.21
+		death_date = 1302.1.19
+		birth = baghdad
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_mustafki = {
+		first_name = { name = al_mustafki }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_hakim
+		birth_date = 1285.3.23
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_ahmad_abbasid = {
+		first_name = { name = name_ahmad }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_hakim
+		birth_date = 1285.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_hakim_ii = {
+		first_name = { name = name_ahmad }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_mustafki
+		birth_date = 1310.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_wathiq = {
+		first_name = { name = name_abraham }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_ahmad_abbasid
+		birth_date = 1298.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_wathiq_ii = {
+		first_name = { name = name_omar }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_wathiq
+		birth_date = 1316.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_mustasim = {
+		first_name = { name = name_zechariah }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_wathiq
+		birth_date = 1328.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_mutadid_i = {
+		first_name = { name = name_abu_bakr }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_mustafki
+		birth_date = 1305.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	mam_al_mutawakill_i = {
+		first_name = { name = name_muhammad }
+		culture = lower_egyptian_culture
+		estate = nobles_estate
+		religion = sunni
+		father = mam_al_mutadid_i
+		birth_date = 1337.1.1
+		birth = cairo
+		dynasty = icd_abbasid_dynasty
+		tag = MAM
+	}
+	
+	ysu_baha_al_din_naqshband = {
+		first_name = { name = name_baha_al_din.name_muhammad }
+		nickname = { name = icd_naqshband }
+		culture = khorezmian_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1318.1.1
+		birth = bukhara
+		tag = YSU
+	}
+	jal_abdul_jabbar_gilani = {
+		first_name = { name = name_abdul_jabbar }
+		dynasty = icd_gilani_dynasty
+		culture = iraqi_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1250.1.1
+		birth = baghdad
+		tag = JAL
+	}
+	ben_uthman_siraj_ad_din_al_bangali = {
+		first_name = { name = name_siraj_ad_din }
+		last_name = { name = icd_al_bangali }
+		culture = bengali
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1258.1.1
+		birth = gaur
+		tag = GAU
+	}
+	icd_sharfuddin_yahya_maneri = {
+		first_name = { name = name_sharfuddin.name_john }
+		last_name = { name = icd_maneri }
+		culture = dehlavi
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1263.6.1
+		birth = patna
+		tag = DLH
+	}
+	icd_sidi_muhammad_wafa = {
+		first_name = { name = name_muhammad }
+		nickname = { name = icd_wafa }
+		culture = lower_egyptian_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1302.1.1
+		birth = alexandria
+		tag = MAM
+	}
+	icd_abu_muhammad_al_hariri = {
+		first_name = { name = name_muhammad.name_ali }
+		nickname = { name = icd_al_hariri }
+		culture = levantine_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1280.1.1
+		birth = damascus
+		tag = HLG
+	}
+	icd_alim_celebi_i = {
+		first_name = { name = name_alim }
+		culture = turkish_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1305.1.1
+		birth = konya
+		tag = KAR
+	}
+	icd_muhammad_nur_al_khalwati = {
+		first_name = { name = name_muhammad }
+		nickname = { name = icd_al_khalwati }
+		culture = khorasani_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1305.1.1
+		birth = herat
+		tag = KRT
+	}
+	icd_abdal_musa = {
+		first_name = { name = name_abdullah.name_moses }
+		culture = turkoman_culture
+		estate = clergy_estate
+		religion = shia
+		birth_date = 1290.1.1
+		birth = khoy
+		tag = ERE
+	}
+	icd_mahmoud_mazdaqani = {
+		first_name = { name = name_mahmud }
+		last_name = { name = icd_mazdaqani }
+		culture = farsi_culture
+		estate = clergy_estate
+		religion = shia
+		birth_date = 1280.1.1
+		birth = semnan
+		tag = GRG
+	}
+	icd_sayyid_ata = {
+		first_name = { name = name_ata }
+		culture = khorezmian_culture
+		estate = clergy_estate
+		religion = sunni
+		birth_date = 1270.1.1
+		birth = turkestan
+		tag = GLH
+	}
+	icd_pir_sadardin = {
+		first_name = { name = icd_sadr_al_din }
+		culture = iraqi_culture
+		estate = clergy_estate
+		religion = nizari_religion
+		birth_date = 1310.1.1
+		birth = nishapur
+		tag = SND
+	}
+}

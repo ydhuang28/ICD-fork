@@ -1,0 +1,46 @@
+﻿icd_sufi_order_holding_demand = {
+	category = special_demands
+	incense = 0.3
+	cloth = 0.5
+	tools = 0.05
+	masonry = 0.3
+}
+icd_mahdist_order_demand = {
+	category = special_demands
+	weaponry = 0.6
+	horses = 0.1
+	medicaments = 0.1
+}
+icd_militant_order_holding_demand = {
+	category = special_demands
+	incense = 0.3
+	cloth = 0.5
+	tools = 0.05
+	masonry = 0.3
+}
+icd_orders_mortifying_demand = {
+	category = special_demands
+	iron = 0.5
+	beeswax = 0.2
+}
+icd_orders_civic_demand = {
+	category = special_demands
+	paper = 0.5 #1
+	tools = 0.4 #1.5
+}
+icd_orders_expressive_demand = {
+	category = special_demands
+	fiber_crops = 0.2 #0.4
+	wool = 0.3 #1.25
+	leather = 0.5 #0.5
+}
+icd_orders_internalized_demand = {
+	category = special_demands
+	paper = 0.5 #1
+	incense = 0.5 #1.25
+}
+icd_orders_syncretic_demand = {
+	category = special_demands
+	cloth = 0.4 
+	incense = 0.5
+}

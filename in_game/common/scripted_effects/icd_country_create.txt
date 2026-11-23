@@ -1,0 +1,76 @@
+﻿
+icd_create_nizari_imamate = {
+	location:tabriz = {
+		create_building_country_in_location = {
+			name = {
+				name = NIZAR
+			}
+			change_religion = religion:nizari_religion
+			change_culture = culture:icd_nizari_culture
+			define_unique_country_tag = NIZAR
+			change_country_flag = NIZAR
+			change_government_type = government_type:monarchy
+			change_heir_selection = heir_selection:agnatic_primogeniture
+			save_scope_as = icd_nizari_imam_scope
+			add_reform = government_reform:icd_nizari_imamate
+
+			
+		
+			create_character = {
+				first_name = name_qasim.name_shah
+				female = no
+				birth_location = location:tabriz
+				culture = culture:icd_nizari_culture
+				religion = religion:nizari_religion
+				birth_date = 1300.1.1
+				dynasty = dynasty:icd_fatimid_dynasty
+				save_scope_as = target_ruler
+			}
+			create_character = {
+				first_name = name_islam.name_shah
+				female = no
+				birth_location = location:tabriz
+				culture = culture:icd_nizari_culture
+				religion = religion:nizari_religion
+				birth_date = 1336.1.1
+				father = scope:target_ruler
+				dynasty = dynasty:icd_fatimid_dynasty
+				save_scope_as = target_heir
+			}
+			set_new_ruler = scope:target_ruler
+		}
+		change_building_level_in_location = {
+			building = building_type:icd_nizari_headquarters
+			value = 1
+			owner = scope:icd_nizari_imam_scope
+		}
+		
+		international_organization:icd_nizari_imamate_io = {
+			add_country_to_international_organization = c:NIZAR
+		}
+		international_organization:icd_nizari_imamate_io = {
+			set_leader_country = c:NIZAR
+		}
+	}
+	location:kotri = {
+		change_building_level_in_location = {
+			building = building_type:icd_jamatkhana
+			value = 1
+			owner = scope:icd_nizari_imam_scope
+		}
+	}
+	location:saruk = {
+		change_building_level_in_location = {
+			building = building_type:icd_jamatkhana
+			value = 1
+			owner = scope:icd_nizari_imam_scope
+		}
+	}
+	location:astarabad = {
+		change_building_level_in_location = {
+			building = building_type:icd_jamatkhana
+			value = 1
+			owner = scope:icd_nizari_imam_scope
+		}
+	}
+}

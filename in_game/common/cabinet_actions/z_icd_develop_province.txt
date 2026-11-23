@@ -1,4 +1,4 @@
-﻿REPLACE:develop_province = {
+﻿TRY_REPLACE:develop_province = {
 	ability = adm
 	helps_with = "location|subject"
 	allow_multiple = yes

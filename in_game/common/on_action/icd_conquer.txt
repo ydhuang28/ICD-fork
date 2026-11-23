@@ -3,6 +3,8 @@ on_location_changed_owner = {
 
 	on_actions = {
 		icd_stop_religion
+		icd_caliph_change
+		icd_waqf_location_recalculate
 	}
 }
 
@@ -10,5 +12,111 @@ icd_stop_religion = {
 	
 	effect = {
 		icd_conversion_stop = yes
+	}
+}
+
+
+icd_caliph_change = {
+	
+	effect = {
+		if = {
+			limit = {
+				this = location:cairo
+				scope:loser = { 
+					has_variable = icd_abbasid_caliph
+				}
+			}
+			scope:loser = {
+				remove_variable = icd_abbasid_caliph
+				international_organization_remove_special_status = {
+					type = special_status:icd_caliphate_claimant
+					country = scope:actor
+				}
+			}
+			international_organization_chooses_new_leader = international_organization:icd_sunni_caliphate
+		}
+	}
+}
+
+icd_waqf_location_recalculate = {
+	trigger = {
+		scope:winner = { 
+			religion.group = religion_group:muslim 
+			num_locations > 0
+			is_real_country = yes
+			has_variable = icd_waqf_base_var
+			var:icd_waqf_base_var > 0
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				root = { dominant_religion.group != religion_group:muslim }
+				scope:loser = { religion.group != religion_group:muslim }
+			}
+			scope:winner = {
+				change_variable = {
+					name = icd_waqf_base_var
+					subtract = {
+						value = 100
+						divide = scope:winner.num_locations
+					}
+				}
+			}
+		}
+	}
+}
+
+on_character_death = {
+
+	on_actions = {
+		icd_caliph_check_abbasid
+		icd_zaydi_khuruj
+	}
+}
+icd_caliph_check_abbasid = {
+	trigger = {
+		scope:target.owner = {
+			has_variable = icd_abbasid_caliph
+			scope:target = var:icd_abbasid_caliph
+		}
+	}
+	
+	effect = {
+		dynasty:icd_abbasid_dynasty = {
+			ordered_character_in_dynasty = {
+				limit = {
+					is_alive = yes
+					is_female = no
+				}
+				order_by = age_in_years
+				scope:target.owner = {
+					remove_variable = icd_abbasid_caliph
+					set_variable = {
+						name = icd_abbasid_caliph
+						value = prev
+					}
+					var:icd_abbasid_caliph = {
+						icd_abbasid_rename = yes
+					}
+				}
+			}
+		}
+	}
+}
+icd_zaydi_khuruj = {
+	trigger = {
+		scope:target.owner ?= {
+			religion ?= religion:zaydi_religion
+		}
+		scope:target = {
+			is_ruler = yes
+		}
+	}
+	effect = {
+		scope:target.owner ?= {
+			trigger_event_silently = icd_muslim_events.27
+		}
 	}
 }

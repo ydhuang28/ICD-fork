@@ -1,0 +1,16 @@
+#Remember to write sons and daughters ALWAYS after their parents to avoid crashes
+
+dynasty_manager={
+	icd_abbasid_dynasty = {
+		name = { name = icd_abbasid_dynasty }
+		home = baghdad
+	}
+	icd_gilani_dynasty = {
+		name = { name = icd_gilani_dynasty }
+		home = baghdad 
+	}
+	icd_fatimid_dynasty = {
+		name = { name = fatimid_dynasty }
+		home = cairo 
+	}
+}

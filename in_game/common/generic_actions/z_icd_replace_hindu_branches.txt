@@ -1,4 +1,4 @@
-﻿REPLACE:join_branch = {
+﻿TRY_REPLACE:join_branch = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -120,7 +120,7 @@
 	}
 }
 
-REPLACE:activate_avatar = {
+TRY_REPLACE:activate_avatar = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -215,7 +215,7 @@ REPLACE:activate_avatar = {
 	}
 }
 
-REPLACE:deactivate_avatar = {
+TRY_REPLACE:deactivate_avatar = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -290,7 +290,7 @@ REPLACE:deactivate_avatar = {
 	}
 }
 
-REPLACE:reroll_avatar = {
+TRY_REPLACE:reroll_avatar = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -395,7 +395,7 @@ REPLACE:reroll_avatar = {
 }
 
 
-REPLACE:favor_god = {
+TRY_REPLACE:favor_god = {
 	type = religious
 
 	sound = UI_action_religion_generic
@@ -513,7 +513,7 @@ REPLACE:favor_god = {
 	}
 }
 
-REPLACE:stop_favoring_god = {
+TRY_REPLACE:stop_favoring_god = {
 	type = religious
 
 	sound = UI_action_religion_generic

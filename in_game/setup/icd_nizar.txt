@@ -1,0 +1,8 @@
+﻿NIZAR = { #Chobanids
+	color = NIZAR
+	color2 = NIZAR
+
+	culture_definition = nizari_culture
+	religion_definition = nizari_religion
+	is_historic = yes
+}

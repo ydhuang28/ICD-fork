@@ -1,0 +1,40 @@
+﻿namespace = muslim_school_events
+
+muslim_school_events.22 = {
+	type = country_event
+	title = muslim_school_events.22.title
+	desc = muslim_school_events.22.desc
+	outcome = neutral
+	trigger = {
+		religious_school ?= religious_school:hanbali_school
+		current_date >= 1700.1.1
+		societal_value:mysticism_vs_jurisprudence >= 65
+		OR = {
+			current_date >= 1780.1.1
+			has_global_variable = neo_sufism
+		}
+		always = no
+	}
+
+	illustration_tags = {
+        10 = angry
+        10 = interior
+    }
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		hidden_effect = {
+			set_global_variable = wahabism_founded
+		}
+	}
+
+	option = {
+		name = muslim_school_events.22.a
+		custom_tooltip = muslim_school_events.22.a.tt
+	}
+
+	option = {
+		name = muslim_school_events.22.b
+		set_religious_school = religious_school:wahhabi_school
+	}
+}

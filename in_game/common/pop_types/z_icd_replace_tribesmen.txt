@@ -3,7 +3,7 @@ REPLACE:tribesmen = {
 	color = pop_tribes
 	
 	promote_to = peasants
-	power_per_pop = 0.10
+	power_per_pop = 0.25
 	promote_to = soldiers
 	
 	pop_food_consumption = 0.0

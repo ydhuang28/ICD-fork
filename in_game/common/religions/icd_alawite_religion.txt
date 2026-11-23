@@ -9,14 +9,10 @@
 		tolerance_own = 0.5
 		cultural_tradition_modifier = 0.25
 		
-		allow_mysticism_vs_jurisprudence = yes
-		monthly_towards_mysticism = societal_value_monthly_move
-		
 		number_of_allowed_religious_figures = 1
 	}
 	
 	opinions = {
-		sunni = negative
 	}
 
 	unique_names = {

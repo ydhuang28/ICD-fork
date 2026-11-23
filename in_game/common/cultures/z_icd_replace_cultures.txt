@@ -1,45 +1,21 @@
-﻿REPLACE:northumbrian = {
-	language = northumbrian_dialect
+﻿TRY_REPLACE:azeri_culture = {
+	language = azeri_dialect
 	
-	color = map_NOL
+	color = map_azeri
 	
-	tags = { english_gfx north_british_gfx british_gfx western_european_gfx european_gfx }
+	tags = { turkic_gfx persianate_gfx central_asian_gfx middle_east_gfx afrasian_gfx }
 
 	opinions = {
-		english = kindred 
-		scottish = positive
-		anglo_irish = positive
-		norman = enemy
+
+	}	
+	culture_groups = {
+		turkic_group
+		iranian_group
 	}
 
-	culture_groups = {
-		british_group
-	}
-	
-	active = no
 }
 
-REPLACE:moravian = {
-	language = czech_dialect
-	
-	color = map_moravian
-	
-	tags = { czech_gfx west_slavic_gfx slavic_gfx western_european_gfx european_gfx }
-
-	opinions = {
-		czech = kindred
-		silesian = kindred
-		slovak = kindred
-	}
-	culture_groups = {
-		bohemian_group
-		slavic_group
-	}
-	
-}
-
-
-REPLACE:romani_culture = { # 
+TRY_REPLACE:romani_culture = { # 
 	language = romani_dialect
 	
 	color = map_romani

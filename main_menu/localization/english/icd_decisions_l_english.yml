@@ -18,3 +18,36 @@
  icd_invite_the_jews.desc: "The [ShowReligionAdjectiveWithNoTooltip('judaism')] communities in some of our neighbours have proven themselves to be economically and culturally valuable. Perhaps it is in our interest to invite a group of [ShowReligionAdjectiveWithNoTooltip('judaism')] families to our territory and provide them with legal protections, so they may contribute to our economy and society.
  icd_invite_the_jews.entry: "Invite a small [ShowReligionAdjectiveWithNoTooltip('judaism')] community to our country and grant them legal protections."
  icd_invite_the_jews_tt: "250 [ShowReligionAdjective('judaism')] [pops|e] will arrive in our capital and we will pass the [ShowPolicyName('icd_jewish_charter')] [policy|e]."
+
+ icd_iqta_disbanded_tt: "We disband the Iqta system, losing access to the [ShowLawName('iqta_law')] Law."
+ icd_disband_the_iqta_system.title: "Disband the Iqta System"
+ icd_disband_the_iqta_system.a: "Establish a salaried bureaucracy"
+ icd_disband_the_iqta_system.b: "Allow for hereditary ownership"
+
+ icd_claim_mahdi.title: "Claim Title: Mahdi"
+ icd_claim_title.a: "Claim the title"
+ icd_has_mahdist_origins: "Has Sufi origins"
+ 
+ icd_claim_axis_of_the_realm.title: "Claim Title: Axis of the Realm"
+ icd_claim_emperor_of_the_faith.title: "Claim Title: Emperor of the Faith"
+ icd_claim_emperor_of_the_faith_tt: "Every rebel in our territory is destroyed"
+ icd_claim_pivot_of_the_universe.title: "Claim Title: Pivot of the Universe"
+ icd_claim_shadow_of_god.title: "Claim Title: Shadow of God"
+ icd_claim_axis_of_the_realm.desc: "We must legitimise our claim to power not only through actions but through theology. By positioning our ruler within a certain context in the Shia faith, we will reap immense benefits."
+ icd_claim_emperor_of_the_faith.desc: "We must legitimise our claim to power not only through actions but through theology. By positioning our ruler within a certain context in the Shia faith, we will reap immense benefits."
+ icd_claim_pivot_of_the_universe.desc: "We must legitimise our claim to power not only through actions but through theology. By positioning our ruler within a certain context in the Shia faith, we will reap immense benefits."
+ icd_claim_shadow_of_god.desc: "We must legitimise our claim to power not only through actions but through theology. By positioning our ruler within a certain context in the Shia faith, we will reap immense benefits."
+ icd_establish_shia_sufi_order.title: "Establish a Shiite Sufi Order"
+ 
+ icd_establish_shia_sufi_order.a: "Establish a Samt Order"
+ icd_establish_shia_sufi_order.b: "Establish a Sama Order"
+ icd_establish_shia_sufi_order.c: "Establish an Anjuman Order"
+ icd_establish_shia_sufi_order.d: "Establish a Fana Order"
+ 
+ icd_owns_eighty_percent_of_region_tt: "Owns 80% or more of locations in a [region|e]"
+ 
+ icd_zaydi_reform.title: "Implement Institutional-Theological Reform"
+ icd_zaydi_reform.desc: "Zaydi theology centers a considerable amount of political authority around the Imam, but indirectly legitimises resistance against an unproven claimant to political leadership due to the idea of righteous rebellion inherent in the concept of khuruj. If we must secure our rule across generations, institutional reforms must be put in place to prevent and undermine any rival claimants to our state.\n\nWe must implement reforms gradually, around four times in total."
+ icd_zaydi_reform.a: "Implement the next series of reforms"
+ icd_lower_khuruj: "Lowers the impact of Khuruj events on ruler death"
+ icd_stop_khuruj: "End Khuruj events on ruler death"

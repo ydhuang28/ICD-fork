@@ -1,0 +1,55 @@
+﻿icd_caliphate_claimant = {
+	priority = 10
+
+	modifier = {
+	}
+
+	can_bestow_trigger = {
+		always = no #it's not granted, it's claimed
+	}
+
+	auto_bestowal_trigger = {
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			country_rank_level < 3
+			is_rebel_country = yes
+			is_subject = yes
+			NOT = { country_type = location }
+			AND = {
+				OR = {
+					government_type = government_type:republic
+					government_type = government_type:tribe
+					government_type = government_type:steppe_horde
+					has_reform = government_reform:mamluk_government
+				}
+				NOT = {
+					has_variable = icd_abbasid_caliph
+				}
+			}
+			has_policy = icd_secular_state
+			has_policy = icd_dual_faiths
+		}
+	}
+	
+	on_bestowed_effect = {
+	}
+	
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		if = {
+			limit = {
+				root.owner = {
+					is_leader_of_international_organization = international_organization:icd_sunni_caliphate
+			}
+			}
+			value = define:NMapColors|INTERNATIONAL_ORGANIZATION_LEADER_COLOR
+		}
+		else = {
+			value = define:NMapColors|INTERNATIONAL_ORGANIZATION_TIER1_COLOR
+		}
+	}
+}

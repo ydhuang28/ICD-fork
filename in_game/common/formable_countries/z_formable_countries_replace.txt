@@ -1,4 +1,4 @@
-﻿REPLACE:MAZ_f = { # Mazovia
+﻿TRY_REPLACE:MAZ_f = { # Mazovia
 	level = 1
 	required_locations_fraction = 0.9
 	rule = historical
@@ -22,7 +22,7 @@
 	}
 }
 
-REPLACE:SHL_f = {
+TRY_REPLACE:SHL_f = {
 	level = 2
 	required_locations_fraction = 0.75
 	rule = historical
@@ -43,7 +43,7 @@ REPLACE:SHL_f = {
 	}
 }
 
-REPLACE:TRA_f = {
+TRY_REPLACE:TRA_f = {
 	level = 2
 	required_locations_fraction = 0.75
 	rule = plausible

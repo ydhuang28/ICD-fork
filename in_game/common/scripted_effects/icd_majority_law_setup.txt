@@ -59,6 +59,18 @@ icd_majority_law_setup = {
 		}
 		else_if = {
 			limit = {
+				policy:dialects_of_english = {
+					is_implementable_in = prev
+				}
+				NOT = {
+					tag = SCO
+					culture = culture:scottish
+				}
+			}
+			add_policy = policy:dialects_of_english
+		}
+		else_if = {
+			limit = {
 				policy:gradual_assimilation = {
 					is_implementable_in = prev
 				}

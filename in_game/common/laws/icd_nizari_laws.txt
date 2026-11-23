@@ -1,0 +1,76 @@
+﻿icd_nizari_laws = {
+	type = international_organization
+	law_category = religious
+	
+	potential = {
+		international_organization_type = international_organization_type:icd_nizari_imamate_io
+	}
+	allow = {
+
+	}
+	locked = {
+		always = yes
+	}
+
+	icd_taqiyya_stance = {
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+		
+		country_modifier = {
+			counter_espionage = 0.25
+			global_hostile_attrition = 1.25
+			monthly_towards_defensive = societal_value_monthly_move
+		}
+	}
+	icd_revival_stance = {
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+		
+		country_modifier = {
+			monthly_prestige = 0.1
+			global_monthly_literacy = 0.02
+			monthly_towards_communalism = societal_value_monthly_move
+		}
+	}
+	icd_ascension_stance = {
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+		
+		country_modifier = {
+			discipline = 0.05
+			monthly_towards_spiritualist = societal_value_monthly_move
+			monthly_towards_offensive = societal_value_minor_monthly_move
+		}
+	}
+	icd_aga_khan = {
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+		
+		country_modifier = {
+			discipline = 0.05
+			global_institution_growth_modifier = 0.25
+			global_pop_promotion_speed_modifier = 0.2
+			monthly_towards_innovative = societal_value_monthly_move
+		}
+	}
+	icd_sadr = {
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+		
+		country_modifier = {
+			land_morale_modifier = -0.05
+			monthly_legitimacy = -0.1
+			stability_investment = small_stability_investment_penalty
+		}
+	}
+}

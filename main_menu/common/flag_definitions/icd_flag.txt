@@ -1,0 +1,7 @@
+﻿
+NIZAR = { 
+	flag_definition = {
+		coa = NIZAR
+		priority = 1
+	}
+}

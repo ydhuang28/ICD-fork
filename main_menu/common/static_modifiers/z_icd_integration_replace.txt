@@ -1,5 +1,5 @@
 ﻿
-REPLACE:integration_conquered = {
+TRY_REPLACE:integration_conquered = {
 	game_data = {
 		category = location
 	}
@@ -9,7 +9,7 @@ REPLACE:integration_conquered = {
 	local_pop_assimilation_speed = -0.05
 }
 
-REPLACE:integration_integrated = {
+TRY_REPLACE:integration_integrated = {
 	game_data = {
 		category = location
 	}
@@ -17,7 +17,7 @@ REPLACE:integration_integrated = {
 	local_monthly_control = 0.0005
 	local_max_control = 0.20
 }
-REPLACE:integration_core = {
+TRY_REPLACE:integration_core = {
 	game_data = {
 		category = location
 	}
