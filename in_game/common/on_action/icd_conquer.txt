@@ -44,7 +44,7 @@ icd_waqf_location_recalculate = {
 			religion.group = religion_group:muslim 
 			num_locations > 0
 			is_real_country = yes
-			has_variable = 2
+			has_variable = icd_waqf_base_var
 			var:icd_waqf_base_var > 0
 		}
 	}

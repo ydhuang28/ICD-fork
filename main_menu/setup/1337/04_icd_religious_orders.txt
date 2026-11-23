@@ -1,4 +1,4 @@
-﻿
+
 #satpanth_order = {
 	#graphical_cultures = { muslim_gfx }
 	#type = icd_sufi_order

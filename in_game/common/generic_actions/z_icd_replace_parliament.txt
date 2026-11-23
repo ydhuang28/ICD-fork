@@ -203,7 +203,7 @@ TRY_REPLACE:force_parliament_support = {
 				limit = {
 					scope:actor = {
 						or = {
-							parliament_issue_support >= modifier:parliament_request_issue_support_needed
+							parliament_issue_support >= parliament_request_support	# as game 1.4.9 (was modifier:parliament_request_issue_support_needed)
 							parliament_issue_support < 0.25
 						}
 					}
@@ -218,7 +218,7 @@ TRY_REPLACE:force_parliament_support = {
 			if = {
 				limit = {
 					scope:actor = {
-						parliament_issue_support < modifier:parliament_request_issue_support_needed
+						parliament_issue_support < parliament_request_support	# as game 1.4.9 (was modifier:parliament_request_issue_support_needed)
 					}
 				}
 				value = 5
