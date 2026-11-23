@@ -117,6 +117,28 @@ icd_cultural_setup = {
 		}
 	}
 	
+	c:AAL = {
+		change_culture = culture:najdi_culture
+		every_character = {
+			limit = { culture = culture:bedouin_culture }
+			change_character_culture = culture:najdi_culture
+		}
+	}
+	c:AMR = {
+		change_culture = culture:levantine_culture
+		every_character = {
+			limit = { culture = culture:bedouin_culture }
+			change_character_culture = culture:levantine_culture
+		}
+	}
+	c:FDL = {
+		change_culture = culture:levantine_culture
+		every_character = {
+			limit = { culture = culture:bedouin_culture }
+			change_character_culture = culture:levantine_culture
+		}
+	}
+	
 	area:upper_rhine_area = {
 		every_location_in_area = {
 			every_pop = {
@@ -468,6 +490,301 @@ icd_cultural_setup = {
 			}
 		}
 	}
+	
+	area:sus_area = {
+		every_location_in_area = {
+			limit = { 
+				OR = {
+					vegetation = sparse
+					vegetation = desert
+				}
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					NOT = { culture = culture:andalusi }
+					religion.group = religion_group:muslim
+				}
+				change_pop_type = pop_type:tribesmen
+			}
+		}
+	}
+	area:atlas_high_plateau = {
+		every_location_in_area = {
+			limit = { 
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					NOT = { culture = culture:andalusi }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.55
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	area:desert_area = {
+		every_location_in_area = {
+			limit = { 
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.75
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	province_definition:qamuda_province = {
+		every_location_in_province_definition = {
+			limit = { 
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					NOT = { culture = culture:andalusi }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.4
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	province_definition:tadla_province = {
+		every_location_in_province_definition = {
+			limit = { 
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					NOT = { culture = culture:andalusi }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.25
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	province_definition:qabisa_province = {
+		every_location_in_province_definition = {
+			limit = { 
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					NOT = { culture = culture:andalusi }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.4
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	area:cyrenaica_area = {
+		every_location_in_area = {
+			limit = {
+				NOT = {
+					this = location:barca
+					this = location:al_bayda
+					this = location:benghazi
+				}
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					NOT = { culture = culture:andalusi }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.77
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	province_definition:alexandria_province = {
+		every_location_in_area = {
+			limit = {
+				NOT = {
+					this = location:alexandria
+				}
+			}
+			every_pop = {
+				limit = {
+					pop_type = pop_type:peasants
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.78
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	region:arabia_region = {
+		every_location_in_region = {
+			limit = {
+				OR = {
+					vegetation = sparse
+					vegetation = desert
+				}
+				NOT = {
+					any_pop = {
+						pop_type = pop_type:tribesmen
+					}
+				}
+				NOT = {
+					this = location:medina
+					this = location:mecca
+					this = location:jeddah
+				}
+				location_rank = location_rank:rural_settlement
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = { 0.4 0.55 }
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	area:jazira_area = {
+		every_location_in_area = {
+			limit = {
+				OR = {
+					vegetation = sparse
+					vegetation = desert
+				}
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = 0.55
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	area:iraq_arabi_area = {
+		every_location_in_area = {
+			limit = {
+				OR = {
+					vegetation = sparse
+					vegetation = desert
+				}
+				location_rank = location_rank:rural_settlement
+				has_river = no
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = { 0.15 0.22 }
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	province_definition:deir_province = {
+		every_location_in_province_definition = {
+			limit = {
+				OR = {
+					vegetation = sparse
+					vegetation = desert
+				}
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = { 0.6 0.77 }
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	province_definition:tadmur_province = {
+		every_location_in_province_definition = {
+			limit = {
+				OR = {
+					vegetation = sparse
+					vegetation = desert
+				}
+			}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:peasants
+					}
+					culture = { has_culture_group = culture_group:arabic_group }
+					religion.group = religion_group:muslim
+				}
+				split_pop = {
+					fraction = { 0.6 0.77 }
+					type = pop_type:tribesmen
+				}
+			}
+		}
+	}
+	
 	###tribesmen end##
 	
 	every_country = {
