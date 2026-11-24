@@ -33,16 +33,17 @@
 		value = { 0.005 0.02 }
 		if = {
 			limit = {
+				# ?=: the movement's tooltip works out r0 with no location
 				OR = {
-					region != region:steppes_region
-					area = area:kursk_area
+					region ?= { NOT = { this = region:steppes_region } }
+					area ?= area:kursk_area
 				}
 			}
 			multiply = 0
 		}
 		if = {
 			limit = {
-				NOT = { location_rank = location_rank:rural_settlement }
+				location_rank ?= { NOT = { this = location_rank:rural_settlement } }
 			}
 			multiply = 0
 		}
