@@ -37,13 +37,16 @@
 	r0 = {
 		if = {
 			limit = {
-				NOT = {
-					region = region:crescent_region
-					region = region:anatolia_region
-					region = region:caucasus_region
-					region = region:persia_region
-					region = region:western_india_region
-					region = region:khorasan_region
+				# NOR: a NOT holding several regions means "not in all of them", which every location is,
+				# so r0 was 0 everywhere and the movement never spread
+				# ?=: the movement's tooltip works out r0 with no location
+				NOR = {
+					region ?= region:crescent_region
+					region ?= region:anatolia_region
+					region ?= region:caucasus_region
+					region ?= region:persia_region
+					region ?= region:western_india_region
+					region ?= region:khorasan_region
 				}
 			}
 			value = 0
