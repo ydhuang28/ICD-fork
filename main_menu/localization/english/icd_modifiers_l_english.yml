@@ -103,7 +103,7 @@
  
  western_turkification_culture_movement: "Western Turco-Mongol Tradition"
  western_turkification_culture_movement_desc: "The intermixing of Turkish and Mongol culture has led to the formation of a distinct Turco-Mongol identity. Over time, Mongols that are not governed by a Mongol government that can defend their interests, will adopt Turkic languages and a Turkic identity. In the Caucasus and Anatolia, this is often translated as becoming Turkomans"
- western_turkification_culture_movement_tt: ""The Western Turco-Mongol Tradition has not begun."
+ western_turkification_culture_movement_tt: "The Western Turco-Mongol Tradition has not begun."
  western_turkification_culture_movement_location_modifier: "Western Turco-Mongol Tradition Location Modifier"
  
  cossack_culture_movement: "Cossack Acculturation"
@@ -215,7 +215,7 @@
 
  
  AUTO_MODIFIER_NAME_icd_waqf_impact: "Impact of our [waqf_distribution|e]"
- select_character: "Select [character|e]
+ select_character: "Select [character|e]"
  choose_religious_order_unit: "Choose army unit"
  
  STATIC_MODIFIER_NAME_icd_title_axis_of_the_realm: "Axis of the Realm"

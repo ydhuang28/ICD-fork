@@ -404,7 +404,7 @@
  icd_muslim_events.11.b: "They can figure something out themselves"
  icd_muslim_events.12.title: "Waqf for the Sufi"
  icd_muslim_events.12.desc: "A local Sufi tariqah (lodge) in our country has been struggling to sustain itself financially, becoming overcrowded and decrepit. Though gifts have come from the local populace, the local devotees ideally would require a [waqf|e] dedicated to the maintenance of their institution."
- icd_muslim_events.12.a: "Grant a [waqf|e]
+ icd_muslim_events.12.a: "Grant a [waqf|e]"
  icd_muslim_events.12.b: "They can figure something out"
  icd_muslim_events.13.title: "Sufism in the Hinterlands"
  icd_muslim_events.13.desc: "A Sufi leader has gained considerable popularity and presence in [SCOPE.sLocation('target_location').GetName], forming a well-funded and very locally influential lodge. Associating with him and recognising his political influence could pay off for us."

@@ -15,16 +15,18 @@
  icd_no_moriscos_none_tt: "Expelled the [ShowCultureNameWithNoTooltip('andalusi')]"
  
  icd_invite_the_jews.title: "Invite Jewish Settlement"
- icd_invite_the_jews.desc: "The [ShowReligionAdjectiveWithNoTooltip('judaism')] communities in some of our neighbours have proven themselves to be economically and culturally valuable. Perhaps it is in our interest to invite a group of [ShowReligionAdjectiveWithNoTooltip('judaism')] families to our territory and provide them with legal protections, so they may contribute to our economy and society.
+ icd_invite_the_jews.desc: "The [ShowReligionAdjectiveWithNoTooltip('judaism')] communities in some of our neighbours have proven themselves to be economically and culturally valuable. Perhaps it is in our interest to invite a group of [ShowReligionAdjectiveWithNoTooltip('judaism')] families to our territory and provide them with legal protections, so they may contribute to our economy and society."
  icd_invite_the_jews.entry: "Invite a small [ShowReligionAdjectiveWithNoTooltip('judaism')] community to our country and grant them legal protections."
  icd_invite_the_jews_tt: "250 [ShowReligionAdjective('judaism')] [pops|e] will arrive in our capital and we will pass the [ShowPolicyName('icd_jewish_charter')] [policy|e]."
 
  icd_iqta_disbanded_tt: "We disband the Iqta system, losing access to the [ShowLawName('iqta_law')] Law."
  icd_disband_the_iqta_system.title: "Disband the Iqta System"
+ icd_disband_the_iqta_system.desc: "The iqta, the grant of a district's revenues to an officer in return for his service, has paid for our armies and our administration since the days of the Buyids and the Seljuks. Over the generations the grants have hardened into estates that their holders pass on to their sons, and the land now answers to them before it answers to us. We can end the system: either our officers draw a salary from the treasury, or the holders keep their lands outright as a hereditary nobility."
  icd_disband_the_iqta_system.a: "Establish a salaried bureaucracy"
  icd_disband_the_iqta_system.b: "Allow for hereditary ownership"
 
  icd_claim_mahdi.title: "Claim Title: Mahdi"
+ icd_claim_mahdi.desc: "Many of the faithful await the Mahdi, the rightly guided one who will rise at the end of days to fill the world with justice. Should our ruler claim the title, the faithful will flock to our banners and our word will carry the weight of prophecy, and every neighbour who refuses to submit can be made to."
  icd_claim_title.a: "Claim the title"
  icd_has_mahdist_origins: "Has Sufi origins"
  
@@ -38,6 +40,7 @@
  icd_claim_pivot_of_the_universe.desc: "We must legitimise our claim to power not only through actions but through theology. By positioning our ruler within a certain context in the Shia faith, we will reap immense benefits."
  icd_claim_shadow_of_god.desc: "We must legitimise our claim to power not only through actions but through theology. By positioning our ruler within a certain context in the Shia faith, we will reap immense benefits."
  icd_establish_shia_sufi_order.title: "Establish a Shiite Sufi Order"
+ icd_establish_shia_sufi_order.desc: "Sufi brotherhoods have long gathered around their masters in the lodges of our lands, and some of them now look to the family of the Prophet and the Imams for guidance. By granting one of these circles a charter of its own, we can found a Shiite Sufi order and choose the path it will teach: the silent remembrance of Samt, the spiritual concerts of Sama, the devotion within daily life of Anjuman, or the self-effacement of Fana."
  
  icd_establish_shia_sufi_order.a: "Establish a Samt Order"
  icd_establish_shia_sufi_order.b: "Establish a Sama Order"
